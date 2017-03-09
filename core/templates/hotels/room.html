@@ -1,0 +1,103 @@
+
+{% extends "hotels/hotel.html" %}
+
+{% set hotel = room.parent %}
+
+{% block title %}{{room.name}} –  {{ super() }}{% endblock %}
+{% block description %}{{room.description}} – {{ super() }}{% endblock %}
+{% block og_title %}{{room.name}} – {{ super() }}{% endblock %}
+{% block og_description %}{{room.description}} – {{ super() }}{% endblock %}
+
+
+{% block main %}
+<article class="padded--under_header" data-room-id="{{room._id}}">
+	<div class="hero">
+		<img class="hero__back" src="{{room.featured_photo}}">
+		<div class="hero__box hero__box--full">
+			<div class="hero__box__content">
+				<h3 class="small_bottom"><a href="/hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}} &gt;</a></h3>
+				<h1 class="big_bottom">{{room.name|safe}}</h1>
+				<a href="/hotels/{{hotel.route}}/rooms/{{room.route}}/photos" class="button button--secondary button--small">{{pieces.hotels.see_photos}}</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="padded padded--thick max_width">
+		<h2 class="huge_bottom">{{room.description}}</h2>
+
+		<div class="grid grid--guttered">
+			<div class="col col--4of12">
+				<h3>{{pieces.hotels.in_the_room}}</h3>
+			</div>
+			<div class="col col--8of12">
+				<div class="grid grid--tight_guttered">
+					{% for item in room.in_the_room %}
+					<div class="col col--6of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body}}</small></div>
+					{% endfor %}
+				</div>
+
+				<h5 class="medium_top">{{pieces.hotels.on_demand}}</h5>
+
+				<div class="grid grid--tight_guttered">
+					{% for item in room.in_the_room_on_demand %}
+					<div class="col col--6of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body}}</small></div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<hr class="hr--full">
+
+		<div class="grid grid--guttered">
+			<div class="col col--4of12">
+				<h3>{{pieces.hotels.policies}}</h3>
+			</div>
+			<div class="col col--8of12">
+				<div class="grid grid--tight_guttered">
+					<div class="col col--6of12"><small>{{pieces.hotels.check_in}} <strong>{{room.check_in}}</strong></small></div>
+					<div class="col col--6of12"><small>{{pieces.hotels.check_out}} <strong>{{room.check_out}}</strong></small></div>
+
+					{% for item in room.policies %}
+					<div class="col col--12of12"><small>{{item|safe}}</small></div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<hr class="hr--full">
+
+		<div class="grid grid--guttered">
+			<div class="col col--4of12">
+				<h3>{{pieces.hotels.services}}</h3>
+			</div>
+			<div class="col col--8of12">
+				<div class="grid grid--tight_guttered">
+					{% for item in room.services %}
+					<div class="col col--6of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body}}</small></div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<hr class="hr--full">
+
+		<div class="grid grid--guttered">
+			<div class="col col--4of12">
+				<h3>{{pieces.hotels.paid_services}}</h3>
+			</div>
+			<div class="col col--8of12">
+				<div class="grid grid--tight_guttered">
+					{% for item in room.paid_services %}
+					<div class="col col--6of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body}}</small></div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</article>
+{% endblock %}
+
+
+
+
+

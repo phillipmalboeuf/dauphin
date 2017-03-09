@@ -1,0 +1,60 @@
+
+
+// #HEROS
+
+.hero {
+	position: relative;
+
+	max-height: 80vh;
+	overflow: hidden;
+
+	background: $dark_background;
+}
+
+	.hero__back {
+		position: relative;
+		z-index: 0;
+	}
+
+	.hero__text {
+		@extend .padded;
+		@extend .padded--thick;
+		
+		position: absolute;
+		bottom: 0;
+	}
+
+	.hero__box {
+		@extend .dark_back;
+		@extend .padded;
+		@extend .padded--thick;
+
+		@extend .grid;
+		@extend .grid--bottom;
+
+		position: absolute;
+		bottom: 0;
+
+		height: 100%;
+		padding-bottom: $gutter*1.5;
+
+		background: fade-out($black--dark, 0.2);
+
+		&.hero__box--full {
+			width: 100%;
+			background: fade-out($black--dark, 0.55);
+		}
+
+		&.hero__box--transparent {
+			background: transparent;
+			padding: $gutter;
+		}
+	}
+
+		.hero__box__content {
+			max-width: $max_width;
+		}
+
+
+
+		

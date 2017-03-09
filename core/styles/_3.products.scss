@@ -1,0 +1,72 @@
+
+
+// #PRODUCT
+
+.product {
+	
+	&.product--box {
+		@extend .padded;
+		border: 1px solid;
+		border-radius: $border_radius;
+	}
+
+	&.product--workshop_box {
+		@extend .padded;
+		@extend .grid;
+		@extend .grid--vertically_centered;
+
+		background: $white;
+		border: 2px solid transparent;
+		border-radius: $border_radius;
+		min-height: $vertical_rythm*18;
+
+		@include transition(border-color $fast);
+
+		&.product--workshop_box--active {
+			color: $white;
+			background-color: $highlight;
+			border-color: $highlight;
+
+			@include shadow(0 0.1rem 0.25rem fade-out($black, 0.75));
+		}
+
+		&.product--workshop_box--out_of_stock {
+			color: fade-out($body_color, 0.8) !important;
+			text-decoration: line-through;
+		}
+
+		&:hover,
+		&:focus {
+			border: 2px solid;
+		}
+
+		&:active {
+
+		}
+	}
+}
+
+	.product__cta_box {
+		@extend .overlay;
+		@extend .overlay--top_right;
+	}
+
+		.product__cta_box__container {
+			@extend .overlay__container;
+
+			color: $highlight;
+
+			max-width: 20rem;
+			background: $white;
+			border: 1px solid $highlight;
+		}
+
+
+	.product__sold_out {
+		position: absolute;
+		bottom: $vertical_rythm/2;
+		right: $vertical_rythm;
+
+		color: $body_color !important;
+		opacity: 1;
+	}

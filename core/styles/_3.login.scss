@@ -1,0 +1,36 @@
+
+
+// #LOGIN
+
+.login {
+	@extend .overlay;
+	@extend .overlay--full;
+
+	font-family: $alternate_font;
+}
+
+	.login__back {
+		@extend .overlay__back;
+	}
+
+
+	.login__container {
+		@extend .overlay__container;
+
+		padding: 0;
+
+		max-width: 34rem;
+		background-color: $white;
+
+		form {
+			padding: $vertical_rythm*2;
+
+			@media #{$phone} {
+				padding: $vertical_rythm*2 $vertical_rythm;				
+			}
+		}
+	}
+
+		.login__close {
+			@extend .overlay__close;
+		}

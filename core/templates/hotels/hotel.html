@@ -1,0 +1,51 @@
+
+{% extends "layout.html" %}
+
+{% block title %}{{hotel.name}} – {{hotel.tagline}} – {{ super() }}{% endblock %}
+{% block description %}{{hotel.intro}} – {{ super() }}{% endblock %}
+{% block og_title %}{{hotel.name}} – {{hotel.tagline}} – {{ super() }}{% endblock %}
+{% block og_description %}{{hotel.intro}} – {{ super() }}{% endblock %}
+
+
+{% block header_classes %}white_back{% endblock %}
+{% block main_classes %}{% endblock %}
+
+
+{% block main %}
+<article class="padded--under_header" data-hotel-id="{{hotel._id}}">
+	<div class="hero">
+		<img class="hero__back" src="{{hotel.featured_photo}}">	
+
+		<div class="hero__box">
+			<div class="hero__box__content">
+				<h2 class="big_bottom">{{hotel.tagline|safe}}</h2>
+				<p class="p--small big_bottom">{{hotel.intro}}</p>
+				<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="padded padded--thick max_width">
+		<div class="big_bottom">{{hotel.description|safe}}</div>
+		
+		{% for photo in hotel.photos %}
+		{% if loop.first %}
+		<div class="hero">
+			<img class="hero__back" src="{{photo}}">	
+
+			<div class="hero__box hero__box--transparent">
+				<div class="hero__box__content">
+					<a href="/hotels/{{hotel.route}}/photos" class="button button--secondary">{{pieces.hotels.see_photos}}</a>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+</article>
+{% endblock %}
+
+
+
+
+

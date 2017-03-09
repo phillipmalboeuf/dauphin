@@ -1,0 +1,13 @@
+
+
+// #FORMS
+
+form {
+	margin: 0 auto;
+	max-width: 540px;
+
+	&[disabled] {
+		opacity: 0.2;
+		pointer-events: none;
+	}
+}

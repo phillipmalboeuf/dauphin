@@ -1,0 +1,16 @@
+
+<section class="dark_back grid grid--full_height middle center">
+	<div class="text_center">
+		<h3>{{pieces.hotels.rooms}}</h3>
+
+		<hr>
+
+		<div class="padded">
+		{% for room in rooms %}
+			<h2 class="small_bottom"><a href="/hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h2>
+		{% endfor %}
+		</div>
+
+		<hr>
+	</div>
+</section>

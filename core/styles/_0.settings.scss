@@ -1,0 +1,62 @@
+
+// #COLORS
+
+$white: #fff;
+$black: #231F20;
+$black--dark: #000;
+$black--light: #313639;
+$red: #E14B3C;
+$grey: #E9EFF3;
+$grey--light: #F1F1F1;
+$green: #49D667;
+$orange: #EF713A;
+
+$facebook_blue: #3B5998;
+
+$body_color: $black;
+$headings_color: inherit;
+$highlight: $orange;
+$light_background: $grey--light;
+$dark_background: $black;
+$alert_color: $orange;
+
+// #FONTS
+
+$body_font: "Chronicle Text G2", serif;
+$headings_font: "Chronicle Text G2", serif;
+$alternate_font: "Verlag", sans-serif;
+
+$bold: 600;
+
+
+// #LAYOUT
+
+$base: 16;
+$base_size: $base * 1px;
+$small_size: (12/$base) * 1rem;
+
+$vertical_rythm: 1rem;
+$line_height: 1.5;
+$max_width: (420/$base) * 1rem;
+$letter_spacing: 0.1em;
+$border_radius: 3px;
+
+$number_of_columns: 12;
+$gutter: (40/$base) * 1rem;
+
+
+// #ANIMATIONS
+
+$fast: 0.333s;
+$slow: 0.666s;
+$very_slow: 1.666s;
+
+
+// #BREAKPOINTS
+
+$phone: "all and (max-device-width:600px), all and (max-width:600px)";
+$tablet_portrait: "all and (max-device-width:900px), all and (max-width:900px)";
+$tablet_landscape: "all and (max-device-width:1200px), all and (max-width:1200px)";
+$big_desktop: "all and (min-device-width:1800px), all and (min-width:1800px)";
+$breakpoints: "big_desktop" $big_desktop, "tablet_landscape" $tablet_landscape, "tablet_portrait" $tablet_portrait, "phone" $phone;
+

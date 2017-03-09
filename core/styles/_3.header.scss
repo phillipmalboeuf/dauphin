@@ -1,0 +1,134 @@
+
+
+// #HEADER
+
+header {
+	@extend .padded;
+	@extend .padded--tight;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+
+	font-size: $small_size;
+	font-family: $alternate_font;
+	line-height: (14/$base) * 1rem;
+}
+
+	.header__logo {
+		
+		.icon--logo {
+			width: (33/$base) * 1rem;
+			height: (40/$base) * 1rem;
+		}
+
+		.icon--logotype {
+			width: (114/$base) * 1rem;
+			height: (12/$base) * 1rem;
+		}
+	}
+
+
+	.header__menu_checkbox {
+		display: none;
+
+		& + label {
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			z-index: 10;
+
+			padding: $vertical_rythm*2 $gutter;
+			margin-bottom: 0;
+
+			@include transition(color $slow);
+
+			line {
+				@include transformer($slow);
+				@include transform_origin(50%, 50%);
+			}
+		}
+
+		&:checked + label {
+			color: $light_background;
+
+			line:first-child {
+				@include transform(translateY(2px) rotate(45deg));
+			}
+
+			line:last-child {
+				@include transform(translateY(-2px) rotate(-45deg));
+			}
+		}
+	}
+
+	.header__menu {
+		position: fixed;
+		top: 0;
+		right: 100%;
+		z-index: 5;
+
+		width: 100%;
+		max-width: $max_width;
+
+		@include transformer($slow);
+		@include translate(0, 0);
+
+		.header__menu_checkbox:checked + label + & {
+			@include translate(100%, 0);
+		}
+	}
+
+		.header__menu__indented {
+			margin-left: $gutter;
+		}
+
+	.header__show_sub {
+		text-align: right;
+	}
+
+	.header__sub {
+		position: absolute;
+		top: $vertical_rythm*4;
+		right: $vertical_rythm*4.5;
+
+		color: $body_color;
+		background-color: $white;
+
+		opacity: 0;
+		visibility: hidden;
+		z-index: 0;
+
+		font-size: $small_size;
+		text-align: right;
+		padding: $gutter/2;
+
+		@include transition(opacity $fast, visibility 0s linear $fast, transform $fast, -webkit-transform $fast);	
+
+		&:hover,
+		.header__show_sub:hover + &,
+		.header__show_sub:focus + & {
+			opacity: 1;
+			visibility: visible;
+			z-index: 1;
+
+			@include transition(opacity $fast, visibility 0s, transform $fast, -webkit-transform $fast);
+		}
+	}
+
+		.header__sub__link {
+			font-family: $alternate_font;
+
+			display: block;
+			padding: $vertical_rythm/4 $vertical_rythm;
+
+			border-right: 1px dotted transparent;
+
+			&:hover,
+			&:focus {
+				border-color: $highlight;
+			}
+		}

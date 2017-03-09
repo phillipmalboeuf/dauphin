@@ -1,0 +1,61 @@
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Library - {{super()}}
+{% endblock %}
+
+{% block og_title %}
+	Library - {{super()}}
+{% endblock %}
+
+{% block description %}
+	{{pieces.library.introduction|striptags}}
+{% endblock %}
+
+{% block og_description %}
+	{{pieces.library.introduction|striptags}}
+{% endblock %}
+
+{% block body_classes %}library blog{% endblock %}
+
+{% block title_link %}/{% endblock %}
+
+{% block main %}
+
+<div class="main__center">
+	<div class="big_bottom" data-piece-id="{{pieces.library._id}}">
+		<p class="p--big">
+			<span data-key="introduction">{{pieces.library.introduction|safe}}</span>
+
+			<span data-piece-admin></span>
+		</p>
+	</div>
+
+
+	<div class="grid grid--guttered">
+		{% for post in list.posts %}
+		<article class="col col--12of12 library__post" data-post-id="{{post._id}}">
+			<h4 class="flat_bottom"><a href="{{post.url}}" target="_blank"><span data-title>{{post.title}}</span></a></h4>
+			<div data-content-key="references">{{post.references|safe}}</div>
+
+			<div data-admin></div>
+		</article>
+		{% endfor %}
+		
+	</div>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+
+
+	{{super()}}
+
+	<script>
+		window.list_id = "{{list._id}}";
+		window.list_route = "{{list.route}}";
+	</script>
+{% endblock %}

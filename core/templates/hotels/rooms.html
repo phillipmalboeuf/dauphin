@@ -1,0 +1,24 @@
+
+{% extends "hotels/hotel.html" %}
+
+{% set hotel = rooms[0].parent %}
+
+{% block title %} {{ super() }}{% endblock %}
+{% block description %}{{ super() }}{% endblock %}
+{% block og_title %}{{ super() }}{% endblock %}
+{% block og_description %}{{ super() }}{% endblock %}
+
+
+{% block main_classes %}dark_back{% endblock %}
+{% block header_classes %}dark_back{% endblock %}
+
+
+{% block main %}
+	{% set hotel = rooms[0].parent %}
+	{% include 'hotels/rooms_list.html' %}
+{% endblock %}
+
+
+
+
+

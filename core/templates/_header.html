@@ -1,0 +1,68 @@
+
+{% if room %}
+{% set hotel = room.parent %}
+{% endif %}
+
+{% if rooms %}
+{% set hotel = rooms[0].parent %}
+{% endif %}
+
+
+<nav class="nav grid grid--spaced grid--middle">
+	<div class="col col--3of12">
+		{% if hotel %}
+		<input type="checkbox" id="menu" class="header__menu_checkbox">
+		<label class="em" for="menu">{% include 'icons/menu.svg' %} Menu</label>
+
+		<div class="header__menu padded dark_back grid grid--full_height grid--vertically_spaced">
+			<div class="col col--12of12"></div>
+			<div class="col col--12of12">
+				<h2 class="flat_bottom"><a href="/hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}}</a></h2>
+
+				{% for other_hotel in hotels %}
+				{% if other_hotel.id == hotel.id %}
+				{% for room in other_hotel.rooms %}
+				<h4 class="flat_bottom header__menu__indented"><a href="/hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h4>
+				{% endfor %}
+				{% endif %}
+				{% endfor %}
+
+				<h2 class="flat_bottom medium_top"><a href="/hotels/{{hotel.route}}/story">{{pieces.hotels.story}}</a></h2>
+				<h2><a href="/hotels/{{hotel.route}}/proximity">{{pieces.hotels.proximity}}</a></h2>
+			</div>
+			<div class="col col--12of12">
+				<div class="grid grid--tight_guttered">
+					<div class="col"><a href="#">{% include 'icons/facebook.svg' %}</a></div>
+					<div class="col"><a href="#">{% include 'icons/instagram.svg' %}</a></div>
+					<div class="col"><a href="#">{% include 'icons/pinterest.svg' %}</a></div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	<div class="header__logo text_center">
+		<a href="/{% if room or rooms %}hotels/{{hotel.route}}{% endif %}">
+			{% include 'icons/logo.svg' %}
+		</a>
+	</div>
+	<div class="col col--3of12 grid grid--middle grid--right">
+
+		{% if hotel %}
+		<div class="header__show_sub">
+			<strong>{{hotel.name}}</strong><br>
+			<a href="{{hotel.address_link}}" target="_blank" class="a--highlight">{{hotel.address}}</a>
+			<a href="tel:{{hotel.phone}}" target="_blank" class="a--highlight">{{hotel.phone}}</a>
+		</div>
+
+		<div class="header__sub">
+			{% for other_hotel in hotels %}
+			<a href="/hotels/{{other_hotel.route}}" class="header__sub__link">{{other_hotel.name}}</a>
+			{% endfor %}
+		</div>
+
+		<hr class="hr--vertical">
+		{% endif %}
+
+		<a href="/en" class="em">En</a>	
+	</div>
+</nav>

@@ -1,0 +1,141 @@
+
+// #GRID
+
+.grid {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+
+
+	&.grid--center {
+		justify-content: center;
+		-webkit-justify-content: center;
+	}
+
+	&.grid--right {
+		justify-content: flex-end;
+		-webkit-justify-content: flex-end;
+	}
+
+	&.grid--spaced {
+		justify-content: space-between;
+		-webkit-justify-content: space-between;
+	}
+
+	&.grid--vertically_spaced {
+		align-content: space-between;
+		-webkit-align-content: space-between;
+	}
+
+	&.grid--vertically_centered {
+		align-content: center;
+		-webkit-align-content: center;
+	}
+
+	&.grid--stretch {
+		align-items: stretch;
+		-webkit-align-items: stretch;
+	}
+
+	&.grid--middle {
+		align-items: center;
+		-webkit-align-items: center;
+	}
+
+	&.grid--bottom {
+		align-items: flex-end;
+		-webkit-align-items: flex-end;
+	}
+
+	&.grid--nowrap {
+		-webkit-flex-wrap: nowrap;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+	}
+
+	&.grid--full_height {
+		min-height: 100vh;
+		height: 1rem;
+
+		&.grid--full_height--small {
+			min-height: 66vh;
+		}
+
+		&.middle {
+			@extend .grid--middle;
+		}
+
+		&.bottom {
+			@extend .grid--bottom;
+		}
+
+		&.center {
+			@extend .grid--center;
+			text-align: center;
+		}
+
+		&.right {
+			@extend .grid--right;
+			text-align: right;
+		}
+	}
+
+	&.grid--guttered {
+		margin-left: -$gutter;
+		margin-bottom: -$gutter;
+
+		@media #{$phone} {
+			margin-left: -$gutter/2;
+		}
+	}
+
+	&.grid--tight_guttered {
+		margin-left: -$gutter/2;
+		margin-bottom: -$gutter/4;
+	}
+}
+	
+	.col {
+
+		.grid--guttered > & {
+			padding-left: $gutter;
+			padding-bottom: $gutter;
+
+			@media #{$phone} {
+				padding-left: $gutter/2;
+			}
+		}
+
+		.grid--tight_guttered > & {
+			padding-left: $gutter/2;
+			padding-bottom: $gutter/4;
+		}
+
+
+		@for $i from 1 through $number_of_columns { 
+			&.col--#{$i}of#{$number_of_columns} { width: (100% / $number_of_columns * $i); }
+		}
+
+		@each $breakpoint in $breakpoints {
+			&.col--#{nth($breakpoint, 1)}--first { @media #{nth($breakpoint, 2)} { 
+				-ms-flex-order: -1;
+				-webkit-order: -1;
+				order: -1;
+			} }
+			&.col--#{nth($breakpoint, 1)}--last { @media #{nth($breakpoint, 2)} { 
+				-ms-flex-order: 99;
+				-webkit-order: 99;
+				order: 99;
+			} }
+
+			@for $i from 1 through $number_of_columns { 
+				&.col--#{nth($breakpoint, 1)}--#{$i}of#{$number_of_columns} { @media #{nth($breakpoint, 2)} { width: (100% / $number_of_columns) * $i; } }
+			}
+		}
+	}
+

@@ -1,0 +1,38 @@
+
+{% extends "layout.html" %}
+
+
+{% block main_classes %}grid grid--full_height middle center{% endblock %}
+
+{% block main %}
+<section class="text_center">
+
+	<h3>{{pieces.index.hotels}}</h3>
+
+	<hr>
+
+	<div class="padded">
+	{% for hotel in hotels %}
+		{% if not hotel.extended_family %}
+		<h2 class="small_bottom"><a href="/hotels/{{hotel.route}}">{{hotel.name}}</a></h2>
+		{% endif %}
+	{% endfor %}
+	</div>
+
+	<hr>
+
+	<h3 class="padded">{{pieces.index.extended_family}}</h3>
+
+	<div class="grid grid--middle">
+	{% for hotel in hotels if hotel.extended_family %}
+		<div class="col"><h2 class="h2--small"><a href="/hotels/{{hotel.route}}">{{hotel.name}}</a></h2></div>
+	
+		{% if not loop.last %}<div class="col"><hr class="hr--vertical"></div>{% endif %}
+	{% endfor %}
+	</div>
+
+</section>
+{% endblock %}
+
+
+
