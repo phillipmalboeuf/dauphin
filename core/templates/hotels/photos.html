@@ -27,14 +27,14 @@
 
 
 {% block main %}
-<div class="grid grid--spaced grid--middle padded padded--thick">
-	<div><!-- <button class="button--transparent">&lt; Previous</button> --></div>
-	<div class="col col--10of12">
-		{% for photo in gallery.photos %}
-		<img src="{{photo}}" class="medium_bottom">
-		{% endfor %}
+<div class="padded padded--thick" data-slider data-slides='{% for photo in gallery.photos %}{{photo}}{% if not loop.last %},{% endif %}{% endfor %}'>
+	<div class="grid grid--center grid--middle">
+		<div class="col col--10of12 col--tablet_portrait--12of12">
+			{% for photo in gallery.photos %}
+			<img src="{{photo}}" class="medium_bottom">
+			{% endfor %}
+		</div>
 	</div>
-	<div><!-- <button class="button--transparent">Next &gt;</button> --></div>
 </div>
 {% endblock %}
 

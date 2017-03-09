@@ -13,6 +13,15 @@ module.exports = function(grunt) {
         cmd: 'source '+ __dirname +'/environment/bin/activate && python server.py',
         bg: false,
         stdout: false
+      },
+      development: {
+        cmd: "node_modules/.bin/webpack-dev-server --config=./config/development.js",
+        bg: true
+      },
+      build: {
+        cmd: "node_modules/.bin/webpack --config=./config/production.js --progress -p",
+        bg: false,
+        stdout: false
       }
     },
 
@@ -44,6 +53,13 @@ module.exports = function(grunt) {
       html: {
         files: ['core/templates/**/*.html']
       },
+      javascript: {
+        options: {
+          livereload: false
+        },
+        files: ['core/scripts/**/*.js'],
+        tasks: ['bgShell:build']
+      },
       sass: {
         options: {
           livereload: false
@@ -67,7 +83,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('install', ['bgShell:install']);
   grunt.registerTask('start', ['bgShell:server']);
-  grunt.registerTask('compilers', ['sass', 'open', 'watch']);
+  grunt.registerTask('compilers', ['bgShell:development', 'open', 'watch']);
   grunt.registerTask('default', ['compilers']);
 
 };

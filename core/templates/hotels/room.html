@@ -54,8 +54,8 @@
 			</div>
 			<div class="col col--8of12">
 				<div class="grid grid--tight_guttered">
-					<div class="col col--6of12"><small>{{pieces.hotels.check_in}} <strong>{{room.check_in}}</strong></small></div>
-					<div class="col col--6of12"><small>{{pieces.hotels.check_out}} <strong>{{room.check_out}}</strong></small></div>
+					<div class="col col--6of12"><small>{{pieces.hotels.check_in}}: <strong>{{room.check_in}}</strong></small></div>
+					<div class="col col--6of12"><small>{{pieces.hotels.check_out}}: <strong>{{room.check_out}}</strong></small></div>
 
 					{% for item in room.policies %}
 					<div class="col col--12of12"><small>{{item|safe}}</small></div>

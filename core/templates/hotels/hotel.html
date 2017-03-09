@@ -11,6 +11,17 @@
 {% block main_classes %}{% endblock %}
 
 
+{% block header %}
+	{{super()}}
+
+	{% block reservation %}
+	<div class="reservation" id="reservation" data-icon='{% include "icons/down.svg" %}'>
+		<a href="#" class="button button--full button--no_corners">{{pieces.hotels.reservation}}</a>
+	</div>
+	{% endblock %}
+{% endblock %}
+
+
 {% block main %}
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
 	<div class="hero">
@@ -44,6 +55,9 @@
 	</div>
 </article>
 {% endblock %}
+
+
+
 
 
 

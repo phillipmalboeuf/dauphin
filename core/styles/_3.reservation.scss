@@ -1,0 +1,48 @@
+
+
+// #RESERVATION
+
+.reservation {
+	position: fixed;
+	bottom: $gutter/2;
+	right: $gutter/2;
+	border-bottom: 2px solid $grey;
+
+	width: 100%;
+	max-width: $max_width/1.2;
+}
+
+
+	.reservation__checkbox {
+		display: none;
+
+		& + label {
+			display: block;
+			margin-bottom: 0;
+
+			.icon {
+				@include transformer($slow);
+				@include transform(rotate(0deg));
+			}
+		}
+
+		&:checked + label {
+			.icon {
+				@include transform(rotate(180deg));
+			}
+		}
+	}
+
+
+	.reservation__content {
+		overflow: hidden;
+		max-height: none;
+
+		@include transition(max-height $slow);
+
+		.reservation__checkbox:checked + label + & {
+			max-height: 0 !important;
+		}
+	}
+
+	

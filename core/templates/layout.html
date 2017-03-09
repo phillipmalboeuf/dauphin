@@ -64,6 +64,11 @@
         {# <script src="https://js.stripe.com/v2/" data-turbolinks-eval="false"></script> #}
 
 
+        <script>
+            var pieces = {{pieces_json|safe}};
+            var current_path = "{{current_path}}";
+        </script>
+
         {# <script>
             var pieces = {{pieces_json|safe}};
             var current_path = "{{current_path}}";
@@ -87,7 +92,10 @@
         </script> #}
 
         {% if debugging %}
-        <script src="//localhost:9000/livereload.js" async></script>
+        <script src="//localhost:9000/livereload.js" data-turbolinks-eval="false" async></script>
+        <script src="//localhost:8090/app.js" data-turbolinks-eval="false" async></script>
+        {% else %}
+        <script src="/build/app.js" data-turbolinks-eval="false" async></script>
         {% endif %}
 
     </body>
