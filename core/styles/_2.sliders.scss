@@ -10,6 +10,7 @@
 	.slider__container {
 		@extend .grid;
 		@extend .grid--nowrap;
+		@extend .grid--middle;
 
 		overflow-y: hidden;
 		width: 100%;
