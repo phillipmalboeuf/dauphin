@@ -41,7 +41,7 @@
 		{% endif %}
 	</div>
 	<div class="header__logo text_center">
-		<a href="/{% if room or rooms %}hotels/{{hotel.route}}{% endif %}">
+		<a href="/{% if room or rooms %}{{hotel.route}}{% endif %}">
 			{% include 'icons/logo.svg' %}
 		</a>
 	</div>
@@ -56,7 +56,7 @@
 
 		<div class="header__sub">
 			{% for other_hotel in hotels %}
-			<a href="/hotels/{{other_hotel.route}}" class="header__sub__link">{{other_hotel.name}}</a>
+			<a href="/{{other_hotel.route}}" class="header__sub__link">{{other_hotel.name}}</a>
 			{% endfor %}
 		</div>
 
