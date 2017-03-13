@@ -20,7 +20,7 @@
 				<h2 class="flat_bottom"><a href="/hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}}</a></h2>
 
 				{% for other_hotel in hotels %}
-				{% if other_hotel.id == hotel.id %}
+				{% if other_hotel._id == hotel._id %}
 				{% for room in other_hotel.rooms %}
 				<h4 class="flat_bottom header__menu__indented"><a href="/hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h4>
 				{% endfor %}
