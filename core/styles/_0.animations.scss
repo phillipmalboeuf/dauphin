@@ -23,6 +23,10 @@
 	transition: $transition;
 }
 
+.color_transition {
+	@include transition(color $fast);
+}
+
 @mixin transformer($duration: $fast) {
 	transition: transform $duration;
 	-ms-transition: -ms-transform $duration;

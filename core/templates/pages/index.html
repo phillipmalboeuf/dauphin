@@ -5,34 +5,40 @@
 {% block main_classes %}grid grid--full_height middle center{% endblock %}
 
 {% block main %}
-<section class="text_center">
 
-	<h3>{{pieces.index.hotels}}</h3>
+<div id="background"></div>
 
-	<hr>
+<section class="text_center" style="position: relative; z-index: 1">
+
+	<h3 class="color_transition">{{pieces.index.hotels}}</h3>
+
+	<hr class="color_transition">
 
 	<div class="padded">
 	{% for hotel in hotels %}
 		{% if not hotel.extended_family %}
-		<h2 class="small_bottom"><a href="/{{hotel.route}}">{{hotel.name}}</a></h2>
+		<a href="/{{hotel.route}}" data-background-image="{{hotel.featured_photo}}"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
 		{% endif %}
 	{% endfor %}
 	</div>
 
-	<hr>
+	<hr class="color_transition">
 
-	<h3 class="padded">{{pieces.index.extended_family}}</h3>
+	<h3 class="padded color_transition">{{pieces.index.extended_family}}</h3>
 
 	<div class="grid grid--middle">
 	{% for hotel in hotels if hotel.extended_family %}
 		<div class="col"><h2 class="h2--small"><a href="/{{hotel.route}}">{{hotel.name}}</a></h2></div>
 	
-		{% if not loop.last %}<div class="col"><hr class="hr--vertical"></div>{% endif %}
+		{% if not loop.last %}<div class="col"><hr class="hr--vertical color_transition"></div>{% endif %}
 	{% endfor %}
 	</div>
 
 </section>
 {% endblock %}
+
+
+{% block footer %}{% endblock %}
 
 
 

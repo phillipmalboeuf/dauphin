@@ -50,6 +50,14 @@ header {
 				@include transformer($slow);
 				@include transform_origin(50%, 50%);
 			}
+
+			&:hover {
+				color: $highlight !important;
+			}
+		}
+
+		&:focus + label {
+			color: $highlight !important;
 		}
 
 		&:checked + label {

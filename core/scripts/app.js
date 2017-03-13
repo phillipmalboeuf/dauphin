@@ -2,6 +2,7 @@
 
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
+import { Background } from './background.js'
 
 
 if (module.hot)
@@ -28,6 +29,13 @@ const Core = {
 					<Slider slides={sliders[i].getAttribute("data-slides").split(",")} />, sliders[i]
 				)
 			}
+		}
+
+		const background = document.getElementById("background")
+		if (background) {
+			ReactDOM.render(
+				<Background />, background
+			)
 		}
 	}
 }
