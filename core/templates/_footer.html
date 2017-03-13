@@ -1,15 +1,46 @@
 
-<div class="padded bordered--top">
-	<div class="grid grid--middle">
-		<div class="col col--6of12">
-			<em>{{pieces.navigation.copyright}}</em>
+{% if room %}
+{% set hotel = room.parent %}
+{% endif %}
+
+{% if rooms %}
+{% set hotel = rooms[0].parent %}
+{% endif %}
+
+{% if not hotel %}
+{% set hotel = hotels[0] %}
+{% endif %}
+
+<div class="grey_back padded padded--thick">
+	<div class="grid">
+		<div class="col col--5of12">
+			<h4 class="flat_bottom">{{hotel.full_name}}</h4>
+			<p class="p--small"><a href="{{hotel.address_link}}" target="_blank">{{hotel.full_address|safe}}</a></p>
+			<p class="p--small">
+				{{pieces.navigation.toll_free}}: <a href="tel:{{hotel.toll_free}}" target="_blank">{{hotel.toll_free}}</a><br>
+				T: <a href="tel:{{hotel.phone}}" target="_blank">{{hotel.phone}}</a><br>
+				F: <a href="tel:{{hotel.fax}}" target="_blank">{{hotel.fax}}</a><br>
+				<a href="mailto:{{hotel.email}}" target="_blank">{{hotel.email}}</a>
+			</p>
 		</div>
-		<div class="col col--6of12">
-			
+		<div class="col col--2of12">
+			<p class="p--small p--thick_lines">
+				<a href="/hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}}</a><br>
+				<a href="/hotels/{{hotel.route}}/story">{{pieces.hotels.story}}</a><br>
+				<a href="/hotels/{{hotel.route}}/proximity">{{pieces.hotels.proximity}}</a>
+			</p>
 		</div>
 
-		<div class="col col--12of12 text_center footer__logo">
-			{% include 'icons/logo.svg' %}
+		<div class="col col--2of12">
+			<p class="p--small p--thick_lines">
+				{% for page in pages %}
+				<a href="/pages/{{page.route}}">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
+				{% endfor %}
+			</p>
+		</div>
+
+		<div class="col col--12of12 medium_top">
+			<p class="p--small">{{pieces.navigation.copyright}}</p>
 		</div>
 	</div>
 </div>

@@ -57,6 +57,49 @@
 {% endblock %}
 
 
+{% block footer %}
+	{# <div class="grid grid--middle padded padded--thick">
+		<div class="col"><h2 class="h2--small"><a href="/hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}}</a></h2></div>
+	
+		<div class="col"><hr class="hr--vertical color_transition"></div>
+
+		<div class="col"><h2 class="h2--small"><a href="/hotels/{{hotel.route}}/story">{{pieces.hotels.story}}</a></h2></div>
+	
+		<div class="col"><hr class="hr--vertical color_transition"></div>
+
+		<div class="col"><h2 class="h2--small"><a href="/hotels/{{hotel.route}}/proximity">{{pieces.hotels.proximity}}</a></h2></div>
+	
+		<div class="col"><hr class="hr--vertical color_transition"></div>
+
+		<div class="col"><h2 class="h2--small"><a href="/hotels/{{hotel.route}}/photos">{{pieces.hotels.photos}}</a></h2></div>
+	</div> #}
+	{# <div class="grid grid--stretch padded padded--thick">
+		<div class="col col--4of12 hero hero--small">
+			<img class="hero__back" src="{{hotel.story_photo}}">	
+
+			<div class="hero__box hero__box--full">
+				<div class="hero__box__content">
+					<a href="/hotels/{{hotel.route}}/story"><h2>{{pieces.hotels.story}}</h2></a>
+				</div>
+			</div>
+		</div>
+		<div class="col col--8of12 hero hero--small">
+			<img class="hero__back" src="{{hotel.proximity_photo}}">	
+
+			<div class="hero__box hero__box--full">
+				<div class="hero__box__content">
+					<a href="/hotels/{{hotel.route}}/proximity">
+						<h2 class="flat_bottom">{{pieces.hotels.proximity}}</h2>
+						<p class="p--small">{{hotel.proximity_intro}}</p>
+					</a>
+				</div>
+			</div>
+		</div>	
+	</div> #}
+
+	{{super()}}
+{% endblock %}
+
 
 
 

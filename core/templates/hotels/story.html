@@ -1,0 +1,36 @@
+
+{% extends "hotels/hotel.html" %}
+
+
+{% block title %}{{pieces.hotels.story}} – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
+{% block description %}{{pieces.hotels.story}} – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
+{% block og_title %}{{pieces.hotels.story}} – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
+{% block og_description %}{{pieces.hotels.story}} – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
+
+
+
+{% block main %}
+<article class="padded--under_header" data-hotel-id="{{hotel._id}}">
+	<div class="hero">
+		<img class="hero__back" src="{{hotel.story_photo}}">	
+
+		<div class="hero__box hero__box--full">
+			<div class="hero__box__content">
+				<h3 class="small_bottom"><a href="/hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>
+				<h1>{{pieces.hotels.story}}</h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="padded padded--thick max_width">
+		<div class="big_bottom">{{hotel.story|safe}}</div>
+	</div>
+</article>
+{% endblock %}
+
+
+
+
+
+
+

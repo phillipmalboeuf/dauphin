@@ -3,6 +3,7 @@ from core.helpers.json import to_json, json_formater
 from core.helpers.raise_error import raise_error
 
 from core.models.cms.piece import Piece
+from core.models.cms.page import Page
 from core.models.hotels.hotel import Hotel
 
 from flask import request, abort
@@ -26,6 +27,7 @@ def not_found(error):
 		if cached_template is None or app.config['DEBUG']:
 			response = {
 				'pieces': Piece._values(),
+				'pages': Page.list(),
 				'hotels': Hotel.list(),
 				'current_path': request.path,
 				'debugging': app.config['DEBUG']

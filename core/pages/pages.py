@@ -2,6 +2,7 @@
 from core import app
 from core.helpers.json import to_json, json_formater
 from core.models.cms.piece import Piece
+from core.models.cms.page import Page
 from core.models.hotels.hotel import Hotel
 
 from flask import request, abort
@@ -18,6 +19,7 @@ def page():
 	if cached_template is None or app.config['DEBUG']:
 		response = {
 			'pieces': Piece._values(),
+			'pages': Page.list(),
 			'hotels': Hotel.list(),
 			'current_path': request.path,
 			'debugging': app.config['DEBUG'],

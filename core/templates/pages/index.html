@@ -28,7 +28,7 @@
 
 	<div class="grid grid--middle">
 	{% for hotel in hotels if hotel.extended_family %}
-		<div class="col"><h2 class="h2--small"><a href="/{{hotel.route}}">{{hotel.name}}</a></h2></div>
+		<div class="col"><h2 class="h2--small"><a href="/{{hotel.route}}" data-background-image="{{hotel.featured_photo}}">{{hotel.name}}</a></h2></div>
 	
 		{% if not loop.last %}<div class="col"><hr class="hr--vertical color_transition"></div>{% endif %}
 	{% endfor %}

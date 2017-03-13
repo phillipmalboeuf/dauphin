@@ -116,6 +116,10 @@ p {
 		line-height: (20/$base) * 1rem;
 	}
 
+	&.p--thick_lines {
+		line-height: (24/$base) * 1rem;
+	}
+
 	&.p--highlight_strong {
 
 		strong {
@@ -302,13 +306,18 @@ sub {
 }
 
 .light_back,
-.white_back {
+.white_back,
+.grey_back {
 	color: $body_color;
 	background-color: $light_background;
 }
 
 .white_back {
 	background-color: $white;
+}
+
+.grey_back {
+	background-color: $grey;
 }
 
 

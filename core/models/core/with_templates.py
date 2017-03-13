@@ -59,11 +59,13 @@ with app.app_context():
 
 
 								from core.models.cms.piece import Piece
+								from core.models.cms.page import Page
 								from core.models.hotels.hotel import Hotel
 
 								response = {
 									template['response_key']: response.copy(),
 									'pieces': Piece._values(),
+									'pages': Page.list(),
 									'hotels': Hotel.list(),
 									'debugging': app.config['DEBUG'],
 									'current_path': request.path,

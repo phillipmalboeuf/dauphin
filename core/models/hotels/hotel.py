@@ -58,6 +58,16 @@ with app.app_context():
 				'route': '/<string:_id>/photos',
 				'view_function': 'photos_view',
 				'methods': ['GET']
+			},
+			{
+				'route': '/<string:_id>/story',
+				'view_function': 'story_view',
+				'methods': ['GET']
+			},
+			{
+				'route': '/<string:_id>/proximity',
+				'view_function': 'proximity_view',
+				'methods': ['GET']
 			}
 			# {
 			# 	'route': '/<ObjectId:_id>',
@@ -77,6 +87,16 @@ with app.app_context():
 				'view_function': 'photos_view',
 				'template': 'hotels/photos.html',
 				'response_key': 'gallery'
+			},
+			{
+				'view_function': 'story_view',
+				'template': 'hotels/story.html',
+				'response_key': 'hotel'
+			},
+			{
+				'view_function': 'proximity_view',
+				'template': 'hotels/proximity.html',
+				'response_key': 'hotel'
 			}
 		]
 
@@ -138,6 +158,18 @@ with app.app_context():
 				'hotel': document,
 				'photos': document['photos']
 			})
+
+		@classmethod
+		def story_view(cls, _id):
+			document = cls.get(_id)
+			
+			return cls._format_response(document)
+
+		@classmethod
+		def proximity_view(cls, _id):
+			document = cls.get(_id)
+			
+			return cls._format_response(document)
 
 
 

@@ -28,7 +28,8 @@ Session.define_routes()
 User.define_routes()
 
 
-# from core.models.cms.piece import Piece
+from core.models.cms.page import Page
+from core.models.cms.piece import Piece
 # from core.models.cms.author import Author
 # from core.models.cms.list import List
 # from core.models.cms.list_post import ListPost
@@ -38,7 +39,8 @@ User.define_routes()
 # from core.models.cms.survey_answer import SurveyAnswer
 # from core.models.cms.comment import SurveyComment
 
-# Piece.define_routes()
+Page.define_routes()
+Piece.define_routes()
 # Author.define_routes()
 # List.define_routes()
 # ListPost.define_routes()

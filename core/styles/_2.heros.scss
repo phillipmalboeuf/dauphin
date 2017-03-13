@@ -9,6 +9,10 @@
 	overflow: hidden;
 
 	background: $dark_background;
+
+	&.hero--small {
+		max-height: 40vh;
+	}
 }
 
 	.hero__back {
