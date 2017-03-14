@@ -73,11 +73,11 @@
 
 		<div class="col"><h2 class="h2--small"><a href="/hotels/{{hotel.route}}/photos">{{pieces.hotels.photos}}</a></h2></div>
 	</div> #}
-	{# <div class="grid grid--stretch padded padded--thick">
+	<div class="grid grid--stretch">
 		<div class="col col--4of12 hero hero--small">
 			<img class="hero__back" src="{{hotel.story_photo}}">	
 
-			<div class="hero__box hero__box--full">
+			<div class="hero__box hero__box--light hero__box--full">
 				<div class="hero__box__content">
 					<a href="/hotels/{{hotel.route}}/story"><h2>{{pieces.hotels.story}}</h2></a>
 				</div>
@@ -95,7 +95,7 @@
 				</div>
 			</div>
 		</div>	
-	</div> #}
+	</div>
 
 	{{super()}}
 {% endblock %}

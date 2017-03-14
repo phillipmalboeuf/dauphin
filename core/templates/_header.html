@@ -28,7 +28,13 @@
 				{% endfor %}
 
 				<h2 class="flat_bottom medium_top"><a href="/hotels/{{hotel.route}}/story">{{pieces.hotels.story}}</a></h2>
-				<h2><a href="/hotels/{{hotel.route}}/proximity">{{pieces.hotels.proximity}}</a></h2>
+				<h2 class="medium_bottom"><a href="/hotels/{{hotel.route}}/proximity">{{pieces.hotels.proximity}}</a></h2>
+
+				<p class="p--thick_lines">
+					{% for page in pages %}
+					<a href="/pages/{{page.route}}">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
+					{% endfor %}
+				</p>
 			</div>
 			<div class="col col--12of12">
 				<div class="grid grid--tight_guttered">
