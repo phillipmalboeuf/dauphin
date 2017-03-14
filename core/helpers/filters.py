@@ -1,4 +1,6 @@
 from core import app
+from flask import request, abort
+from flask import Markup
 
 from dateutil import parser
 from markdown import markdown
@@ -27,6 +29,17 @@ def url_filter(url):
 @app.template_filter('markdown')
 def markdown_filter(content):
 	return markdown(content)
+
+
+@app.template_filter('editable')
+def url_filter(editable, collection, collection_name):
+	if request.current_session_is_admin:
+		split = editable.split('.')
+		return Markup('<span data-'+collection_name+'-id="'+str(collection[split[0]]['_id'])+'" data-key="'+split[1]+'" contenteditable>'+collection[split[0]][split[1]]+'</span>')
+
+	else:
+		return editable
+	
 
 
 

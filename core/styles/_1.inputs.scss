@@ -10,8 +10,7 @@ label,
 	display: block;
 
 	color: inherit;
-	font-family: $alternate_font;
-	font-weight: bold;
+	font-size: $small_size;
 
 	margin-bottom: $vertical_rythm/2;
 }
@@ -20,23 +19,10 @@ label,
 
 [contenteditable] {
 	position: relative;
-	display: inline-block;
-	padding: $vertical_rythm/4 $vertical_rythm/2 $vertical_rythm/6;
-	background: $white;
-
-	border: 1px solid $grey;
-	border-radius: $border_radius;
-
-	&:focus {
-		border-color: $highlight;
-	}
+	background: fade-out($grey, 0.5);
 
 	&:active {
 		top: 1px;
-	}
-
-	&.contenteditable--small {
-		padding: $vertical_rythm/4 $vertical_rythm/4 $vertical_rythm/6;
 	}
 }
 

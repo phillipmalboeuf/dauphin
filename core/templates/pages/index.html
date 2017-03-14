@@ -10,7 +10,7 @@
 
 <section class="text_center" style="position: relative; z-index: 1">
 
-	<h3 class="color_transition">{{pieces.index.hotels}}</h3>
+	<h3 class="color_transition">{{'index.hotels'|editable(pieces, 'pieces')}}</h3>
 
 	<hr class="color_transition">
 
@@ -24,7 +24,7 @@
 
 	<hr class="color_transition">
 
-	<h3 class="padded color_transition">{{pieces.index.extended_family}}</h3>
+	<h3 class="padded color_transition">{{'index.extended_family'|editable(pieces, 'pieces')}}</h3>
 
 	<div class="grid grid--middle">
 	{% for hotel in hotels if hotel.extended_family %}

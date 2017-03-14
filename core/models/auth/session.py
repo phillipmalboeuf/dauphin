@@ -121,7 +121,7 @@ with app.app_context():
 					try:
 						document['is_admin'] = user['is_admin']
 					except KeyError:
-						pass
+						document['is_admin'] = False
 
 					del document['email']
 					del document['password']

@@ -1,5 +1,6 @@
 
 
+import { Login } from './login.js'
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
 import { Background } from './background.js'
@@ -12,6 +13,16 @@ if (module.hot)
 const Core = {
 	init() {
 		this.render()
+		this.renderLogin()
+	},
+
+	renderLogin() {
+		const login = document.getElementById("login")
+		if (login) {
+			ReactDOM.render(
+				<Login />, login
+			)
+		}
 	},
 
 	render() {
