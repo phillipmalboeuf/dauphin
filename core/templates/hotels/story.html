@@ -12,7 +12,7 @@
 {% block main %}
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
 	<div class="hero" style="background-image: url({{hotel.story_photo}})">
-		<div class="hero__box">
+		<div class="hero__box hero__box--full">
 			<div class="hero__box__content">
 				<h3 class="small_bottom"><a href="/hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>
 				<h1>{{pieces.hotels.story}}</h1>
@@ -29,7 +29,7 @@
 
 {% block footer_first %}
 <div class="hero hero--small hide_on_phone">
-	<div class="hero__box">
+	<div class="hero__box hero__box--full">
 		<div class="hero__box__content">
 			<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
 		</div>

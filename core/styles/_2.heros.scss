@@ -44,22 +44,23 @@
 		.hero--small & {
 			max-width: $max_width;
 			min-height: 45vh;
+			padding: $gutter;
 		}
 
 		background: fade-out($black--dark, 0.2);
 
-		// &.hero__box--full {
-		// 	width: 100%;
-		// 	background: fade-out($black--dark, 0.55);
+		&.hero__box--full {
+			width: 100%;
+			max-width: none;
+			background: fade-out($black--dark, 0.55);
 
-		// 	.hero__box__content {
-		// 		max-width: $max_width;
-		// 	}
-		// }
+			.hero__box__content {
+				max-width: $max_width;
+			}
+		}
 
 		&.hero__box--transparent {
 			background: transparent;
-			padding: $gutter;
 		}
 	}
 
