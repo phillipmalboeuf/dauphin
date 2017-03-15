@@ -11,9 +11,9 @@
 {% set hotel = hotels[0] %}
 {% endif %}
 
-<div class="grey_back padded padded--thick">
-	<div class="grid">
-		<div class="col col--5of12">
+<div class="padded padded--thick">
+	<div class="grid grid--guttered">
+		<div class="col col--5of12 col--tablet_landscape--9of12 col--phone--12of12">
 			<h4 class="flat_bottom">{{hotel.full_name}}</h4>
 			<p class="p--small"><a href="{{hotel.address_link}}" target="_blank">{{hotel.full_address|safe}}</a></p>
 			<p class="p--small">
@@ -23,7 +23,7 @@
 				<a href="mailto:{{hotel.email}}" target="_blank">{{hotel.email}}</a>
 			</p>
 		</div>
-		<div class="col col--2of12">
+		<div class="col col--2of12 col--tablet_landscape--4of12 col--phone--6of12">
 			<p class="p--small p--thick_lines">
 				<a href="/hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}}</a><br>
 				<a href="/hotels/{{hotel.route}}/story">{{pieces.hotels.story}}</a><br>
@@ -31,7 +31,7 @@
 			</p>
 		</div>
 
-		<div class="col col--2of12">
+		<div class="col col--2of12 col--tablet_landscape--4of12 col--phone--6of12">
 			<p class="p--small p--thick_lines">
 				{% for page in pages %}
 				<a href="/pages/{{page.route}}">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
@@ -43,4 +43,6 @@
 			<p class="p--small">{{pieces.navigation.copyright}}</p>
 		</div>
 	</div>
+
+	<div class="padded grey_back phone_only"></div>
 </div>

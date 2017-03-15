@@ -33,12 +33,11 @@ def markdown_filter(content):
 
 @app.template_filter('editable')
 def url_filter(editable, collection, collection_name):
-	if request.current_session_is_admin:
-		split = editable.split('.')
+	split = editable.split('.')
+	if request.current_session_is_admin:	
 		return Markup('<span data-'+collection_name+'-id="'+str(collection[split[0]]['_id'])+'" data-key="'+split[1]+'" contenteditable>'+collection[split[0]][split[1]]+'</span>')
-
 	else:
-		return editable
+		return collection[split[0]][split[1]]
 	
 
 

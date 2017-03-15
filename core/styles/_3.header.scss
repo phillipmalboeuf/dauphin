@@ -41,8 +41,12 @@ header {
 
 			z-index: 10;
 
-			padding: $vertical_rythm*2 $gutter;
+			padding: $vertical_rythm*1.8 $gutter;
 			margin-bottom: 0;
+
+			@media #{$tablet_portrait} {
+				padding: $vertical_rythm*1.8 $gutter/2;
+			}
 
 			@include transition(color $slow);
 

@@ -11,10 +11,8 @@
 
 {% block main %}
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
-	<div class="hero">
-		<img class="hero__back" src="{{hotel.proximity_photo}}">	
-
-		<div class="hero__box hero__box--full">
+	<div class="hero" style="background-image: url({{hotel.story_photo}})">
+		<div class="hero__box">
 			<div class="hero__box__content">
 				<h3 class="small_bottom"><a href="/hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>
 				<h1>{{pieces.hotels.proximity}}</h1>
@@ -120,13 +118,11 @@
 
 
 {% block footer_second %}
-{% if hotel.rooms[0] %}
-<img class="hero__back" src="{{hotel.rooms[0].featured_photo}}">
-{% endif %}
-
-<div class="hero__box hero__box--full">
-	<div class="hero__box__content">
-		<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
+<div class="hero hero--small" {% if hotel.rooms[0] %}style="background-image: url({{hotel.rooms[0].featured_photo}})"{% endif %}>
+	<div class="hero__box">
+		<div class="hero__box__content">
+			<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
+		</div>
 	</div>
 </div>
 {% endblock %}

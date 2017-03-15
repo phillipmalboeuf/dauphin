@@ -53,7 +53,7 @@ iframe {
 	padding: $gutter;
 
 	@media #{$phone} {
-		padding: $gutter/2;
+		padding: $gutter $gutter/2;
 	}
 
 	&.padded--tight {
@@ -65,6 +65,10 @@ iframe {
 
 		@media #{$tablet_portrait} {
 			padding: $gutter;
+		}
+
+		@media #{$phone} {
+			padding: $gutter $gutter/2;
 		}
 	}
 

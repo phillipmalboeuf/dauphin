@@ -5,25 +5,22 @@
 .hero {
 	position: relative;
 
-	max-height: 80vh;
-	overflow: hidden;
+	min-height: 80vh;
 
-	background: $dark_background;
+	color: $light_background;
+	background-color: $dark_background;
+	background-position: center;
+	background-size: cover;
 
 	&.hero--small {
-		// max-height: 45vh;
-	}
-
-	&.hero--light {
-		color: $body_color;
-		background: $white;
+		min-height: 45vh;
 	}
 }
 
-	.hero__back {
-		position: relative;
-		z-index: 0;
-	}
+	// .hero__back {
+	// 	position: relative;
+	// 	z-index: 0;
+	// }
 
 	.hero__text {
 		@extend .padded;
@@ -41,22 +38,23 @@
 		@extend .grid;
 		@extend .grid--bottom;
 
-		position: absolute;
-		bottom: 0;
+		max-width: $max_width*1.5;
+		min-height: 80vh;
 
-		height: 100%;
-		padding-bottom: $gutter*1.5;
+		.hero--small & {
+			max-width: $max_width;
+			min-height: 45vh;
+		}
 
 		background: fade-out($black--dark, 0.2);
 
-		&.hero__box--full {
-			width: 100%;
-			background: fade-out($black--dark, 0.55);
-		}
+		// &.hero__box--full {
+		// 	width: 100%;
+		// 	background: fade-out($black--dark, 0.55);
 
-		// &.hero__box--light {
-		// 	color: $body_color;
-		// 	background: fade-out($grey, 0.25);
+		// 	.hero__box__content {
+		// 		max-width: $max_width;
+		// 	}
 		// }
 
 		&.hero__box--transparent {
@@ -65,9 +63,7 @@
 		}
 	}
 
-		.hero__box__content {
-			max-width: $max_width;
-		}
+		
 
 
 

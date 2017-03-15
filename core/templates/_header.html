@@ -9,7 +9,7 @@
 
 
 <nav class="nav grid grid--spaced grid--middle">
-	<div class="col col--3of12">
+	<div class="col col--4of12">
 		{% if hotel %}
 		<input type="checkbox" id="menu" class="header__menu_checkbox">
 		<label class="em" for="menu">{% include 'icons/menu.svg' %} Menu</label>
@@ -51,22 +51,22 @@
 			{% include 'icons/logo.svg' %}
 		</a>
 	</div>
-	<div class="col col--3of12 grid grid--middle grid--right">
+	<div class="col col--4of12 grid grid--middle grid--right">
 
 		{% if hotel %}
-		<div class="header__show_sub">
+		<div class="header__show_sub hide_on_tablet_portrait">
 			<strong>{{hotel.name}}</strong><br>
 			<a href="{{hotel.address_link}}" target="_blank" class="a--highlight">{{hotel.address}}</a>
 			<a href="tel:{{hotel.phone}}" target="_blank" class="a--highlight">{{hotel.phone}}</a>
 		</div>
 
-		<div class="header__sub">
+		<div class="header__sub hide_on_tablet_portrait">
 			{% for other_hotel in hotels %}
 			<a href="/{{other_hotel.route}}" class="header__sub__link">{{other_hotel.name}}</a>
 			{% endfor %}
 		</div>
 
-		<hr class="hr--vertical">
+		<hr class="hr--vertical hr--vertical">
 		{% endif %}
 
 		<a href="/en" class="em">En</a>	

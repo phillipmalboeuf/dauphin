@@ -22,9 +22,9 @@ html {
 	-webkit-tap-highlight-color: fade-out($body_color, 0.8);
 	
 
-	// @media #{$tablet_landscape} {
-	// 	font-size: 12px;
-	// }
+	@media #{$tablet_portrait} {
+		font-size: 14px;
+	}
 
 	// @media #{$big_desktop} {
 	// 	font-size: 18px;
@@ -65,8 +65,8 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	h2 {
-		font-size: (30/$base) * 1rem;
-		line-height: (40/$base) * 1rem;
+		font-size: (34/$base) * 1rem;
+		line-height: (42/$base) * 1rem;
 		font-weight: normal;
 
 		&.h2--small {
@@ -222,7 +222,7 @@ hr {
 		border-top: none;
 		border-left: 1px dotted;
 
-		margin: 0 $vertical_rythm*2;
+		margin: 0 $vertical_rythm;
 	}
 
 	&.hr--full {

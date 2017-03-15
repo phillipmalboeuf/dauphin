@@ -10,6 +10,13 @@
 
 	width: 100%;
 	max-width: $max_width/1.2;
+
+	@media #{$phone} {
+		bottom: 0;
+		right: 0;
+		max-width: none;
+		border-bottom: 0;
+	}
 }
 
 

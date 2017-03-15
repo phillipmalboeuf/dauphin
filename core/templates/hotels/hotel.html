@@ -24,12 +24,10 @@
 
 {% block main %}
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
-	<div class="hero">
-		<img class="hero__back" src="{{hotel.featured_photo}}">	
-
+	<div class="hero" style="background-image: url({{hotel.featured_photo}})">
 		<div class="hero__box">
 			<div class="hero__box__content">
-				<h2 class="big_bottom">{{hotel.tagline|safe}}</h2>
+				<h2 class="h2--big big_bottom">{{hotel.tagline|safe}}</h2>
 				<p class="p--small big_bottom">{{hotel.intro}}</p>
 				<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
 			</div>
@@ -41,8 +39,7 @@
 		
 		{% for photo in hotel.photos %}
 		{% if loop.first %}
-		<div class="hero">
-			<img class="hero__back" src="{{photo}}">	
+		<div class="hero hero--small" style="background-image: url({{photo}})">
 
 			<div class="hero__box hero__box--transparent">
 				<div class="hero__box__content">
@@ -59,29 +56,29 @@
 
 {% block footer %}
 	<div class="grid grid--stretch">
-		<div class="col col--4of12 hero hero--small">
+		<div class="col col--4of12 col--phone--12of12">
 			{% block footer_first %}
-			{# <img class="hero__back" src="{{hotel.story_photo}}">	 #}
-
-			<div class="hero__box hero__box--light hero__box--full">
-				<div class="hero__box__content">
-					<a href="/hotels/{{hotel.route}}/story"><h2>{{pieces.hotels.story}}</h2></a>
+			<div class="hero hero--small hide_on_phone">
+				<div class="hero__box hero__box--light hero__box--full">
+					<div class="hero__box__content">
+						<a href="/hotels/{{hotel.route}}/story"><h2>{{pieces.hotels.story}}</h2></a>
+					</div>
 				</div>
 			</div>
 			{% endblock %}
 		</div>
 
 		
-		<div class="col col--8of12 hero hero--small">
+		<div class="col col--8of12 col--phone--12of12">
 			{% block footer_second %}
-			<img class="hero__back" src="{{hotel.proximity_photo}}">	
-
-			<div class="hero__box hero__box--full">
-				<div class="hero__box__content">
-					<a href="/hotels/{{hotel.route}}/proximity">
-						<h2 class="flat_bottom">{{pieces.hotels.proximity}}</h2>
-						<p class="p--small">{{hotel.proximity_intro}}</p>
-					</a>
+			<div class="hero hero--small" style="background-image: url({{hotel.proximity_photo}})">
+				<div class="hero__box hero__box--full">
+					<div class="hero__box__content">
+						<a href="/hotels/{{hotel.route}}/proximity">
+							<h2 class="flat_bottom">{{pieces.hotels.proximity}}</h2>
+							<p class="p--small">{{hotel.proximity_intro|safe}}</p>
+						</a>
+					</div>
 				</div>
 			</div>
 			{% endblock %}
