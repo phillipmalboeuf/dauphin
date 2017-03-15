@@ -35,12 +35,14 @@ const Core = {
 			}
 		}
 
-		const sliders = document.querySelectorAll("[data-slider]")
-		if (sliders.length > 0) {
-			for (var i = sliders.length - 1; i >= 0; i--) {
-				ReactDOM.render(
-					<Slider slides={sliders[i].getAttribute("data-slides").split(",")} />, sliders[i]
-				)
+		if (window.innerWidth > 900) {
+			const sliders = document.querySelectorAll("[data-slider]")
+			if (sliders.length > 0) {
+				for (var i = sliders.length - 1; i >= 0; i--) {
+					ReactDOM.render(
+						<Slider slides={sliders[i].getAttribute("data-slides").split(",")} />, sliders[i]
+					)
+				}
 			}
 		}
 
