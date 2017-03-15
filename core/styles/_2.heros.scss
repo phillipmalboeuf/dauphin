@@ -11,7 +11,12 @@
 	background: $dark_background;
 
 	&.hero--small {
-		max-height: 45vh;
+		// max-height: 45vh;
+	}
+
+	&.hero--light {
+		color: $body_color;
+		background: $white;
 	}
 }
 
@@ -49,10 +54,10 @@
 			background: fade-out($black--dark, 0.55);
 		}
 
-		&.hero__box--light {
-			color: $body_color;
-			background: fade-out($grey, 0.25);
-		}
+		// &.hero__box--light {
+		// 	color: $body_color;
+		// 	background: fade-out($grey, 0.25);
+		// }
 
 		&.hero__box--transparent {
 			background: transparent;

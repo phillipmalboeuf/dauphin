@@ -47,7 +47,7 @@
 		{% endif %}
 	</div>
 	<div class="header__logo text_center">
-		<a href="/{% if hotel %}{{hotel.route}}{% endif %}">
+		<a href="/{% if hotel %}{% if current_path != '/'+hotel.route %}{{hotel.route}}{% endif %}{% endif %}">
 			{% include 'icons/logo.svg' %}
 		</a>
 	</div>

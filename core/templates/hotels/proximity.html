@@ -23,9 +23,112 @@
 	</div>
 
 	<div class="padded padded--thick max_width">
-		{# <div class="big_bottom">{{hotel.story|safe}}</div> #}
+		<h2 class="huge_bottom">{{hotel.proximity_intro|safe}}</h2>
+
+		<div class="big_bottom">
+			<div class="grid grid--guttered">
+				<div class="col col--4of12">
+					<h3>{{pieces.hotels.proximity_restaurants}}</h3>
+				</div>
+				<div class="col col--8of12">
+					{% for item in hotel.proximity_restaurants %}
+					<p>
+						<a href="{{item.link}}" target="_blank">
+							<strong>{{item.name}}</strong><br>
+							{{item.description}}
+						</a>
+					</p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="big_bottom">
+			<div class="grid grid--guttered">
+				<div class="col col--4of12">
+					<h3>{{pieces.hotels.proximity_cafes}}</h3>
+				</div>
+				<div class="col col--8of12">
+					{% for item in hotel.proximity_cafes %}
+					<p>
+						<a href="{{item.link}}" target="_blank">
+							<strong>{{item.name}}</strong><br>
+							{{item.description}}
+						</a>
+					</p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="big_bottom">
+			<div class="grid grid--guttered">
+				<div class="col col--4of12">
+					<h3>{{pieces.hotels.proximity_bars}}</h3>
+				</div>
+				<div class="col col--8of12">
+					{% for item in hotel.proximity_bars %}
+					<p>
+						<a href="{{item.link}}" target="_blank">
+							<strong>{{item.name}}</strong><br>
+							{{item.description}}
+						</a>
+					</p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="big_bottom">
+			<div class="grid grid--guttered">
+				<div class="col col--4of12">
+					<h3>{{pieces.hotels.proximity_quick_bites}}</h3>
+				</div>
+				<div class="col col--8of12">
+					{% for item in hotel.proximity_quick_bites %}
+					<p>
+						<a href="{{item.link}}" target="_blank">
+							<strong>{{item.name}}</strong><br>
+							{{item.description}}
+						</a>
+					</p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="big_bottom">
+			<div class="grid grid--guttered">
+				<div class="col col--4of12">
+					<h3>{{pieces.hotels.proximity_others}}</h3>
+				</div>
+				<div class="col col--8of12">
+					{% for item in hotel.proximity_others %}
+					<p>
+						<a href="{{item.link}}" target="_blank">
+							<strong>{{item.name}}</strong><br>
+							{{item.description}}
+						</a>
+					</p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
 	</div>
 </article>
+{% endblock %}
+
+
+{% block footer_second %}
+{% if hotel.rooms[0] %}
+<img class="hero__back" src="{{hotel.rooms[0].featured_photo}}">
+{% endif %}
+
+<div class="hero__box hero__box--full">
+	<div class="hero__box__content">
+		<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
+	</div>
+</div>
 {% endblock %}
 
 
