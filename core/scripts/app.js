@@ -43,6 +43,7 @@ const Core = {
 				ReactDOM.render(
 					<Reservation 
 						hotelId={reservation.getAttribute("data-hotel-id")}
+						coupon={reservation.getAttribute("data-reservation-coupon")}
 						icon={reservation.getAttribute("data-icon")} />, reservation
 				)
 			}

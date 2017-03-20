@@ -59,7 +59,7 @@ export class Reservation extends React.Component {
 						<div className="col col--10of12"><input onInput={this.inputDate.bind(this)} type="date" defaultValue={this.tomorrow.toJSON().slice(0,10)} name="check_out" id="check_out" /></div>
 					</div>
 
-					<a href={`http://softbooker.reservit.com/reservit/reserhotel.php?lang=${lang}&hotelid=${this.props.hotelId}&fday=${this.state.checkIn.getDate()}&fmonth=${this.state.checkIn.getMonth()+1}&fyear=${this.state.checkIn.getFullYear()}&tday=${this.state.checkOut.getDate()}&tmonth=${this.state.checkOut.getMonth()+1}&tyear=${this.state.checkOut.getFullYear()}`}
+					<a href={`http://softbooker.reservit.com/reservit/reserhotel.php?lang=${lang}&hotelid=${this.props.hotelId}&fday=${this.state.checkIn.getDate()}&fmonth=${this.state.checkIn.getMonth()+1}&fyear=${this.state.checkIn.getFullYear()}&tday=${this.state.checkOut.getDate()}&tmonth=${this.state.checkOut.getMonth()+1}&tyear=${this.state.checkOut.getFullYear()}&discountcode=${this.props.coupon}`}
 						target="_blank" className="button button--full medium_top">{pieces.hotels.price_availabilities}</a>
 				</div>
 			</div>
