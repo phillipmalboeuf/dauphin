@@ -17,6 +17,11 @@ elif DEBUG.lower() == 'false':
 	DEBUG = False
 
 
+# CONFIGURATION
+LANGS = os.getenv('LANGS', 'en')
+LANGS = LANGS.split(',')
+
+
 # MONGODB				 
 MONGO_URI = os.getenv('MONGO_URI', 'mongodb://127.0.0.1:27017/database')
 

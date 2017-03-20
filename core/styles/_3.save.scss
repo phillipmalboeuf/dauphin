@@ -1,0 +1,15 @@
+
+
+// #SAVE
+
+.save {
+	position: fixed;
+	top: $gutter*2;
+	right: 0;
+
+	padding: $gutter/4;
+	border-radius: $border_radius;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	background: fade-out($white, 0.5);
+}

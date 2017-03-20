@@ -1,6 +1,7 @@
 
 
 import { Login } from './login.js'
+import { Save } from './save.js'
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
 import { Background } from './background.js'
@@ -14,6 +15,7 @@ const Core = {
 	init() {
 		this.render()
 		this.renderLogin()
+		this.renderSave()
 	},
 
 	renderLogin() {
@@ -25,12 +27,23 @@ const Core = {
 		}
 	},
 
+	renderSave() {
+		const save = document.getElementById("save")
+		if (save) {
+			ReactDOM.render(
+				<Save />, save
+			)
+		}
+	},
+
 	render() {
 		if (window.innerWidth > 600) {
 			const reservation = document.getElementById("reservation")
 			if (reservation) {
 				ReactDOM.render(
-					<Reservation icon={reservation.getAttribute("data-icon")} />, reservation
+					<Reservation 
+						hotelId={reservation.getAttribute("data-hotel-id")}
+						icon={reservation.getAttribute("data-icon")} />, reservation
 				)
 			}
 		}
