@@ -18,10 +18,9 @@ def page(lang=None):
 	cached_template = app.caches['/pages'].get(request.path)
 	if cached_template is None or app.config['DEBUG']:
 		response = {
-			'pieces': Piece._values(),
+			'pieces': Piece._values(lang),
 			'pages': Page.list(),
 			'hotels': Hotel.list(),
-			'current_path': request.path,
 			'debugging': app.config['DEBUG'],
 			'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
 		}
@@ -29,10 +28,12 @@ def page(lang=None):
 
 		if lang is None:
 			response['lang_route'] = '/'
+			response['current_path'] = request.path
 
 		else:
 			response['lang'] = lang
 			response['lang_route'] = '/' + lang + '/'
+			response['current_path'] = request.path.replace(response['lang_route'], '/')
 
 		render = render_template('pages/' + request.endpoint + '.html', **response)
 		app.caches['/pages'].set(request.path, render, timeout=0)

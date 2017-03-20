@@ -22,6 +22,11 @@ with app.app_context():
 			'metadata': validation_rules['metadata']
 		}
 
+		schema['content']['valueschema']['schema']['translations'] = { 'type': 'dict', 'schema': {} }
+		for lang in app.config['LANGS']:
+			schema['content']['valueschema']['schema']['translations']['schema'][lang] = { 'nullable': True }
+
+
 		endpoint = '/pieces'
 		routes = [
 			{
@@ -80,7 +85,7 @@ with app.app_context():
 
 
 		@classmethod
-		def _values(cls):
+		def _values(cls, lang=None):
 			values = {}
 			for document in cls.list():
 				title = document['title'].lower().replace(' ', '').replace('&', '_').replace('#', '_')
@@ -88,6 +93,13 @@ with app.app_context():
 
 				try:
 					for (key, value) in document['content'].items():
+						if lang is not None:
+							try:
+								value['value'] = value['translations'][lang]
+							except KeyError:
+								pass
+
+
 						if 'is_markdown' in value and value['is_markdown']:
 							values[title][key] = markdown.markdown(value['value'])
 						else:

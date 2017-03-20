@@ -113,6 +113,15 @@ with app.app_context():
 				}
 				app.url_map.add(rule)
 
+				for lang in app.config['LANGS']:
+					rule = Rule('/' + lang + '/' + hotel, defaults={'_id': hotel}, endpoint=cls.endpoint + '/get_view', methods=['GET'], strict_slashes=False)
+					rule.route = {
+						'route': '/' + lang + '/' + hotel,
+						'view_function': 'get_view',
+						'methods': ['GET']
+					}
+					app.url_map.add(rule)
+
 			return super().define_routes()
 
 

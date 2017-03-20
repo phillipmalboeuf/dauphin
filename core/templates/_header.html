@@ -69,6 +69,6 @@
 		<hr class="hr--vertical hr--vertical">
 		{% endif %}
 
-		<a href="/en" class="em">En</a>	
+		<a href="{% if lang != 'en' %}/en{% endif %}{{current_path}}" class="em">{% if lang != 'en' %}En{% else %}Fr{% endif %}</a>	
 	</div>
 </nav>
