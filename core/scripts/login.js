@@ -25,7 +25,7 @@ export class Login extends React.Component {
 	}
 
 	componentWillUnmount() {
-		key.unbind("escape", this.toggle)
+		key.unbind("escape")
 	}
 
 

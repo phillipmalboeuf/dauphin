@@ -93,13 +93,13 @@ with app.app_context():
 			for key in document.copy().keys():
 				document[cls.list_name+'.$.'+key] = document.pop(key)
 
-
 			try:
-				for child in cls.parent.update_where({'_id': ObjectId(parent_id), cls.list_name: {'$elemMatch': {'_id': ObjectId(_id)}}}, document, projection=projection)[cls.list_name]:
+				parent = cls.parent.update_where({'_id': ObjectId(parent_id), cls.list_name: {'$elemMatch': {'_id': ObjectId(_id)}}}, document, projection=projection)
+				for child in parent[cls.list_name]:
 					if child['_id'] == ObjectId(_id):
 						search_index.apply_async((cls.parent.collection_name+'_'+cls.list_name, child['_id'], child))
 
-						return cls.postprocess(child)
+						return cls.postprocess(child, parent)
 
 				abort(404)
 

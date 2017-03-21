@@ -14,6 +14,7 @@
 
 	.login__container {
 		@extend .overlay__container;
+		padding: $gutter/2;
 
 		max-width: (444/$base) * 1rem;
 		background-color: $white;

@@ -28,15 +28,18 @@ const Core = {
 	},
 
 	renderSave() {
+		
+	},
+
+	render() {
+
 		const save = document.getElementById("save")
 		if (save) {
 			ReactDOM.render(
 				<Save />, save
 			)
 		}
-	},
 
-	render() {
 		if (window.innerWidth > 600) {
 			const reservation = document.getElementById("reservation")
 			if (reservation) {
@@ -66,10 +69,25 @@ const Core = {
 				<Background />, background
 			)
 		}
+	},
+
+	destroy() {
+		const elements = document.querySelectorAll("[data-reactroot]")
+		if (elements.length > 0) {
+			for (var i = elements.length - 1; i >= 0; i--) {
+				if (!elements[i].parentNode.hasAttribute("data-turbolinks-permanent")) {
+					ReactDOM.unmountComponentAtNode(elements[i].parentNode)	
+				}
+			}
+		}
 	}
 }
 
+Core.destroy()
 Core.init()
 document.addEventListener("turbolinks:load", ()=> {
 	Core.render()
+})
+document.addEventListener("turbolinks:before-render", ()=> {
+	Core.destroy()
 })

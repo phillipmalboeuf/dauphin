@@ -20,17 +20,19 @@ export class Background extends React.Component {
 				})
 			})
 
-			this.buttons[i].addEventListener("mouseout", (event)=> {
-				this.setState({showed: false})
-			})
+			this.buttons[i].addEventListener("mouseout", this.hide.bind(this))
 		}
 	}
 
 	componentWillUnmount() {
 		for (var i = 0; i < this.buttons.length; i++) {
-			this.buttons[i].removeEventListener("mouseover")
-			this.buttons[i].removeEventListener("mouseout")
+			this.buttons[i].removeEventListener("mouseover", this.hide)
+			this.buttons[i].removeEventListener("mouseout", this.hide)
 		}
+	}
+
+	hide(event) {
+		this.setState({showed: false})
 	}
 
 

@@ -73,7 +73,8 @@ with app.app_context():
 
 			try:
 				for key in document['content'].copy().keys():
-					document['content.'+key] = document['content'].pop(key)
+					value = document['content'].pop(key)
+					document['content.'+key+'.value'] = value['value']
 
 				del document['content']
 

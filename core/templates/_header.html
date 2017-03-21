@@ -37,11 +37,11 @@
 				</p>
 			</div>
 			<div class="col col--12of12">
-				<div class="grid grid--tight_guttered">
+				{# <div class="grid grid--tight_guttered">
 					<div class="col"><a href="#">{% include 'icons/facebook.svg' %}</a></div>
 					<div class="col"><a href="#">{% include 'icons/instagram.svg' %}</a></div>
 					<div class="col"><a href="#">{% include 'icons/pinterest.svg' %}</a></div>
-				</div>
+				</div> #}
 			</div>
 		</div>
 		{% endif %}
@@ -55,9 +55,9 @@
 
 		{% if hotel %}
 		<div class="header__show_sub hide_on_tablet_portrait">
-			<strong>{{hotel.name}}</strong><br>
-			<a href="{{hotel.address_link}}" target="_blank" class="a--highlight">{{hotel.address}}</a>
-			<a href="tel:{{hotel.phone}}" target="_blank" class="a--highlight">{{hotel.phone}}</a>
+			<strong>{{'name'|editable(hotel, 'hotel')}}</strong><br>
+			<a href="{{hotel.address_link}}" target="_blank" class="a--highlight">{{'address'|editable(hotel, 'hotel')}}</a>
+			<a href="tel:{{hotel.toll_free}}" target="_blank" class="a--highlight">{{'toll_free'|editable(hotel, 'hotel')}}</a>
 		</div>
 
 		<div class="header__sub hide_on_tablet_portrait">

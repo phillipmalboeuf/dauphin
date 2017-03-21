@@ -24,9 +24,24 @@ with app.app_context():
 		collection_sort = [('order', 1)]
 
 		schema = {
-			'name': validation_rules['text'],
 			'route': validation_rules['text'],
+			'name': validation_rules['text'],
+			'full_name': validation_rules['text'],
+			'tagline': validation_rules['text'],
+			'intro': validation_rules['text'],
+			'description': validation_rules['text'],
+			'reservation_id': validation_rules['text'],
+			'reservation_coupon': validation_rules['text'],
 			'featured_photo': validation_rules['text'],
+			'address': validation_rules['text'],
+			'full_address': validation_rules['text'],
+			'address_link': validation_rules['text'],
+			'phone': validation_rules['text'],
+			'fax': validation_rules['text'],
+			'toll_free': validation_rules['text'],
+			'email': validation_rules['text'],
+			'check_in': validation_rules['text'],
+			'check_out': validation_rules['text'],
 			'metadata': validation_rules['metadata']
 		}
 

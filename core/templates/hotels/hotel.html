@@ -27,15 +27,15 @@
 	<div class="hero" style="background-image: url({{hotel.featured_photo}})">
 		<div class="hero__box">
 			<div class="hero__box__content">
-				<h2 class="h2--big big_bottom">{{hotel.tagline|safe}}</h2>
-				<p class="p--small big_bottom">{{hotel.intro}}</p>
+				<h2 class="h2--big big_bottom">{{'tagline'|editable(hotel, 'hotel')}}</h2>
+				<p class="p--small big_bottom">{{'intro'|editable(hotel, 'hotel')}}</p>
 				<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
 			</div>
 		</div>
 	</div>
 
 	<div class="padded padded--thick max_width">
-		<div class="big_bottom">{{hotel.description|safe}}</div>
+		<div class="big_bottom">{{'description'|editable(hotel, 'hotel')}}</div>
 		
 		{% for photo in hotel.photos %}
 		{% if loop.first %}
@@ -76,7 +76,7 @@
 					<div class="hero__box__content">
 						<a href="/hotels/{{hotel.route}}/proximity">
 							<h2 class="flat_bottom">{{pieces.hotels.proximity}}</h2>
-							<p class="p--small">{{hotel.proximity_intro|safe}}</p>
+							<p class="p--small">{{'proximity_intro'|editable(hotel, 'hotel')}}</p>
 						</a>
 					</div>
 				</div>

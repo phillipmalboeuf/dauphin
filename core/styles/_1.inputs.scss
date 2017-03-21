@@ -19,10 +19,17 @@ label,
 
 [contenteditable] {
 	position: relative;
-	background: fade-out($grey, 0.5);
+	display: inline-block;
+	background: fade-out($highlight, 0.66);
+	// border-bottom: 1px dotted;
+	// padding: $vertical_rythm/4;
 
 	&:active {
 		top: 1px;
+	}
+
+	&[data-piece-id] {
+		background: fade-out($green, 0.66);
 	}
 }
 

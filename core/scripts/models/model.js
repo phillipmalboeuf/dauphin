@@ -23,7 +23,19 @@ export class Model {
 				credentials: 'include',
 				method: 'GET'
 			}).then( (response) => {
-				return response.json()
+				if (response.ok) {
+					return response.json().then((json) => {
+						this.id = json._id
+						this.attributes = json
+
+						return this
+					})
+				} else {
+					return response.json().then((json) => {
+						
+						throw new Error(`${json.message}: ${json.description}`)
+					})
+				}
 			}).then( (json) => {
 				this.attributes = json
 				return this
@@ -38,7 +50,7 @@ export class Model {
 			url += '/' + this.id
 			method = 'PUT'	
 		}
-		
+
 		return fetch(url,
 			{
 				headers: this.headers(),
@@ -46,26 +58,43 @@ export class Model {
 				credentials: 'include',
 				body: JSON.stringify(data)
 			}).then( (response) => {
-				return response.json()
-			}).then( (json) => {
-				this.id = json._id
-				this.attributes = json
-				return this
+				if (response.ok) {
+					return response.json().then((json) => {
+						this.id = json._id
+						this.attributes = json
+
+						return this
+					})
+				} else {
+					return response.json().then((json) => {
+						
+						throw new Error(`${json.message}: ${json.description}`)
+					})
+				}
 			})
 	}
 
 	destroy() {
+
 		return fetch(this.endpoint + '/' + this.id,
 			{
 				headers: this.headers(),
 				credentials: 'include',
 				method: 'DELETE'
 			}).then( (response) => {
-				return response.json()
-			}).then( (json) => {
-				this.id = {}
-				this.attributes = {}
-				return this
+				if (response.ok) {
+					return response.json().then((json) => {
+						this.id = undefined
+						this.attributes = {}
+
+						return this
+					})
+				} else {
+					return response.json().then((json) => {
+						
+						throw new Error(`${json.message}: ${json.description}`)
+					})
+				}
 			})
 	}
 

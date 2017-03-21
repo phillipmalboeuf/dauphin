@@ -14,13 +14,18 @@
 <div class="padded padded--thick">
 	<div class="grid grid--guttered">
 		<div class="col col--5of12 col--tablet_landscape--9of12 col--phone--12of12">
-			<h4 class="flat_bottom">{{hotel.full_name}}</h4>
-			<p class="p--small"><a href="{{hotel.address_link}}" target="_blank">{{hotel.full_address|safe}}</a></p>
+			<h4 class="flat_bottom">{{'full_name'|editable(hotel, 'hotel')}}</h4>
 			<p class="p--small">
-				{{pieces.navigation.toll_free}}: <a href="tel:{{hotel.toll_free}}" target="_blank">{{hotel.toll_free}}</a><br>
-				T: <a href="tel:{{hotel.phone}}" target="_blank">{{hotel.phone}}</a><br>
-				F: <a href="tel:{{hotel.fax}}" target="_blank">{{hotel.fax}}</a><br>
-				<a href="mailto:{{hotel.email}}" target="_blank">{{hotel.email}}</a>
+				{% if request.current_session_is_admin %}
+				Google link: {{'address_link'|editable(hotel, 'hotel')}}<br>
+				{% endif %}
+				<a href="{{hotel.address_link}}" target="_blank">{{'full_address'|editable(hotel, 'hotel')}}</a>
+			</p>
+			<p class="p--small">
+				{{pieces.navigation.toll_free}}: <a href="tel:{{hotel.toll_free}}" target="_blank">{{'toll_free'|editable(hotel, 'hotel')}}</a><br>
+				T: <a href="tel:{{hotel.phone}}" target="_blank">{{'phone'|editable(hotel, 'hotel')}}</a><br>
+				F: <a href="tel:{{hotel.fax}}" target="_blank">{{'fax'|editable(hotel, 'hotel')}}</a><br>
+				<a href="mailto:{{hotel.email}}" target="_blank">{{'email'|editable(hotel, 'hotel')}}</a>
 			</p>
 		</div>
 		<div class="col col--2of12 col--tablet_landscape--4of12 col--phone--6of12">
@@ -40,7 +45,7 @@
 		</div>
 
 		<div class="col col--12of12 medium_top">
-			<p class="p--small">{{pieces.navigation.copyright}}</p>
+			<p class="p--small">{{'navigation.copyright'|editable(pieces, 'piece')}}</p>
 		</div>
 	</div>
 

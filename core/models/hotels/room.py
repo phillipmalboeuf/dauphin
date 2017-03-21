@@ -21,6 +21,8 @@ with app.app_context():
 		schema = {
 			'name': validation_rules['text'],
 			'route': validation_rules['text'],
+			'description': validation_rules['text'],
+			'policies': validation_rules['text_list'],
 			'featured_photo': validation_rules['text'],
 			'metadata': validation_rules['metadata']
 		}
@@ -82,16 +84,16 @@ with app.app_context():
 		]
 
 
-		@classmethod
-		def preprocess(cls, document):
+		# @classmethod
+		# def preprocess(cls, document):
 
-			return super().preprocess(document)
+		# 	return super().preprocess(document)
 
 
-		@classmethod
-		def create(cls, parent_id, document):
+		# @classmethod
+		# def create(cls, parent_id, document):
 
-			return super().create(parent_id, document)
+		# 	return super().create(parent_id, document)
 
 
 
