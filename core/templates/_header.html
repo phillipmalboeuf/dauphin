@@ -10,13 +10,13 @@
 
 <nav class="nav grid grid--spaced grid--middle">
 	<div class="col col--4of12">
-		{% if hotel %}
 		<input type="checkbox" id="menu" class="header__menu_checkbox">
 		<label class="em" for="menu">{% include 'icons/menu.svg' %} Menu</label>
 
 		<div class="header__menu padded dark_back grid grid--full_height grid--vertically_spaced">
 			<div class="col col--12of12"></div>
 			<div class="col col--12of12">
+				{% if hotel %}
 				<h2 class="flat_bottom"><a href="/hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}}</a></h2>
 
 				{% for other_hotel in hotels %}
@@ -29,6 +29,18 @@
 
 				<h2 class="flat_bottom medium_top"><a href="/hotels/{{hotel.route}}/story">{{pieces.hotels.story}}</a></h2>
 				<h2 class="medium_bottom"><a href="/hotels/{{hotel.route}}/proximity">{{pieces.hotels.proximity}}</a></h2>
+
+				{% else %}
+
+				{% for hotel in hotels if not hotel.extended_family %}
+				<h2 class="{% if loop.last %}medium_bottom{% else %}flat_bottom{% endif %}"><a href="/{{hotel.route}}">{{hotel.name}}</a></h2>
+				{% endfor %}
+
+				{% for hotel in hotels if hotel.extended_family %}
+				<h4 class="{% if loop.last %}medium_bottom{% else %}flat_bottom{% endif %}"><a href="{{hotel.url}}" target="_blank">{{hotel.name}}</a></h4>
+				{% endfor %}
+
+				{% endif %}
 
 				<p class="p--thick_lines">
 					{% for page in pages %}
@@ -44,7 +56,7 @@
 				</div> #}
 			</div>
 		</div>
-		{% endif %}
+		
 	</div>
 	<div class="header__logo text_center">
 		<a href="/{% if hotel %}{% if current_path != '/'+hotel.route %}{{hotel.route}}{% endif %}{% endif %}">
@@ -62,7 +74,11 @@
 
 		<div class="header__sub hide_on_tablet_portrait">
 			{% for other_hotel in hotels %}
+			{% if other_hotel.extended_family %}
+			<a href="{{other_hotel.url}}" target="_blank" class="header__sub__link">{{other_hotel.name}}</a>
+			{% else %}
 			<a href="/{{other_hotel.route}}" class="header__sub__link">{{other_hotel.name}}</a>
+			{% endif %}
 			{% endfor %}
 		</div>
 
