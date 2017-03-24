@@ -345,6 +345,11 @@ sub {
 		width: (6/$base) * 1rem;
 		height: (6/$base) * 1rem;
 	}
+
+	.big_icons & {
+		width: (64/$base) * 1rem;
+		height: (64/$base) * 1rem;
+	}
 }
 
 .turbolinks-progress-bar {
