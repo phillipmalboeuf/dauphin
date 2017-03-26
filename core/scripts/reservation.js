@@ -1,4 +1,6 @@
 
+import { Cookies } from './utilities/cookies.js';
+
 
 export class Reservation extends React.Component {
 
@@ -12,12 +14,13 @@ export class Reservation extends React.Component {
 
 		this.state = {
 			checkIn: this.today,
-			checkOut: this.tomorrow
+			checkOut: this.tomorrow,
+			hidden: Cookies.get("reservation_hidden") == "true"
 		}
 	}
 
 	componentDidMount(prevProps, prevState) {
-		this.content.style.maxHeight = this.content.clientHeight+"px"
+		this.content.style.maxHeight = this.content.scrollHeight+"px"
 	}
 
 	inputDate(event) {
@@ -38,12 +41,20 @@ export class Reservation extends React.Component {
 		}
 	}
 
-	render() {
+	toggle(event) {
+		this.setState({
+			hidden: event.currentTarget.checked
+		})
 
+		Cookies.set("reservation_hidden", event.currentTarget.checked)
+	}
+
+	render() {
+		console.log(this.state)
 		
 
 		return <div>
-			<input type="checkbox" id="reservation_checkbox" className="reservation__checkbox" />
+			<input type="checkbox" id="reservation_checkbox" onChange={this.toggle.bind(this)} checked={this.state.hidden ? true : false} className="reservation__checkbox" />
 			<label htmlFor="reservation_checkbox" className="button button--full button--no_corners">
 				<h3 className="text_center"><span dangerouslySetInnerHTML={{'__html': this.props.icon}} />&nbsp;&nbsp; {pieces.hotels.reservation} &nbsp;&nbsp;<span dangerouslySetInnerHTML={{'__html': this.props.icon}} /></h3>
 			</label>
