@@ -15,31 +15,31 @@
 		<div class="hero__box hero__box--full">
 			<div class="hero__box__content">
 				<h3 class="small_bottom"><a href="/hotels/{{hotel.route}}/rooms">&lt; {{pieces.hotels.rooms}}</a></h3>
-				<h1 class="big_bottom">{{'name'|editable(room, 'room', hotel._id)}}</h1>
+				<h1 class="big_bottom">{{room.name|editable('name', {'hotel': hotel._id, 'room': room._id})}}</h1>
 				<a href="/hotels/{{hotel.route}}/rooms/{{room.route}}/photos" class="button button--secondary button--small">{{pieces.hotels.see_photos}}</a>
 			</div>
 		</div>
 	</div>
 
 	<div class="padded padded--thick huge_bottom max_width">
-		<h2 class="huge_bottom">{{'description'|editable(room, 'room', hotel._id)}}</h2>
+		<h2 class="huge_bottom">{{room.description|editable('description', {'hotel': hotel._id, 'room': room._id})}}</h2>
 
 		<div class="grid grid--guttered">
 			<div class="col col--4of12 col--tablet_portrait--6of12 col--phone--12of12">
-				<h3>{{'hotels.in_the_room'|editable(pieces, 'piece')}}</h3>
+				<h3>{{pieces.hotels.in_the_room|editable('in_the_room', {'piece': pieces.hotels._id})}}</h3>
 			</div>
 			<div class="col col--8of12 col--tablet_portrait--10of12 col--phone--12of12">
 				<div class="grid grid--tight_guttered">
 					{% for item in room.in_the_room %}
-					<div class="col col--6of12 col--phone--12of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body}}</small></div>
+					<div class="col col--6of12 col--phone--12of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'in_the_room', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
 					{% endfor %}
 				</div>
 
-				<h5 class="medium_top">{{'hotels.on_demand'|editable(pieces, 'piece')}}</h5>
+				<h5 class="medium_top">{{pieces.hotels.on_demand|editable('on_demand', {'piece': pieces.hotels._id})}}</h5>
 
 				<div class="grid grid--tight_guttered">
 					{% for item in room.in_the_room_on_demand %}
-					<div class="col col--6of12 col--phone--12of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body}}</small></div>
+					<div class="col col--6of12 col--phone--12of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'in_the_room_on_demand', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
 					{% endfor %}
 				</div>
 			</div>
@@ -49,15 +49,15 @@
 
 		<div class="grid grid--guttered">
 			<div class="col col--4of12 col--tablet_portrait--6of12 col--phone--12of12">
-				<h3>{{'hotels.policies'|editable(pieces, 'piece')}}</h3>
+				<h3>{{pieces.hotels.policies|editable('policies', {'piece': pieces.hotels._id})}}</h3>
 			</div>
 			<div class="col col--8of12 col--tablet_portrait--10of12 col--phone--12of12">
 				<div class="grid grid--tight_guttered">
-					<div class="col col--6of12"><small>{{'hotels.check_in'|editable(pieces, 'piece')}}: <strong>{{room.check_in}}</strong></small></div>
-					<div class="col col--6of12"><small>{{'hotels.check_out'|editable(pieces, 'piece')}}: <strong>{{room.check_out}}</strong></small></div>
+					<div class="col col--6of12"><small>{{pieces.hotels.check_in|editable('check_in', {'piece': pieces.hotels._id})}}: <strong>{{hotel.check_in|editable('check_in', {'hotel': hotel._id})}}</strong></small></div>
+					<div class="col col--6of12"><small>{{pieces.hotels.check_out|editable('check_out', {'piece': pieces.hotels._id})}}: <strong>{{hotel.check_out|editable('check_out', {'hotel': hotel._id})}}</strong></small></div>
 
-					{% for item in room.policies %}
-					<div class="col col--12of12"><small>{{item|safe}}</small></div>
+					{% for item in hotel.policies %}
+					<div class="col col--12of12"><small>{{item.body|editable('body', {'list': 'in_the_room_on_demand', 'index': loop.index0, 'hotel': hotel._id})}}</small></div>
 					{% endfor %}
 				</div>
 			</div>
@@ -67,12 +67,12 @@
 
 		<div class="grid grid--guttered">
 			<div class="col col--4of12 col--tablet_portrait--6of12 col--phone--12of12">
-				<h3>{{'hotels.services'|editable(pieces, 'piece')}}</h3>
+				<h3>{{pieces.hotels.services|editable('services', {'piece': pieces.hotels._id})}}</h3>
 			</div>
 			<div class="col col--8of12 col--tablet_portrait--10of12 col--phone--12of12">
 				<div class="grid grid--tight_guttered">
 					{% for item in room.services %}
-					<div class="col col--6of12 col--phone--12of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body}}</small></div>
+					<div class="col col--6of12 col--phone--12of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'services', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
 					{% endfor %}
 				</div>
 			</div>
@@ -82,12 +82,12 @@
 
 		<div class="grid grid--guttered">
 			<div class="col col--4of12 col--tablet_portrait--6of12 col--phone--12of12">
-				<h3>{{'hotels.paid_services'|editable(pieces, 'piece')}}</h3>
+				<h3>{{pieces.hotels.paid_services|editable('paid_services', {'piece': pieces.hotels._id})}}</h3>
 			</div>
 			<div class="col col--8of12 col--tablet_portrait--10of12 col--phone--12of12">
 				<div class="grid grid--tight_guttered">
 					{% for item in room.paid_services %}
-					<div class="col col--6of12 col--phone--12of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body}}</small></div>
+					<div class="col col--6of12 col--phone--12of12">{% include 'icons/'+item.icon+'.svg' %}&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'paid_services', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
 					{% endfor %}
 				</div>
 			</div>

@@ -32,25 +32,34 @@ def markdown_filter(content):
 
 
 @app.template_filter('editable')
-def editable(editable, collection, collection_name, parent_id=None):
-	split = editable.split('.')
-	markup = '<span{} data-{}-id="{}" data-key="{}" contenteditable>{}</span>'
-	if parent_id is None:
-		parent_id = ''
-	else:
-		parent_id = ' data-parent-id="{}"'.format(parent_id)
+def editable(editable, key, data):
+	markup = '<span{} data-key="{}" contenteditable>{}</span>'
+	data_tags = ''
+	for (data_key, data_value) in data.items():
+		data_tags += ' data-{}="{}"'.format(data_key, data_value)
 
-	if len(split) == 1:
-		if request.current_session_is_admin:	
-			return Markup(markup.format(parent_id, collection_name, str(collection['_id']), split[0], collection[split[0]]))
-		else:
-			return  Markup(collection[split[0]])
-
+	if request.current_session_is_admin:	
+		return Markup(markup.format(data_tags, key, editable))
 	else:
-		if request.current_session_is_admin:
-			return Markup(markup.format(parent_id, collection_name, str(collection[split[0]]['_id']), split[1], collection[split[0]][split[1]]))
-		else:
-			return Markup(collection[split[0]][split[1]])
+		return  Markup(editable)
+
+
+
+	# split = editable.split('.')
+	# markup = '<span{} data-{}-id="{}" data-key="{}" contenteditable>{}</span>'
+	# if parent_id is None:
+	# 	parent_id = ''
+	# else:
+	# 	parent_id = ' data-parent-id="{}"'.format(parent_id)
+
+	# if len(split) == 1:
+	
+
+	# else:
+	# 	if request.current_session_is_admin:
+	# 		return Markup(markup.format(parent_id, collection_name, str(collection[split[0]]['_id']), split[1], collection[split[0]][split[1]]))
+	# 	else:
+	# 		return Markup(collection[split[0]][split[1]])
 	
 
 

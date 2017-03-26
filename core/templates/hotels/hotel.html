@@ -27,8 +27,8 @@
 	<div class="hero" style="background-image: url({{hotel.featured_photo}})">
 		<div class="hero__box">
 			<div class="hero__box__content">
-				<h2 class="h2--big big_bottom">{{'tagline'|editable(hotel, 'hotel')}}</h2>
-				<p class="p--small big_bottom">{{'intro'|editable(hotel, 'hotel')}}</p>
+				<h2 class="h2--big big_bottom">{{hotel.tagline|editable('tagline', {'hotel': hotel._id})}}</h2>
+				<p class="p--small big_bottom">{{hotel.intro|editable('intro', {'hotel': hotel._id})}}</p>
 				<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
 			</div>
 		</div>
@@ -39,20 +39,20 @@
 			<div class="grid grid--guttered">
 				<div class="col col--4of12 text_center">
 					<div class="medium_bottom big_icons">{% include 'icons/'+hotel.description_1_icon+'.svg' %}</div>
-					<h4>{{'description_1'|editable(hotel, 'hotel')}}</h4>
+					<h4>{{hotel.description_1|editable('description_1', {'hotel': hotel._id})}}</h4>
 				</div>
 				<div class="col col--4of12 text_center">
 					<div class="medium_bottom big_icons">{% include 'icons/'+hotel.description_2_icon+'.svg' %}</div>
-					<h4>{{'description_2'|editable(hotel, 'hotel')}}</h4>
+					<h4>{{hotel.description_2|editable('description_2', {'hotel': hotel._id})}}</h4>
 				</div>
 				<div class="col col--4of12 text_center">
 					<div class="medium_bottom big_icons">{% include 'icons/'+hotel.description_3_icon+'.svg' %}</div>
-					<h4>{{'description_3'|editable(hotel, 'hotel')}}</h4>
+					<h4>{{hotel.description_3|editable('description_3', {'hotel': hotel._id})}}</h4>
 				</div>
 			</div>
 		</div>
 
-		<div class="big_bottom">{{'description'|editable(hotel, 'hotel')}}</div>
+		<div class="big_bottom">{{hotel.description|editable('description', {'hotel': hotel._id})}}</div>
 		
 		{% for photo in hotel.photos %}
 		{% if loop.first %}
@@ -93,7 +93,7 @@
 					<div class="hero__box__content">
 						<a href="/hotels/{{hotel.route}}/proximity">
 							<h2 class="flat_bottom">{{pieces.hotels.proximity}}</h2>
-							<p class="p--small">{{'proximity_intro'|editable(hotel, 'hotel')}}</p>
+							<p class="p--small">{{hotel.proximity_intro|editable('proximity_intro', {'hotel': hotel._id})}}</p>
 						</a>
 					</div>
 				</div>

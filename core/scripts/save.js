@@ -41,9 +41,9 @@ export class Save extends React.Component {
 
 	updateChanges(event) {
 		let key = event.currentTarget.getAttribute("data-key")
-		let piece = event.currentTarget.getAttribute("data-piece-id")
-		let hotel = event.currentTarget.getAttribute("data-hotel-id")
-		let room = event.currentTarget.getAttribute("data-room-id")
+		let piece = event.currentTarget.getAttribute("data-piece")
+		let hotel = event.currentTarget.getAttribute("data-hotel")
+		let room = event.currentTarget.getAttribute("data-room")
 		
 		if (piece) {
 			if (!this.state.pieces[piece]) { this.state.pieces[piece] = {} }
@@ -60,7 +60,7 @@ export class Save extends React.Component {
 				hotels: this.state.hotels
 			})
 		} else if (room) {
-			room = `${event.currentTarget.getAttribute("data-parent-id")}.${room}`
+			room = `${event.currentTarget.getAttribute("data-hotel")}.${room}`
 			if (!this.state.rooms[room]) { this.state.rooms[room] = {} }
 			this.state.rooms[room][key] = event.currentTarget.innerHTML
 		
@@ -129,6 +129,7 @@ export class Save extends React.Component {
 
 
 	render() {
+		console.log(this.state)
 
 		return <div className="save">
 			<Button className="button--small"

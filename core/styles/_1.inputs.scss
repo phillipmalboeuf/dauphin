@@ -28,8 +28,12 @@ label,
 		top: 1px;
 	}
 
-	&[data-piece-id] {
+	&[data-piece] {
 		background: fade-out($green, 0.66);
+	}
+
+	&[data-room] {
+		background: fade-out($facebook_blue, 0.66);
 	}
 }
 

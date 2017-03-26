@@ -67,9 +67,9 @@
 
 		{% if hotel %}
 		<div class="header__show_sub hide_on_tablet_portrait">
-			<strong>{{'name'|editable(hotel, 'hotel')}}</strong><br>
-			<a href="{{hotel.address_link}}" target="_blank" class="a--highlight">{{'address'|editable(hotel, 'hotel')}}</a>
-			<a href="tel:{{hotel.toll_free}}" target="_blank" class="a--highlight">{{'toll_free'|editable(hotel, 'hotel')}}</a>
+			<strong>{{hotel.name|editable('name', {'hotel': hotel._id})}}</strong><br>
+			<a href="{{hotel.address_link}}" target="_blank" class="a--highlight">{{hotel.address|editable('address', {'hotel': hotel._id})}}</a>
+			<a href="tel:{{hotel.toll_free}}" target="_blank" class="a--highlight">{{hotel.toll_free|editable('toll_free', {'hotel': hotel._id})}}</a>
 		</div>
 
 		<div class="header__sub hide_on_tablet_portrait">
