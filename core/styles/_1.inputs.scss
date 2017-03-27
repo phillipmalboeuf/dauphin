@@ -20,20 +20,21 @@ label,
 [contenteditable] {
 	position: relative;
 	display: inline-block;
-	background: fade-out($highlight, 0.66);
-	// border-bottom: 1px dotted;
-	// padding: $vertical_rythm/4;
+	// background: fade-out($highlight, 0.66);
+	border: 1px solid $highlight;
+	border-radius: $border_radius;
+	padding: 0 $vertical_rythm/4;
 
 	&:active {
 		top: 1px;
 	}
 
 	&[data-piece] {
-		background: fade-out($green, 0.66);
+		border-color: $green;
 	}
 
 	&[data-room] {
-		background: fade-out($facebook_blue, 0.66);
+		border-color: $facebook_blue;
 	}
 }
 

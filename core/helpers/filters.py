@@ -32,8 +32,12 @@ def markdown_filter(content):
 
 
 @app.template_filter('editable')
-def editable(editable, key, data):
-	markup = '<span{} data-key="{}" contenteditable>{}</span>'
+def editable(editable, key, data, contenteditable=True):
+	if contenteditable:
+		markup = '<span{} data-key="{}" contenteditable>{}</span>'
+	else:
+		markup = '<span{} data-key="{}">{}</span>'
+
 	data_tags = ''
 	for (data_key, data_value) in data.items():
 		data_tags += ' data-{}="{}"'.format(data_key, data_value)

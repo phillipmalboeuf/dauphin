@@ -4,7 +4,10 @@
 
 {% block main %}
 <div class="padded padded--vertically_thick max_width">
-	<h1>{{page.name}}</h1>
-	<div>{{page.body}}</div>
+	{% if request.current_session_is_admin %}
+	<p>Page url: <code>/pages/{{page.route|editable('route', {'page': page._id})}}</code></p>
+	{% endif %}
+	<h1>{{page.name|editable('name', {'page': page._id})}}</h1>
+	<div>{{page.body|editable('body', {'page': page._id})}}</div>
 </div>
 {% endblock %}

@@ -50,8 +50,6 @@ export class Reservation extends React.Component {
 	}
 
 	render() {
-		console.log(this.state)
-		
 
 		return <div>
 			<input type="checkbox" id="reservation_checkbox" onChange={this.toggle.bind(this)} checked={this.state.hidden ? true : false} className="reservation__checkbox" />

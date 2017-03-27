@@ -2,6 +2,7 @@
 
 import { Login } from './login.js'
 import { Save } from './save.js'
+import { IconSelect } from './icon_select.js'
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
 import { Background } from './background.js'
@@ -38,6 +39,15 @@ const Core = {
 			ReactDOM.render(
 				<Save />, save
 			)
+		}
+
+		const icons = document.querySelectorAll("[data-icon]")
+		if (icons.length > 0) {
+			for (var i = icons.length - 1; i >= 0; i--) {
+				ReactDOM.render(
+					<IconSelect icon={icons[i].getAttribute("data-icon")} />, icons[i]
+				)
+			}
 		}
 
 		if (window.innerWidth > 600) {

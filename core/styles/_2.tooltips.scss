@@ -1,0 +1,69 @@
+
+
+// #TOOLTIPS
+
+.tooltip_container {
+	position: relative;
+
+	&.tooltip_container--show {
+
+		.tooltip {
+			opacity: 1;
+			visibility: visible;
+
+			@include transition(all $fast, opacity $fast, visibility 0s);
+			@include transform(scale(1) translate(0));
+		}
+	}
+}
+
+	$tooltip_width: (166/$base) * 1rem;
+	$arrow_size: (5/$base)*1rem;
+
+	.tooltip {
+		position: absolute;
+		z-index: 2;
+		top: 150%;
+		left: -($tooltip_width/2) + $icon_size;
+		width: $tooltip_width;
+
+		opacity: 0;
+		visibility: hidden;
+
+		color: $white;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		background: $dark_background;
+		border-radius: $border_radius;
+		padding: $vertical_rythm/2;
+
+		@include transition(all $fast, opacity $fast, visibility 0s linear $fast);
+		@include transform(scale(0.95) translate(0, -6px));
+		@include transform_origin(50%, 0);
+
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 100%;
+			left: $tooltip_width/2 - $icon_size/2 - $arrow_size;
+
+			width: 0;
+			height: 0;
+			border: $arrow_size solid transparent;
+			border-top-width: 0;
+			border-bottom-color: $dark_background;
+		}
+
+		&.tooltip--left {
+			left: -($icon_size);
+
+			@include transform_origin(10%, 0);
+
+			&:before {
+				left: $icon_size + $arrow_size;
+			}
+		}
+	}
+
