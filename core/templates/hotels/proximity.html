@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="padded padded--thick max_width">
-		<h2 class="huge_bottom">{{'proximity_intro'|editable(hotel, 'hotel')}}</h2>
+		<h2 class="huge_bottom">{{hotel.proximity_intro|editable('proximity_intro', {'hotel': hotel._id})}}</h2>
 
 		<div class="big_bottom">
 			<div class="grid grid--guttered">
@@ -31,9 +31,12 @@
 				<div class="col col--8of12">
 					{% for item in hotel.proximity_restaurants %}
 					<p>
+						{% if request.current_session_is_admin %}
+						Link url: <code>{{item.link|editable('link', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
+						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name}}</strong><br>
-							{{item.description}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
+							{{item.description|editable('description', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
 					</p>
 					{% endfor %}
@@ -49,9 +52,12 @@
 				<div class="col col--8of12">
 					{% for item in hotel.proximity_cafes %}
 					<p>
+						{% if request.current_session_is_admin %}
+						Link url: <code>{{item.link|editable('link', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
+						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name}}</strong><br>
-							{{item.description}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
+							{{item.description|editable('description', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
 					</p>
 					{% endfor %}
@@ -67,9 +73,12 @@
 				<div class="col col--8of12">
 					{% for item in hotel.proximity_bars %}
 					<p>
+						{% if request.current_session_is_admin %}
+						Link url: <code>{{item.link|editable('link', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
+						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name}}</strong><br>
-							{{item.description}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
+							{{item.description|editable('description', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
 					</p>
 					{% endfor %}
@@ -85,9 +94,12 @@
 				<div class="col col--8of12">
 					{% for item in hotel.proximity_quick_bites %}
 					<p>
+						{% if request.current_session_is_admin %}
+						Link url: <code>{{item.link|editable('link', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
+						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name}}</strong><br>
-							{{item.description}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
+							{{item.description|editable('description', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
 					</p>
 					{% endfor %}
@@ -103,9 +115,12 @@
 				<div class="col col--8of12">
 					{% for item in hotel.proximity_others %}
 					<p>
+						{% if request.current_session_is_admin %}
+						Link url: <code>{{item.link|editable('link', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
+						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name}}</strong><br>
-							{{item.description}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
+							{{item.description|editable('description', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
 					</p>
 					{% endfor %}

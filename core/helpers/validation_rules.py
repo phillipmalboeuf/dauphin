@@ -50,26 +50,25 @@ validation_rules['image_list'] = {
 		'schema': validation_rules['image']
 	}
 
-validation_rules['link_list'] = {
-		'type': 'list',
-		'schema': {
-			'type': 'dict',
-			'schema': {
-				'label': validation_rules['text'],
-				'url': validation_rules['text']
-			}
-		}
-	}
-
 validation_rules['items_list'] = {
 		'type': 'list',
 		'schema': {
 			'type': 'dict',
 			'schema': {
-				'product_id': validation_rules['object_id'],
-				'option_id': validation_rules['object_id'],
-				'quantity': validation_rules['int'],
-				'metadata': validation_rules['metadata']
+				'icon': validation_rules['text'],
+				'body': validation_rules['text']
+			}
+		}
+	}
+
+validation_rules['links_list'] = {
+		'type': 'list',
+		'schema': {
+			'type': 'dict',
+			'schema': {
+				'name': validation_rules['text'],
+				'description': validation_rules['text'],
+				'link': validation_rules['text']
 			}
 		}
 	}

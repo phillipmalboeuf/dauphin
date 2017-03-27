@@ -42,6 +42,16 @@ with app.app_context():
 			'email': validation_rules['text'],
 			'check_in': validation_rules['text'],
 			'check_out': validation_rules['text'],
+			'policies': validation_rules['items_list'],
+			'story': validation_rules['text'],
+			'story_photo': validation_rules['text'],
+			'proximity_intro': validation_rules['text'],
+			'proximity_photo': validation_rules['text'],
+			'proximity_restaurants': validation_rules['links_list'],
+			'proximity_cafes': validation_rules['links_list'],
+			'proximity_bars': validation_rules['links_list'],
+			'proximity_quick_bites': validation_rules['links_list'],
+			'proximity_others': validation_rules['links_list'],
 			'metadata': validation_rules['metadata']
 		}
 

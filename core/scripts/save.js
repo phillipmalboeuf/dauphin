@@ -27,6 +27,10 @@ export class Save extends React.Component {
 			this.editables[i].addEventListener("click", this.preventClick.bind(this))
 		}
 
+		for (var i = 0; i < this.props.editables.length; i++) {
+			this.props.editables[i].updateChanges = this.updateChanges.bind(this)
+		}
+
 		key("command+s,ctrl+s", this.save.bind(this))
 	}
 
@@ -44,6 +48,7 @@ export class Save extends React.Component {
 		let piece = event.currentTarget.getAttribute("data-piece")
 		let hotel = event.currentTarget.getAttribute("data-hotel")
 		let room = event.currentTarget.getAttribute("data-room")
+		let list = event.currentTarget.getAttribute("data-list")
 		
 		if (piece) {
 			if (!this.state.pieces[piece]) { this.state.pieces[piece] = {} }
@@ -52,23 +57,46 @@ export class Save extends React.Component {
 			this.setState({
 				pieces: this.state.pieces
 			})
-		} else if (hotel) {
-			if (!this.state.hotels[hotel]) { this.state.hotels[hotel] = {} }
-			this.state.hotels[hotel][key] = event.currentTarget.innerHTML
-		
-			this.setState({
-				hotels: this.state.hotels
-			})
 		} else if (room) {
-			room = `${event.currentTarget.getAttribute("data-hotel")}.${room}`
+			room = `${hotel}.${room}`
 			if (!this.state.rooms[room]) { this.state.rooms[room] = {} }
-			this.state.rooms[room][key] = event.currentTarget.innerHTML
+			if (list) {
+				this.state.rooms[room][list] = {}
+				let items = document.querySelectorAll(`[data-list="${list}"]`)
+				for (var i = 0; i < items.length; i++) {
+					if (!this.state.rooms[room][list][items[i].getAttribute("data-index")]) { this.state.rooms[room][list][items[i].getAttribute("data-index")] = {} }
+					this.state.rooms[room][list][items[i].getAttribute("data-index")][items[i].getAttribute("data-key")] = items[i].innerHTML
+				}
+				this.state.rooms[room][list] = Object.keys(this.state.rooms[room][list]).map((index)=> {
+					return this.state.rooms[room][list][index]
+				})
+			} else {
+				this.state.rooms[room][key] = event.currentTarget.innerHTML
+			}
 		
 			this.setState({
 				rooms: this.state.rooms
 			})
-		}
-
+		} else if (hotel) {
+			if (!this.state.hotels[hotel]) { this.state.hotels[hotel] = {} }
+			if (list) {
+				this.state.hotels[hotel][list] = {}
+				let items = document.querySelectorAll(`[data-list="${list}"]`)
+				for (var i = 0; i < items.length; i++) {
+					if (!this.state.hotels[hotel][list][items[i].getAttribute("data-index")]) { this.state.hotels[hotel][list][items[i].getAttribute("data-index")] = {} }
+					this.state.hotels[hotel][list][items[i].getAttribute("data-index")][items[i].getAttribute("data-key")] = items[i].innerHTML
+				}
+				this.state.hotels[hotel][list] = Object.keys(this.state.hotels[hotel][list]).map((index)=> {
+					return this.state.hotels[hotel][list][index]
+				})
+			} else {
+				this.state.hotels[hotel][key] = event.currentTarget.innerHTML
+			}
+		
+			this.setState({
+				hotels: this.state.hotels
+			})
+		} 
 	}
 
 	preventClick(event) {
@@ -129,7 +157,7 @@ export class Save extends React.Component {
 
 
 	render() {
-		// console.log(this.state)
+		// console.log(this.state.rooms)
 
 		return <div className="save">
 			<Button className="button--small"

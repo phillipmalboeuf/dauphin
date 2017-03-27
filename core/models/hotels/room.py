@@ -22,8 +22,11 @@ with app.app_context():
 			'name': validation_rules['text'],
 			'route': validation_rules['text'],
 			'description': validation_rules['text'],
-			'policies': validation_rules['text_list'],
 			'featured_photo': validation_rules['text'],
+			'in_the_room': validation_rules['items_list'],
+			'in_the_room_on_demand': validation_rules['items_list'],
+			'in_the_room_services': validation_rules['items_list'],
+			'in_the_room_paid_services': validation_rules['items_list'],
 			'metadata': validation_rules['metadata']
 		}
 

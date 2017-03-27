@@ -46,7 +46,7 @@
 
 				<div class="grid grid--tight_guttered">
 					{% for item in room.in_the_room_on_demand %}
-					<div class="col col--6of12 col--phone--12of12"><svg class="icon"><use xlink:href="#icon-{{item.icon}}" /></svg>&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'in_the_room_on_demand', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
+					<div class="col col--6of12 col--phone--12of12">{% filter editable('icon', {'list': 'in_the_room_on_demand', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id, 'icon': item.icon}, False) %}<svg class="icon"><use xlink:href="#icon-{{item.icon}}" /></svg>{% endfilter%}&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'in_the_room_on_demand', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
 					{% endfor %}
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 					<div class="col col--6of12"><small>{{pieces.hotels.check_out|editable('check_out', {'piece': pieces.hotels._id})}}: <strong>{{hotel.check_out|editable('check_out', {'hotel': hotel._id})}}</strong></small></div>
 
 					{% for item in hotel.policies %}
-					<div class="col col--12of12"><small>{{item.body|editable('body', {'list': 'in_the_room_on_demand', 'index': loop.index0, 'hotel': hotel._id})}}</small></div>
+					<div class="col col--12of12"><small>{{item.body|editable('body', {'list': 'policies', 'index': loop.index0, 'hotel': hotel._id})}}</small></div>
 					{% endfor %}
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 			<div class="col col--8of12 col--tablet_portrait--10of12 col--phone--12of12">
 				<div class="grid grid--tight_guttered">
 					{% for item in room.services %}
-					<div class="col col--6of12 col--phone--12of12"><svg class="icon"><use xlink:href="#icon-{{item.icon}}" /></svg>&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'services', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
+					<div class="col col--6of12 col--phone--12of12">{% filter editable('icon', {'list': 'services', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id, 'icon': item.icon}, False) %}<svg class="icon"><use xlink:href="#icon-{{item.icon}}" /></svg>{% endfilter%}&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'services', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
 					{% endfor %}
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 			<div class="col col--8of12 col--tablet_portrait--10of12 col--phone--12of12">
 				<div class="grid grid--tight_guttered">
 					{% for item in room.paid_services %}
-					<div class="col col--6of12 col--phone--12of12"><svg class="icon"><use xlink:href="#icon-{{item.icon}}" /></svg>&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'paid_services', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
+					<div class="col col--6of12 col--phone--12of12">{% filter editable('icon', {'list': 'paid_services', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id, 'icon': item.icon}, False) %}<svg class="icon"><use xlink:href="#icon-{{item.icon}}" /></svg>{% endfilter%}&nbsp;&nbsp; <small>{{item.body|editable('body', {'list': 'paid_services', 'index': loop.index0, 'hotel': hotel._id, 'room': room._id})}}</small></div>
 					{% endfor %}
 				</div>
 			</div>

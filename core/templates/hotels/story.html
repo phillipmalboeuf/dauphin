@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="padded padded--thick max_width">
-		<div class="big_bottom">{{hotel.story|safe}}</div>
+		<div class="big_bottom">{{hotel.story|editable('story', {'hotel': hotel._id})}}</div>
 	</div>
 </article>
 {% endblock %}

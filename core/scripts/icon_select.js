@@ -22,6 +22,12 @@ export class IconSelect extends React.Component {
 		document.removeEventListener("click", this.hide)
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+		if (this.updateChanges && prevState.icon != this.state.icon) {
+			this.updateChanges({currentTarget: this.element})
+		}
+	}
+
 	toggle(event) {
 		event.nativeEvent.stopImmediatePropagation()	
 		event.preventDefault()
@@ -42,6 +48,12 @@ export class IconSelect extends React.Component {
 	render() {
 
 		return <span className={`tooltip_container ${this.state.showed && "tooltip_container--show"}`}>
+			<span ref={(element)=> { this.element = element }} className="hide"
+				data-list={this.props.list}
+				data-index={this.props.index}
+				data-hotel={this.props.hotel}
+				data-room={this.props.room}
+				data-key={this.props.dataKey}>{this.state.icon}</span>
 			<button className="button--transparent" onClick={this.toggle.bind(this)}><svg className="icon" dangerouslySetInnerHTML={{__html: `<use xlink:href="#icon-${this.state.icon}" />`}} /></button>
 			<div className="tooltip">
 				<div className="grid grid--tight_guttered">

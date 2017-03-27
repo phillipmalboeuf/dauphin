@@ -33,20 +33,26 @@ const Core = {
 	},
 
 	render() {
-
-		const save = document.getElementById("save")
-		if (save) {
-			ReactDOM.render(
-				<Save />, save
-			)
-		}
+		let editables = []
 
 		const icons = document.querySelectorAll("[data-icon]")
 		if (icons.length > 0) {
 			for (var i = icons.length - 1; i >= 0; i--) {
-				ReactDOM.render(
-					<IconSelect icon={icons[i].getAttribute("data-icon")} />, icons[i]
-				)
+				editables.push(ReactDOM.render(
+					<IconSelect icon={icons[i].getAttribute("data-icon")}
+						dataKey={icons[i].getAttribute("data-key")}
+						list={icons[i].getAttribute("data-list")}
+						index={icons[i].getAttribute("data-index")}
+						hotel={icons[i].getAttribute("data-hotel")}
+						room={icons[i].getAttribute("data-room")} />, icons[i]
+				))
+
+				icons[i].removeAttribute("data-icon")
+				icons[i].removeAttribute("data-key")
+				icons[i].removeAttribute("data-list")
+				icons[i].removeAttribute("data-index")
+				icons[i].removeAttribute("data-hotel")
+				icons[i].removeAttribute("data-room")
 			}
 		}
 
@@ -57,7 +63,7 @@ const Core = {
 					<Reservation 
 						hotelId={reservation.getAttribute("data-hotel-id")}
 						coupon={reservation.getAttribute("data-reservation-coupon")}
-						icon={reservation.getAttribute("data-icon")} />, reservation
+						icon={reservation.getAttribute("data-icon-svg")} />, reservation
 				)
 			}
 		}
@@ -77,6 +83,13 @@ const Core = {
 		if (background) {
 			ReactDOM.render(
 				<Background />, background
+			)
+		}
+
+		const save = document.getElementById("save")
+		if (save) {
+			ReactDOM.render(
+				<Save editables={editables} />, save
 			)
 		}
 	},
