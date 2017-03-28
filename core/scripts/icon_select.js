@@ -23,8 +23,8 @@ export class IconSelect extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.updateChanges && prevState.icon != this.state.icon) {
-			this.updateChanges({currentTarget: this.element})
+		if (prevState.icon != this.state.icon) {
+			this.props.save.updateChanges({currentTarget: this.element})
 		}
 	}
 

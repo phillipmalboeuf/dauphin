@@ -29,27 +29,6 @@ window.Core = {
 	},
 
 	render() {
-		let editables = []
-
-		const icons = document.querySelectorAll("[data-icon]")
-		if (icons.length > 0) {
-			for (var i = icons.length - 1; i >= 0; i--) {
-				editables.push(ReactDOM.render(
-					<IconSelect icon={icons[i].getAttribute("data-icon")}
-						dataKey={icons[i].getAttribute("data-key")}
-						list={icons[i].getAttribute("data-list")}
-						index={icons[i].getAttribute("data-index")}
-						hotel={icons[i].getAttribute("data-hotel")}
-						room={icons[i].getAttribute("data-room")} />, icons[i]
-				))
-
-				icons[i].removeAttribute("data-key")
-				icons[i].removeAttribute("data-list")
-				icons[i].removeAttribute("data-index")
-				icons[i].removeAttribute("data-hotel")
-				icons[i].removeAttribute("data-room")
-			}
-		}
 
 		if (window.innerWidth > 600) {
 			const reservation = document.getElementById("reservation")
@@ -84,7 +63,7 @@ window.Core = {
 		const save = document.getElementById("save")
 		if (save) {
 			ReactDOM.render(
-				<Save ref={(save)=> { this.save = save}} editables={editables} />, save
+				<Save ref={(save)=> { this.save = save}} />, save
 			)
 		}
 
@@ -98,6 +77,26 @@ window.Core = {
 				}
 				ReactDOM.render(
 					<EditableList save={this.save} items={items} />, lists[i]
+				)
+			}
+		}
+
+		this.renderIcons()
+	},
+
+
+	renderIcons() {
+		const icons = document.querySelectorAll("[data-icon]")
+		if (icons.length > 0) {
+			for (var i = icons.length - 1; i >= 0; i--) {
+				ReactDOM.render(
+					<IconSelect icon={icons[i].getAttribute("data-icon")}
+						dataKey={icons[i].getAttribute("data-key")}
+						list={icons[i].getAttribute("data-list")}
+						index={icons[i].getAttribute("data-index")}
+						hotel={icons[i].getAttribute("data-hotel")}
+						room={icons[i].getAttribute("data-room")}
+						save={this.save} />, icons[i]
 				)
 			}
 		}

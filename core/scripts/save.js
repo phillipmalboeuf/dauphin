@@ -27,10 +27,6 @@ export class Save extends React.Component {
 			this.editables[i].addEventListener("click", this.preventClick.bind(this))
 		}
 
-		for (var i = 0; i < this.props.editables.length; i++) {
-			this.props.editables[i].updateChanges = this.updateChanges.bind(this)
-		}
-
 		key("command+s,ctrl+s", this.save.bind(this))
 	}
 
@@ -160,7 +156,9 @@ export class Save extends React.Component {
 		// console.log(this.state.rooms)
 
 		return <div className="save">
-			<Button className="button--small" label="Save" onClick={this.save.bind(this)} />
+			<Button className="button--small"
+				disabled={Object.keys(this.state.pieces).length + Object.keys(this.state.hotels).length + Object.keys(this.state.rooms).length === 0}
+				label="Save" onClick={this.save.bind(this)} />
 		</div>
 	}
 }

@@ -13,6 +13,7 @@ export class EditableList extends React.Component {
 	}
 
 	componentDidMount() {
+		window.Core.renderIcons()
 		this.props.save.componentWillUnmount()
 		this.props.save.componentDidMount()
 	}
@@ -22,6 +23,7 @@ export class EditableList extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		window.Core.renderIcons()
 		this.props.save.componentWillUnmount()
 		this.props.save.componentDidMount()
 	}

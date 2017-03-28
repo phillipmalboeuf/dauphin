@@ -29,8 +29,9 @@
 					<h3>{{pieces.hotels.proximity_restaurants}}</h3>
 				</div>
 				<div class="col col--8of12">
+					{% filter editable_list('proximity_restaurants', {'hotel': hotel._id}) %}
 					{% for item in hotel.proximity_restaurants %}
-					<p>
+					<div class="normal_bottom" data-list-item>
 						{% if request.current_session_is_admin %}
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
@@ -38,8 +39,9 @@
 							<strong>{{item.name|editable('name', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
 							{{item.description|editable('description', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
-					</p>
+					</div>
 					{% endfor %}
+					{% endfilter %}
 				</div>
 			</div>
 		</div>
@@ -50,8 +52,9 @@
 					<h3>{{pieces.hotels.proximity_cafes}}</h3>
 				</div>
 				<div class="col col--8of12">
+					{% filter editable_list('proximity_cafes', {'hotel': hotel._id}) %}
 					{% for item in hotel.proximity_cafes %}
-					<p>
+					<div class="normal_bottom" data-list-item>
 						{% if request.current_session_is_admin %}
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
@@ -59,8 +62,9 @@
 							<strong>{{item.name|editable('name', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
 							{{item.description|editable('description', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
-					</p>
+					</div>
 					{% endfor %}
+					{% endfilter %}
 				</div>
 			</div>
 		</div>
@@ -71,8 +75,9 @@
 					<h3>{{pieces.hotels.proximity_bars}}</h3>
 				</div>
 				<div class="col col--8of12">
+					{% filter editable_list('proximity_bars', {'hotel': hotel._id}) %}
 					{% for item in hotel.proximity_bars %}
-					<p>
+					<div class="normal_bottom" data-list-item>
 						{% if request.current_session_is_admin %}
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
@@ -80,8 +85,9 @@
 							<strong>{{item.name|editable('name', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
 							{{item.description|editable('description', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
-					</p>
+					</div>
 					{% endfor %}
+					{% endfilter %}
 				</div>
 			</div>
 		</div>
@@ -92,8 +98,9 @@
 					<h3>{{pieces.hotels.proximity_quick_bites}}</h3>
 				</div>
 				<div class="col col--8of12">
+					{% filter editable_list('proximity_quick_bites', {'hotel': hotel._id}) %}
 					{% for item in hotel.proximity_quick_bites %}
-					<p>
+					<div class="normal_bottom" data-list-item>
 						{% if request.current_session_is_admin %}
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
@@ -101,8 +108,9 @@
 							<strong>{{item.name|editable('name', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
 							{{item.description|editable('description', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
-					</p>
+					</div>
 					{% endfor %}
+					{% endfilter %}
 				</div>
 			</div>
 		</div>
@@ -113,8 +121,9 @@
 					<h3>{{pieces.hotels.proximity_others}}</h3>
 				</div>
 				<div class="col col--8of12">
+					{% filter editable_list('proximity_others', {'hotel': hotel._id}) %}
 					{% for item in hotel.proximity_others %}
-					<p>
+					<div class="normal_bottom" data-list-item>
 						{% if request.current_session_is_admin %}
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
@@ -122,8 +131,9 @@
 							<strong>{{item.name|editable('name', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
 							{{item.description|editable('description', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}
 						</a>
-					</p>
+					</div>
 					{% endfor %}
+					{% endfilter %}
 				</div>
 			</div>
 		</div>
