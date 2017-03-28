@@ -41,15 +41,15 @@
 		<div class="big_bottom">
 			<div class="grid grid--guttered">
 				<div class="col col--4of12 text_center">
-					<div class="medium_bottom big_icons"><svg class="icon"><use xlink:href="#icon-{{hotel.description_1_icon}}" /></svg></div>
+					<div class="medium_bottom big_icons">{% filter editable('description_1_icon', {'hotel': hotel._id, 'icon': hotel.description_1_icon}, False) %}<svg class="icon"><use xlink:href="#icon-{{hotel.description_1_icon}}" /></svg>{% endfilter %}</div>
 					<h4>{{hotel.description_1|editable('description_1', {'hotel': hotel._id})}}</h4>
 				</div>
 				<div class="col col--4of12 text_center">
-					<div class="medium_bottom big_icons"><svg class="icon"><use xlink:href="#icon-{{hotel.description_2_icon}}" /></svg></div>
+					<div class="medium_bottom big_icons">{% filter editable('description_2_icon', {'hotel': hotel._id, 'icon': hotel.description_2_icon}, False) %}<svg class="icon"><use xlink:href="#icon-{{hotel.description_2_icon}}" /></svg>{% endfilter %}</div>
 					<h4>{{hotel.description_2|editable('description_2', {'hotel': hotel._id})}}</h4>
 				</div>
 				<div class="col col--4of12 text_center">
-					<div class="medium_bottom big_icons"><svg class="icon"><use xlink:href="#icon-{{hotel.description_3_icon}}" /></svg></div>
+					<div class="medium_bottom big_icons">{% filter editable('description_3_icon', {'hotel': hotel._id, 'icon': hotel.description_3_icon}, False) %}<svg class="icon"><use xlink:href="#icon-{{hotel.description_3_icon}}" /></svg>{% endfilter %}</div>
 					<h4>{{hotel.description_3|editable('description_3', {'hotel': hotel._id})}}</h4>
 				</div>
 			</div>

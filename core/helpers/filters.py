@@ -48,22 +48,19 @@ def editable(editable, key, data, contenteditable=True):
 		return  Markup(editable)
 
 
+@app.template_filter('editable_list')
+def editable_list(editable, list, data):
+	markup = '<div{} data-editable-list="{}">{}</div>'
 
-	# split = editable.split('.')
-	# markup = '<span{} data-{}-id="{}" data-key="{}" contenteditable>{}</span>'
-	# if parent_id is None:
-	# 	parent_id = ''
-	# else:
-	# 	parent_id = ' data-parent-id="{}"'.format(parent_id)
+	data_tags = ''
+	for (data_key, data_value) in data.items():
+		data_tags += ' data-{}="{}"'.format(data_key, data_value)
 
-	# if len(split) == 1:
-	
+	if request.current_session_is_admin:	
+		return Markup(markup.format(data_tags, list, editable))
+	else:
+		return Markup(editable)
 
-	# else:
-	# 	if request.current_session_is_admin:
-	# 		return Markup(markup.format(parent_id, collection_name, str(collection[split[0]]['_id']), split[1], collection[split[0]][split[1]]))
-	# 	else:
-	# 		return Markup(collection[split[0]][split[1]])
 	
 
 

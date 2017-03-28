@@ -2,6 +2,7 @@
 
 import { Login } from './login.js'
 import { Save } from './save.js'
+import { EditableList } from './editable_list.js'
 import { IconSelect } from './icon_select.js'
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
@@ -12,11 +13,10 @@ if (module.hot)
 	module.hot.accept()
 
 
-const Core = {
+window.Core = {
 	init() {
 		this.render()
 		this.renderLogin()
-		this.renderSave()
 	},
 
 	renderLogin() {
@@ -26,10 +26,6 @@ const Core = {
 				<Login />, login
 			)
 		}
-	},
-
-	renderSave() {
-		
 	},
 
 	render() {
@@ -47,7 +43,6 @@ const Core = {
 						room={icons[i].getAttribute("data-room")} />, icons[i]
 				))
 
-				icons[i].removeAttribute("data-icon")
 				icons[i].removeAttribute("data-key")
 				icons[i].removeAttribute("data-list")
 				icons[i].removeAttribute("data-index")
@@ -89,8 +84,22 @@ const Core = {
 		const save = document.getElementById("save")
 		if (save) {
 			ReactDOM.render(
-				<Save editables={editables} />, save
+				<Save ref={(save)=> { this.save = save}} editables={editables} />, save
 			)
+		}
+
+		const lists = document.querySelectorAll("[data-editable-list]")
+		if (lists.length > 0) {
+			for (var i = lists.length - 1; i >= 0; i--) {
+				let items = []
+				const itemsSelector = lists[i].querySelectorAll("[data-list-item]")
+				for (var j = 0; j < itemsSelector.length; j++) {
+					items.push(itemsSelector[j])
+				}
+				ReactDOM.render(
+					<EditableList save={this.save} items={items} />, lists[i]
+				)
+			}
 		}
 	},
 
@@ -106,11 +115,11 @@ const Core = {
 	}
 }
 
-Core.destroy()
-Core.init()
+window.Core.destroy()
+window.Core.init()
 document.addEventListener("turbolinks:load", ()=> {
-	Core.render()
+	window.Core.render()
 })
 document.addEventListener("turbolinks:before-render", ()=> {
-	Core.destroy()
+	window.Core.destroy()
 })

@@ -65,5 +65,10 @@
 				left: $icon_size + $arrow_size;
 			}
 		}
+
+		.icon {
+			width: $icon_size;
+			height: $icon_size;
+		}
 	}
 

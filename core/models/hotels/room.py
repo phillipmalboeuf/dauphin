@@ -25,8 +25,8 @@ with app.app_context():
 			'featured_photo': validation_rules['text'],
 			'in_the_room': validation_rules['items_list'],
 			'in_the_room_on_demand': validation_rules['items_list'],
-			'in_the_room_services': validation_rules['items_list'],
-			'in_the_room_paid_services': validation_rules['items_list'],
+			'services': validation_rules['items_list'],
+			'paid_services': validation_rules['items_list'],
 			'metadata': validation_rules['metadata']
 		}
 
