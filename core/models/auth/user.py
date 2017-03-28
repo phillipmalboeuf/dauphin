@@ -9,7 +9,7 @@ from core.models.core.with_templates import WithTemplates
 
 
 from core.helpers.validation_rules import validation_rules
-from core.tasks.trigger import trigger_tasks
+# from core.tasks.trigger import trigger_tasks
 
 from bson.objectid import ObjectId
 
@@ -124,10 +124,10 @@ with app.app_context():
 				document['is_admin'] = False
 
 
-			trigger_tasks.apply_async(('user_created', {
-				'user': document,
-				'has_generated_password': has_generated_password
-			}))
+			# trigger_tasks.apply_async(('user_created', {
+			# 	'user': document,
+			# 	'has_generated_password': has_generated_password
+			# }))
 
 
 			return super().create(document)
@@ -141,9 +141,9 @@ with app.app_context():
 			document = super().update(_id, document, other_operators, projection)
 
 
-			trigger_tasks.apply_async(('user_updated', {
-				'user': document
-			}))
+			# trigger_tasks.apply_async(('user_updated', {
+			# 	'user': document
+			# }))
 
 
 			return document

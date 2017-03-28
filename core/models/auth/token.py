@@ -7,7 +7,7 @@ from core.models.core.has_routes import HasRoutes
 
 from core.helpers.validation_rules import validation_rules
 from core.helpers.raise_error import raise_error
-from core.tasks.trigger import trigger_tasks
+# from core.tasks.trigger import trigger_tasks
 
 from core.models.auth.user import User
 
@@ -67,10 +67,10 @@ with app.app_context():
 			except KeyError:
 				pass
 
-			trigger_tasks.apply_async(('token_created', {
-				'token': document,
-				'user': user
-			}))
+			# trigger_tasks.apply_async(('token_created', {
+			# 	'token': document,
+			# 	'user': user
+			# }))
 
 
 			return super().create(document)

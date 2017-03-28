@@ -6,7 +6,7 @@ from core.models.core.has_routes import HasRoutes
 from core.models.core.with_templates import WithTemplates
 
 from core.helpers.validation_rules import validation_rules
-from core.tasks.trigger import trigger_tasks
+# from core.tasks.trigger import trigger_tasks
 
 from bson.objectid import ObjectId
 

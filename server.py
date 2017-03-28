@@ -58,11 +58,11 @@ Hotel.define_routes()
 Room.define_routes()
 
 
-from core.models.tasks.scheduled import ScheduledTask
-from core.models.tasks.triggered import TriggeredTask
+# from core.models.tasks.scheduled import ScheduledTask
+# from core.models.tasks.triggered import TriggeredTask
 
-ScheduledTask.define_routes()
-TriggeredTask.define_routes()
+# ScheduledTask.define_routes()
+# TriggeredTask.define_routes()
 
 
 
