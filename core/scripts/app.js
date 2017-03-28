@@ -4,6 +4,7 @@ import { Login } from './login.js'
 import { Save } from './save.js'
 import { EditableList } from './editable_list.js'
 import { IconSelect } from './icon_select.js'
+import { AddNewPage } from './add_new_page.js'
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
 import { Background } from './background.js'
@@ -58,6 +59,15 @@ window.Core = {
 			ReactDOM.render(
 				<Background />, background
 			)
+		}
+
+		const new_pages = document.querySelectorAll("[data-add-new-page]")
+		if (new_pages.length > 0) {
+			for (var i = new_pages.length - 1; i >= 0; i--) {
+				ReactDOM.render(
+					<AddNewPage />, new_pages[i]
+				)
+			}
 		}
 
 		const save = document.getElementById("save")

@@ -25,6 +25,7 @@ with app.app_context():
 			'name': validation_rules['text'],
 			'route': validation_rules['text'],
 			'body': validation_rules['text'],
+			'hide_from_navigation': validation_rules['bool'],
 			'metadata': validation_rules['metadata']
 		}
 

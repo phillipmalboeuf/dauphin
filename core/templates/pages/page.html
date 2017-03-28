@@ -5,7 +5,11 @@
 {% block main %}
 <div class="padded padded--vertically_thick max_width">
 	{% if request.current_session_is_admin %}
-	<p>Page url: <code>/pages/{{page.route|editable('route', {'page': page._id})}}</code></p>
+	<p>
+		Page url: <code>/pages/{{page.route|editable('route', {'page': page._id})}}</code><br>
+		<input type="checkbox" id="hide_from_navigation" {% if page.hide_from_navigation %}checked{% endif %}
+		data-page="{{page._id}}" data-key="hide_from_navigation"><label for="hide_from_navigation"> &nbsp;&nbsp;Hide from navigation?</label>
+	</p>
 	{% endif %}
 	<h1>{{page.name|editable('name', {'page': page._id})}}</h1>
 	<div>{{page.body|editable('body', {'page': page._id})}}</div>

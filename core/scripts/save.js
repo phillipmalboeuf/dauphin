@@ -2,6 +2,7 @@ import { Session } from './models/session.js';
 import { User } from './models/user.js';
 
 import { Piece } from './models/piece.js';
+import { Page } from './models/page.js';
 import { Hotel } from './models/hotel.js';
 import { Room } from './models/room.js';
 
@@ -16,7 +17,8 @@ export class Save extends React.Component {
 		this.state = {
 			pieces: {},
 			hotels: {},
-			rooms: {}
+			rooms: {},
+			pages: {}
 		}
 	}
 
@@ -25,6 +27,11 @@ export class Save extends React.Component {
 		for (var i = 0; i < this.editables.length; i++) {
 			this.editables[i].addEventListener("input", this.updateChanges.bind(this))
 			this.editables[i].addEventListener("click", this.preventClick.bind(this))
+		}
+
+		this.checkboxes = document.querySelectorAll("[type='checkbox'][data-key]")
+		for (var i = 0; i < this.checkboxes.length; i++) {
+			this.checkboxes[i].addEventListener("change", this.updateChanges.bind(this))
 		}
 
 		key("command+s,ctrl+s", this.save.bind(this))
@@ -36,6 +43,10 @@ export class Save extends React.Component {
 			this.editables[i].removeEventListener("click", this.preventClick)
 		}
 
+		for (var i = 0; i < this.checkboxes.length; i++) {
+			this.checkboxes[i].removeEventListener("change", this.updateChanges)
+		}
+
 		key.unbind("command+s,ctrl+s")
 	}
 
@@ -45,6 +56,7 @@ export class Save extends React.Component {
 		let hotel = event.currentTarget.getAttribute("data-hotel")
 		let room = event.currentTarget.getAttribute("data-room")
 		let list = event.currentTarget.getAttribute("data-list")
+		let page = event.currentTarget.getAttribute("data-page")
 		
 		if (piece) {
 			if (!this.state.pieces[piece]) { this.state.pieces[piece] = {} }
@@ -52,6 +64,17 @@ export class Save extends React.Component {
 		
 			this.setState({
 				pieces: this.state.pieces
+			})
+		} else if (page) {
+			if (!this.state.pages[page]) { this.state.pages[page] = {} }
+			if (event.currentTarget.checked != undefined) {
+				this.state.pages[page][key] = event.currentTarget.checked
+			} else {
+				this.state.pages[page][key] = event.currentTarget.innerHTML	
+			}
+		
+			this.setState({
+				pages: this.state.pages
 			})
 		} else if (room) {
 			room = `${hotel}.${room}`
@@ -100,7 +123,7 @@ export class Save extends React.Component {
 	}
 
 	save(event) {
-		if (Object.keys(this.state.pieces).length + Object.keys(this.state.hotels).length + Object.keys(this.state.rooms).length !== 0) {
+		if (Object.keys(this.state.pieces).length + Object.keys(this.state.pages).length + Object.keys(this.state.hotels).length + Object.keys(this.state.rooms).length !== 0) {
 			if (event) {
 				event.preventDefault()
 			}
@@ -120,6 +143,12 @@ export class Save extends React.Component {
 				let piece = new Piece()
 				piece.id = _id
 				saves.push(piece.save({ content: content }))
+			}
+
+			for (let [_id, attributes] of Object.entries(this.state.pages)) {
+				let page = new Page()
+				page.id = _id
+				saves.push(page.save(attributes))
 			}
 
 			for (let [_id, attributes] of Object.entries(this.state.hotels)) {
@@ -145,7 +174,8 @@ export class Save extends React.Component {
 				this.setState({
 					pieces: {},
 					hotels: {},
-					rooms: {}
+					rooms: {},
+					pages: {}
 				})
 			})
 		}
@@ -153,11 +183,11 @@ export class Save extends React.Component {
 
 
 	render() {
-		// console.log(this.state.rooms)
+		console.log(this.state.pages)
 
 		return <div className="save">
 			<Button className="button--small"
-				disabled={Object.keys(this.state.pieces).length + Object.keys(this.state.hotels).length + Object.keys(this.state.rooms).length === 0}
+				disabled={Object.keys(this.state.pieces).length + Object.keys(this.state.pages).length + Object.keys(this.state.hotels).length + Object.keys(this.state.rooms).length === 0}
 				label="Save" onClick={this.save.bind(this)} />
 		</div>
 	}

@@ -38,10 +38,20 @@
 
 		<div class="col col--2of12 col--tablet_landscape--4of12 col--phone--6of12">
 			<p class="p--small p--thick_lines">
-				{% for page in pages %}
+				{% for page in pages if not page.hide_from_navigation %}
 				<a href="/pages/{{page.route}}">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
 				{% endfor %}
 			</p>
+
+			{% if request.current_session_is_admin %}
+			<p class="p--small p--thick_lines">
+				{% for page in pages if page.hide_from_navigation %}
+				<a href="/pages/{{page.route}}" style="opacity: 0.5">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
+				{% endfor %}
+
+				<div data-add-new-page></div>
+			</p>
+			{% endif %}
 		</div>
 
 		<div class="col col--12of12 medium_top">
