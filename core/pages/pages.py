@@ -16,7 +16,7 @@ import os
 
 def page(lang=None):
 	cached_template = app.caches['/pages'].get(request.path)
-	if cached_template is None or app.config['DEBUG']:
+	if cached_template is None or request.current_session_is_admin or app.config['DEBUG']:
 		response = {
 			'pieces': Piece._values(lang),
 			'pages': Page.list(),
@@ -36,7 +36,8 @@ def page(lang=None):
 			response['current_path'] = request.path.replace(response['lang_route'], '/')
 
 		render = render_template('pages/' + request.endpoint + '.html', **response)
-		app.caches['/pages'].set(request.path, render, timeout=0)
+		if not request.current_session_is_admin:
+			app.caches['/pages'].set(request.path, render, timeout=0)
 		return render
 
 	else:
