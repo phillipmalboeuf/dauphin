@@ -84,7 +84,7 @@ header {
 		z-index: 5;
 
 		width: 100%;
-		max-width: $max_width;
+		max-width: $max_width*1.1;
 
 		@include transformer($slow);
 		@include translate(0, 0);

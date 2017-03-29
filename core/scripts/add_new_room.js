@@ -56,7 +56,6 @@ export class RemoveRoom extends React.Component {
 			let room = new Room()
 			room.id = this.props.room
 			room.endpoint = `${room.parent_endpoint}/${this.props.hotel}${room.endpoint}`
-			console.log(this.props)
 			room.destroy().then((response)=> {
 				// console.log(response)
 

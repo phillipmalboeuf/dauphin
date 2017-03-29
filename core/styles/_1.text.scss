@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 	h3 {
 		font-size: $small_size;
 		line-height: (16/$base) * 1rem;
-		font-weight: bold;
+		font-weight: $bold;
 		font-family: $alternate_font;
 		text-transform: uppercase;
 		letter-spacing: $letter_spacing;

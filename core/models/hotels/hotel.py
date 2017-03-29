@@ -135,7 +135,7 @@ with app.app_context():
 
 		@classmethod
 		def define_routes(cls):
-			for hotel in ['montreal', 'saint-hyacinthe', 'ville-de-quebec', 'drummondville', 'mtl-longueuil']:
+			for hotel in ['montreal', 'saint-hyacinthe', 'montreal-longueuil', 'ville-de-quebec', 'drummondville']:
 				rule = Rule('/' + hotel, defaults={'_id': hotel}, endpoint=cls.endpoint + '/get_view', methods=['GET'], strict_slashes=False)
 				rule.route = {
 					'route': '/' + hotel,

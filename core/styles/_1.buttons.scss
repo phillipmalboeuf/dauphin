@@ -7,7 +7,7 @@ button,
 	display: inline-block;
 	
 	font-family: $alternate_font;
-	font-weight: bold;
+	font-weight: $bold;
 	font-size: (12/$base) * 1rem;
 	line-height: 1;
 	text-align: center;
