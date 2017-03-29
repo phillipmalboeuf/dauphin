@@ -11,7 +11,7 @@
 
 {% block main %}
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
-	<div class="hero" style="background-image: url({{hotel.proximity_photo}})">
+	<div class="hero" style="background-image: url(https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.proximity_photo}})">
 		<div class="hero__box hero__box--full">
 			<div class="hero__box__content">
 				<h3 class="small_bottom"><a href="/hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>

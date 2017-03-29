@@ -27,7 +27,7 @@
 {% block main %}
 
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
-	<div class="hero" style="background-image: url({{hotel.featured_photo}})">
+	<div class="hero" style="background-image: url(https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.featured_photo}})">
 		<div class="hero__box">
 			<div class="hero__box__content">
 				<h2 class="h2--big big_bottom">{{hotel.tagline|editable('tagline', {'hotel': hotel._id})}}</h2>
