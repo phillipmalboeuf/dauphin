@@ -6,6 +6,8 @@ import { EditableList } from './editable_list.js'
 import { IconSelect } from './icon_select.js'
 import { AddNewPage } from './add_new_page.js'
 import { AddNewRoom } from './add_new_room.js'
+import { RemovePage } from './add_new_page.js'
+import { RemoveRoom } from './add_new_room.js'
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
 import { Background } from './background.js'
@@ -76,6 +78,24 @@ window.Core = {
 			for (var i = new_rooms.length - 1; i >= 0; i--) {
 				ReactDOM.render(
 					<AddNewRoom hotel={new_rooms[i].getAttribute("data-hotel")} />, new_rooms[i]
+				)
+			}
+		}
+
+		const remove_pages = document.querySelectorAll("[data-remove-page]")
+		if (remove_pages.length > 0) {
+			for (var i = remove_pages.length - 1; i >= 0; i--) {
+				ReactDOM.render(
+					<RemovePage page={remove_pages[i].getAttribute("data-remove-page")} />, remove_pages[i]
+				)
+			}
+		}
+
+		const remove_rooms = document.querySelectorAll("[data-remove-room]")
+		if (remove_rooms.length > 0) {
+			for (var i = remove_rooms.length - 1; i >= 0; i--) {
+				ReactDOM.render(
+					<RemoveRoom room={remove_rooms[i].getAttribute("data-remove-room")} hotel={remove_rooms[i].getAttribute("data-hotel")} />, remove_rooms[i]
 				)
 			}
 		}

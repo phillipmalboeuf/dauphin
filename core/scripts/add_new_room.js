@@ -38,3 +38,43 @@ export class AddNewRoom extends React.Component {
 	}
 }
 
+
+export class RemoveRoom extends React.Component {
+
+
+	constructor(props) {
+		super(props)
+	}
+
+	removeRoom(event) {
+		if (confirm("Are you sure?")) {
+			if (Turbolinks) {
+				Turbolinks.controller.adapter.progressBar.setValue(0)
+				Turbolinks.controller.adapter.progressBar.show()
+			}
+
+			let room = new Room()
+			room.id = this.props.room
+			room.endpoint = `${room.parent_endpoint}/${this.props.hotel}${room.endpoint}`
+			console.log(this.props)
+			room.destroy().then((response)=> {
+				// console.log(response)
+
+				if (Turbolinks) {
+					Turbolinks.controller.adapter.progressBar.setValue(100)
+					Turbolinks.controller.adapter.progressBar.hide()
+					Turbolinks.visit(`/hotels/${this.props.hotel}/rooms`)
+				}
+			})
+		}
+	}
+
+	render() {
+
+		return <div>
+			<Button className="button--transparent"
+				label="– Remove room" onClick={this.removeRoom.bind(this)} />
+		</div>
+	}
+}
+

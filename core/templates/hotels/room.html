@@ -23,7 +23,14 @@
 
 	<div class="padded padded--thick huge_bottom max_width">
 		{% if request.current_session_is_admin %}
-		<p>Room url: <code>/hotels/{{hotel.route}}/rooms/{{room.route|editable('route', {'hotel': hotel._id, 'room': room._id})}}</code></p>
+		<div class="grid grid--spaced medium_bottom">
+			<div class="col">
+				Room url: <code>/hotels/{{hotel.route}}/rooms/{{room.route|editable('route', {'hotel': hotel._id, 'room': room._id})}}</code>
+			</div>
+			<div class="col">
+				<div data-hotel="{{hotel._id}}" data-remove-room="{{room._id}}"></div>
+			</div>
+		</div>
 		{% endif %}
 
 		<h2 class="huge_bottom">{{room.description|editable('description', {'hotel': hotel._id, 'room': room._id})}}</h2>
