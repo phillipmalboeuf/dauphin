@@ -22,7 +22,7 @@ with app.app_context():
 				'route': '',
 				'view_function': 'upload_view',
 				'methods': ['POST'],
-				'requires_user': True
+				'requires_admin': True
 			}
 		]
 
@@ -42,7 +42,7 @@ with app.app_context():
 
 
 			return cls._format_response({
-				'url': 'uploads/'+_id+'/'+filename,
+				'url': 'https://d3hy1swj29dtr7.cloudfront.net/uploads/'+_id+'/'+filename,
 				'file_name': filename
 			})
 

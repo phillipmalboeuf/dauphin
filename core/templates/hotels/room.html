@@ -19,6 +19,10 @@
 				<a href="/hotels/{{hotel.route}}/rooms/{{room.route}}/photos" class="button button--secondary button--small">{{pieces.hotels.room_photos}}</a>
 			</div>
 		</div>
+
+		{% if request.current_session_is_admin %}
+		<div data-hotel="{{hotel._id}}" data-room="{{room._id}}" data-key="featured_photo" data-editable-background-image="{{room.featured_photo}}"></div>
+		{% endif %}
 	</div>
 
 	<div class="padded padded--thick huge_bottom max_width">

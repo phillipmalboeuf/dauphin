@@ -3,6 +3,7 @@
 import { Login } from './login.js'
 import { Save } from './save.js'
 import { EditableList } from './editable_list.js'
+import { EditableBackgroundImage } from './editable_background_image.js'
 import { IconSelect } from './icon_select.js'
 import { AddNewPage } from './add_new_page.js'
 import { AddNewRoom } from './add_new_room.js'
@@ -117,6 +118,20 @@ window.Core = {
 				}
 				ReactDOM.render(
 					<EditableList save={this.save} items={items} />, lists[i]
+				)
+			}
+		}
+
+		const images = document.querySelectorAll("[data-editable-background-image]")
+		if (images.length > 0) {
+			for (var i = images.length - 1; i >= 0; i--) {
+				ReactDOM.render(
+					<EditableBackgroundImage
+						image={images[i].getAttribute("data-editable-background-image")}
+						dataKey={images[i].getAttribute("data-key")}
+						hotel={images[i].getAttribute("data-hotel")}
+						room={images[i].getAttribute("data-room")}
+						save={this.save} />, images[i]
 				)
 			}
 		}

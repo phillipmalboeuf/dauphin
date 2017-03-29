@@ -183,7 +183,7 @@ export class Save extends React.Component {
 
 
 	render() {
-		console.log(this.state.pages)
+		console.log(this.state.rooms)
 
 		return <div className="save">
 			<Button className="button--small"
