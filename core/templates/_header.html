@@ -44,7 +44,7 @@
 				{% endif %}
 
 				<p class="p--thick_lines">
-					{% for page in pages %}
+					{% for page in pages if not page.hide_from_navigation %}
 					<a href="/pages/{{page.route}}">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
 					{% endfor %}
 				</p>
