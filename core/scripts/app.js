@@ -5,6 +5,7 @@ import { Save } from './save.js'
 import { EditableList } from './editable_list.js'
 import { IconSelect } from './icon_select.js'
 import { AddNewPage } from './add_new_page.js'
+import { AddNewRoom } from './add_new_room.js'
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
 import { Background } from './background.js'
@@ -66,6 +67,15 @@ window.Core = {
 			for (var i = new_pages.length - 1; i >= 0; i--) {
 				ReactDOM.render(
 					<AddNewPage />, new_pages[i]
+				)
+			}
+		}
+
+		const new_rooms = document.querySelectorAll("[data-add-new-room]")
+		if (new_rooms.length > 0) {
+			for (var i = new_rooms.length - 1; i >= 0; i--) {
+				ReactDOM.render(
+					<AddNewRoom hotel={new_rooms[i].getAttribute("data-hotel")} />, new_rooms[i]
 				)
 			}
 		}
