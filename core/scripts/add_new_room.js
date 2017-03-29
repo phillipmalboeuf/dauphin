@@ -18,7 +18,14 @@ export class AddNewRoom extends React.Component {
 
 		let room = new Room()
 		room.endpoint = `${room.parent_endpoint}/${this.props.hotel}${room.endpoint}`
-		room.save({ name: "Nouvelle Chambre", description: "La description de la chambre.", route: "new" }).then((response)=> {
+		room.save({
+			name: "Nouvelle Chambre",
+			description: "La description de la chambre.",
+			route: "new",
+			in_the_room: [{icon: "none", body: "Une description"}],
+			in_the_room_on_demand: [{icon: "none", body: "Une description"}],
+			services: [{icon: "none", body: "Une description"}],
+			paid_services: [{icon: "none", body: "Une description"}] }).then((response)=> {
 			// console.log(response)
 
 			if (Turbolinks) {
