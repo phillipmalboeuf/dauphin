@@ -21,13 +21,13 @@
 <nav class="nav grid grid--spaced grid--middle">
 	<div class="col col--3of12"></div>
 	<div><h3>{{hotel.name}}{% if gallery.room %}: {{gallery.room.name}}{% endif %}</h3></div>
-	<div class="col col--3of12 text_right"><a href="/hotels/{{hotel.route}}{% if gallery.room %}/rooms/{{gallery.room.route}}{% endif %}">Close &nbsp; {% include 'icons/close.svg' %}</a></div>
+	<div class="col col--3of12 text_right"><a href="/hotels/{{hotel.route}}{% if gallery.room %}/rooms/{{gallery.room.route}}{% endif %}">Fermer &nbsp; {% include 'icons/close.svg' %}</a></div>
 </nav>
 {% endblock %}
 
 
 {% block main %}
-<div class="padded padded--thick" data-slider data-slides='{% for photo in gallery.photos %}{{photo}}{% if not loop.last %},{% endif %}{% endfor %}'>
+<div class="padded" data-slider data-slides='{% for photo in gallery.photos %}{{photo}}{% if not loop.last %},{% endif %}{% endfor %}'>
 	<div class="grid grid--center grid--middle">
 		<div class="col col--10of12 col--tablet_portrait--12of12">
 			{% for photo in gallery.photos %}

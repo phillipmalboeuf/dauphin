@@ -41,7 +41,7 @@ export class Slider extends React.Component {
 	render() {
 
 		return <div className="grid grid--spaced grid--middle">
-			<div className="col col--1of12"><button onClick={this.previousSlide.bind(this)} className="button--transparent">&lt; Previous</button></div>
+			<div className="col col--1of12"><button onClick={this.previousSlide.bind(this)} className="button--transparent">&lt; Précédent</button></div>
 			<div className="col col--10of12 slider">
 				<div className="slider__container" ref={(div)=>{this.container = div}} style={{
 						width: (this.props.slides.length * 100)+"%"
@@ -56,7 +56,7 @@ export class Slider extends React.Component {
 					))}
 				</div>
 			</div>
-			<div className="col col--1of12 text_right"><button onClick={this.nextSlide.bind(this)} className="button--transparent">Next &gt;</button></div>
+			<div className="col col--1of12 text_right"><button onClick={this.nextSlide.bind(this)} className="button--transparent">Prochain &gt;</button></div>
 		</div>
 	}
 }

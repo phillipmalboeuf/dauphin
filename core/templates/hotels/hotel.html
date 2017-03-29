@@ -20,7 +20,7 @@
 	<div class="reservation" id="reservation" data-icon-svg='{% include "icons/down.svg" %}' data-hotel-id="{{hotel.reservation_id}}" data-reservation-coupon="{{hotel.reservation_coupon}}">
 		<a href="http://softbooker.reservit.com/reservit/reserhotel.php?lang={{lang}}&hotelid={{hotel.reservation_id}}&discountcode={{hotel.reservation_coupon}}" class="button button--full button--no_corners" target="_blank">{{pieces.hotels.reservation}}</a>
 	</div>
-	{% endblock %}	
+	{% endblock %}
 {% endblock %}
 
 
@@ -35,6 +35,10 @@
 				<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
 			</div>
 		</div>
+
+		{# {% if request.current_session_is_admin %}
+		<div data-hotel="{{hotel._id}}" data-key="featured_photo" data-background-image="{{hotel.featured_photo}}"></div>
+		{% endif %} #}
 	</div>
 
 	<div class="padded padded--thick max_width">
@@ -63,7 +67,7 @@
 
 			<div class="hero__box hero__box--transparent">
 				<div class="hero__box__content">
-					<a href="/hotels/{{hotel.route}}/photos" class="button button--secondary">{{pieces.hotels.see_photos}}</a>
+					<a href="/hotels/{{hotel.route}}/photos" class="button button--secondary">{{pieces.hotels.hotel_photos}}</a>
 				</div>
 			</div>
 		</div>
