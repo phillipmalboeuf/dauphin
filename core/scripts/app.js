@@ -34,6 +34,10 @@ window.Core = {
 	},
 
 	render() {
+		
+		document.getElementById("main").addEventListener("click", (event)=> {
+			document.getElementById("menu").checked = false
+		})
 
 		if (window.innerWidth > 600) {
 			const reservation = document.getElementById("reservation")
@@ -158,6 +162,7 @@ window.Core = {
 	},
 
 	destroy() {
+
 		const elements = document.querySelectorAll("[data-reactroot]")
 		if (elements.length > 0) {
 			for (var i = elements.length - 1; i >= 0; i--) {
