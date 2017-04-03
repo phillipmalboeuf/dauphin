@@ -22,6 +22,7 @@ export class AddNewRoom extends React.Component {
 			name: "Nouvelle Chambre",
 			description: "La description de la chambre.",
 			route: "new",
+			photos: [{image: "https://d3hy1swj29dtr7.cloudfront.net/uploads/58e25476970ad62c4d7668bc/hotel_2.jpg"}],
 			in_the_room: [{icon: "none", body: "Une description"}],
 			in_the_room_on_demand: [{icon: "none", body: "Une description"}],
 			services: [{icon: "none", body: "Une description"}],

@@ -61,7 +61,11 @@ export class Reservation extends React.Component {
 
 			<div className="reservation__content" id="reservation_content" ref={(content)=>{ this.content = content }}>
 				<div className="padded padded--tight light_back">
+					{Cookies.get('Session-Secret') &&
+					<p className="p--small p--highlight_strong text_center"><span contentEditable data-piece={pieces.hotels._id} data-key="reservation_info" dangerouslySetInnerHTML={{'__html': pieces.hotels.reservation_info}} /></p>
+					||
 					<p className="p--small p--highlight_strong text_center" dangerouslySetInnerHTML={{'__html': pieces.hotels.reservation_info}} />
+					}
 
 					<div className="grid grid--tight_guttered grid--middle">
 						<div className="col col--2of12"><label className="flat_bottom" htmlFor="check_in">{pieces.hotels.check_in}</label></div>

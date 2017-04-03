@@ -23,6 +23,7 @@ with app.app_context():
 			'route': validation_rules['text'],
 			'description': validation_rules['text'],
 			'featured_photo': validation_rules['text'],
+			'photos': validation_rules['image_list'],
 			'in_the_room': validation_rules['items_list'],
 			'in_the_room_on_demand': validation_rules['items_list'],
 			'services': validation_rules['items_list'],

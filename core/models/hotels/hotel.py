@@ -39,6 +39,7 @@ with app.app_context():
 			'reservation_id': validation_rules['text'],
 			'reservation_coupon': validation_rules['text'],
 			'featured_photo': validation_rules['text'],
+			'photos': validation_rules['image_list'],
 			'address': validation_rules['text'],
 			'full_address': validation_rules['text'],
 			'address_link': validation_rules['text'],

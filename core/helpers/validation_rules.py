@@ -47,7 +47,12 @@ validation_rules['text_list'] = {
 
 validation_rules['image_list'] = {
 		'type':'list',
-		'schema': validation_rules['image']
+		'schema': {
+			'type': 'dict',
+			'schema': {
+				'image': validation_rules['text']
+			}
+		}
 	}
 
 validation_rules['items_list'] = {

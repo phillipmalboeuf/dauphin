@@ -35,9 +35,13 @@ window.Core = {
 
 	render() {
 		
-		document.getElementById("main").addEventListener("click", (event)=> {
-			document.getElementById("menu").checked = false
-		})
+		const menu = document.getElementById("menu")
+		if (menu) {
+			document.getElementById("main").addEventListener("click", (event)=> {
+				menu.checked = false
+			})
+		}
+		
 
 		if (window.innerWidth > 600) {
 			const reservation = document.getElementById("reservation")
@@ -56,7 +60,11 @@ window.Core = {
 			if (sliders.length > 0) {
 				for (var i = sliders.length - 1; i >= 0; i--) {
 					ReactDOM.render(
-						<Slider slides={sliders[i].getAttribute("data-slides").split(",")} />, sliders[i]
+						<Slider slides={sliders[i].getAttribute("data-slides").split(",")}
+							hotel={sliders[i].getAttribute("data-hotel")}
+							room={sliders[i].getAttribute("data-room")}
+							list={sliders[i].getAttribute("data-slides-list")}
+							dataKey={sliders[i].getAttribute("data-slides-key")} />, sliders[i]
 					)
 				}
 			}
@@ -126,6 +134,11 @@ window.Core = {
 			}
 		}
 
+		this.renderBackgroundImages()
+		this.renderIcons()
+	},
+
+	renderBackgroundImages() {
 		const images = document.querySelectorAll("[data-editable-background-image]")
 		if (images.length > 0) {
 			for (var i = images.length - 1; i >= 0; i--) {
@@ -135,12 +148,12 @@ window.Core = {
 						dataKey={images[i].getAttribute("data-key")}
 						hotel={images[i].getAttribute("data-hotel")}
 						room={images[i].getAttribute("data-room")}
+						list={images[i].getAttribute("data-list")}
+						index={images[i].getAttribute("data-index")}
 						save={this.save} />, images[i]
 				)
 			}
 		}
-
-		this.renderIcons()
 	},
 
 

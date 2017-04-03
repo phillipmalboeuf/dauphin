@@ -7,10 +7,10 @@
 {% set hotel = gallery.room.parent %}
 {% endif %}
 
-{% block title %}Photos – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
-{% block description %}Photos – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
-{% block og_title %}Photos – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
-{% block og_description %}Photos – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
+{% block title %}Photos – {% if gallery.room %}{{gallery.room.name}} – {% endif %}{{ super() }}{% endblock %}
+{% block description %}Photos – {% if gallery.room %}{{gallery.room.description}} – {% endif %}{{ super() }}{% endblock %}
+{% block og_title %}Photos – {% if gallery.room %}{{gallery.room.name}} – {% endif %}{{ super() }}{% endblock %}
+{% block og_description %}Photos – {% if gallery.room %}{{gallery.room.description}} – {% endif %}{{ super() }}{% endblock %}
 
 
 {% block main_classes %}dark_back{% endblock %}
@@ -27,11 +27,11 @@
 
 
 {% block main %}
-<div class="padded" data-slider data-slides='{% for photo in gallery.photos %}{{photo}}{% if not loop.last %},{% endif %}{% endfor %}'>
+<div class="padded" data-slider data-slides='{% for photo in gallery.photos %}{{photo.image}}{% if not loop.last %},{% endif %}{% endfor %}' {% if request.current_session_is_admin %}data-hotel="{{hotel._id}}"{% if gallery.room %} data-room="{{gallery.room._id}}"{% endif %} data-slides-list="photos" data-slides-key="image"{% endif %}>
 	<div class="grid grid--center grid--middle">
 		<div class="col col--10of12 col--tablet_portrait--12of12">
 			{% for photo in gallery.photos %}
-			<img src="{{photo}}" class="medium_bottom">
+			<img src="https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_800/{{photo.image}}" class="img--full">
 			{% endfor %}
 		</div>
 	</div>

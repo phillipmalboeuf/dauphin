@@ -34,7 +34,7 @@ with app.app_context():
 			filename = secure_filename(uploaded_file.filename)
 			_id = str(ObjectId())
 
-			connection = boto.connect_s3(app.config['S3_ACCESS_KEY'], app.config['S3_SECRET_KEY'])
+			connection = boto.connect_s3(app.config['S3_ACCESS_KEY'], app.config['S3_SECRET_KEY'], is_secure=False)
 			bucket = connection.get_bucket(app.config['S3_BUCKET'])
 
 			key = bucket.new_key('uploads/' + _id + '/' + filename)
