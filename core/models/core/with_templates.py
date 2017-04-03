@@ -57,11 +57,6 @@ with app.app_context():
 								except KeyError:
 									pass
 
-								try:
-									lang = request.url_rule.lang
-								except AttributeError:
-									lang = None
-
 
 								from core.models.cms.piece import Piece
 								from core.models.cms.page import Page
@@ -69,7 +64,7 @@ with app.app_context():
 
 								response = {
 									template['response_key']: response.copy(),
-									'pieces': Piece._values(lang),
+									'pieces': Piece._values(request.url_rule.lang),
 									'pages': Page.list(),
 									'hotels': Hotel.list(),
 									'debugging': app.config['DEBUG'],
@@ -77,12 +72,12 @@ with app.app_context():
 								}
 								response['pieces_json'] = json.dumps(response['pieces'], sort_keys=False, default=json_formater)
 
-								if lang is None:
+								if request.url_rule.lang is None:
 									response['lang_route'] = '/'
 									response['current_path'] = request.path
 								else:
-									response['lang'] = lang
-									response['lang_route'] = '/' + lang + '/'
+									response['lang'] = request.url_rule.lang
+									response['lang_route'] = '/' + request.url_rule.lang + '/'
 									response['current_path'] = request.path.replace(response['lang_route'], '/')
 
 								template_name = template['template']

@@ -7,8 +7,6 @@ from core.models.core.has_routes import HasRoutes
 from core.helpers.validation_rules import validation_rules
 from core.helpers.json import to_json
 
-import markdown
-
 
 with app.app_context():
 	class Piece(HasRoutes, Model):
@@ -21,10 +19,6 @@ with app.app_context():
 			'content': validation_rules['content'],
 			'metadata': validation_rules['metadata']
 		}
-
-		schema['content']['valueschema']['schema']['translations'] = { 'type': 'dict', 'schema': {} }
-		for lang in app.config['LANGS']:
-			schema['content']['valueschema']['schema']['translations']['schema'][lang] = { 'nullable': True }
 
 
 		endpoint = '/pieces'
@@ -74,7 +68,7 @@ with app.app_context():
 			try:
 				for key in document['content'].copy().keys():
 					value = document['content'].pop(key)
-					document['content.'+key+'.value'] = value['value']
+					document['content.'+key] = value
 
 				del document['content']
 
@@ -94,21 +88,20 @@ with app.app_context():
 
 				try:
 					for (key, value) in document['content'].items():
-						if lang is not None:
-							try:
-								value['value'] = value['translations'][lang]
-							except KeyError:
-								pass
-
-
-						if 'is_markdown' in value and value['is_markdown']:
-							values[title][key] = markdown.markdown(value['value'])
-						else:
-							values[title][key] = value['value']
-
+						values[title][key] = value
 					del values[title]['content']
 				except KeyError:
 					pass
+
+
+				if lang is not None:
+					try:
+						for (key, value) in document['translations'][lang]['content'].items():
+							values[title][key] = value
+						del values[title]['translations']
+					except KeyError:
+						pass
+
 
 				del values[title]['is_online']
 

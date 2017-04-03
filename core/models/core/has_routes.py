@@ -66,6 +66,7 @@ with app.app_context():
 			for route in cls.routes:
 				rule = Rule(cls.endpoint + route['route'], endpoint=cls.endpoint + '/' + route['view_function'], methods=route['methods'], strict_slashes=False)
 				rule.route = route
+				rule.lang = None
 
 				app.view_functions[cls.endpoint + '/' + route['view_function']] = getattr(cls, route['view_function'])
 				app.url_map.add(rule)
@@ -77,6 +78,7 @@ with app.app_context():
 					app.url_map.add(rule)
 
 			return cls.routes
+
 
 
 
@@ -184,8 +186,8 @@ with app.app_context():
 
 
 		@classmethod
-		def _format_response(cls, data):
-			return to_json(data)
+		def _format_response(cls, response):
+			return to_json(response)
 
 
 

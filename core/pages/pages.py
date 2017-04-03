@@ -15,6 +15,8 @@ import os
 
 
 def page(lang=None):
+	request.url_rule.lang = lang
+
 	cached_template = app.caches['/pages'].get(request.path)
 	if cached_template is None or request.current_session_is_admin or app.config['DEBUG']:
 		response = {

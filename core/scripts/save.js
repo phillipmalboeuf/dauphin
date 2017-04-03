@@ -137,7 +137,7 @@ export class Save extends React.Component {
 
 			for (let [_id, content] of Object.entries(this.state.pieces)) {
 				for (let [key, value] of Object.entries(content)) {
-					content[key] = {value: value}
+					content[key] = value
 				}
 
 				let piece = new Piece()

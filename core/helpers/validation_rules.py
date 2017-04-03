@@ -29,13 +29,11 @@ validation_rules = {
 
 	'content':{
 		'type': 'dict',
+		'maxlength': 40,
 		'valueschema': {
-			'type': 'dict',
-			'schema': {
-				'label': { 'type': 'string', 'nullable': True },
-				'value': { 'nullable': True },
-				'is_markdown': { 'type': 'boolean', 'nullable': True }
-			}
+			'type': 'string',
+			'maxlength': 100000,
+			'nullable': True
 		}
 	}
 }
