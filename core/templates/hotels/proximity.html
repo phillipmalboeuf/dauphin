@@ -40,8 +40,8 @@
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name|editable('name', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
-							{{item.description|editable('description', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}</strong>
+							<p>{{item.description|editable('description', {'list': 'proximity_restaurants', 'index': loop.index0, 'hotel': hotel._id})}}</p>
 						</a>
 					</div>
 					{% endfor %}
@@ -63,8 +63,8 @@
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name|editable('name', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
-							{{item.description|editable('description', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}</strong>
+							<p>{{item.description|editable('description', {'list': 'proximity_cafes', 'index': loop.index0, 'hotel': hotel._id})}}</p>
 						</a>
 					</div>
 					{% endfor %}
@@ -86,8 +86,8 @@
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name|editable('name', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
-							{{item.description|editable('description', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}</strong>
+							<p>{{item.description|editable('description', {'list': 'proximity_bars', 'index': loop.index0, 'hotel': hotel._id})}}</p>
 						</a>
 					</div>
 					{% endfor %}
@@ -109,8 +109,8 @@
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name|editable('name', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
-							{{item.description|editable('description', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}</strong>
+							<p>{{item.description|editable('description', {'list': 'proximity_quick_bites', 'index': loop.index0, 'hotel': hotel._id})}}</p>
 						</a>
 					</div>
 					{% endfor %}
@@ -132,8 +132,8 @@
 						Link url: <code>{{item.link|editable('link', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
 						{% endif %}
 						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name|editable('name', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}</strong><br>
-							{{item.description|editable('description', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}
+							<strong>{{item.name|editable('name', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}</strong>
+							<p>{{item.description|editable('description', {'list': 'proximity_others', 'index': loop.index0, 'hotel': hotel._id})}}</p>
 						</a>
 					</div>
 					{% endfor %}
