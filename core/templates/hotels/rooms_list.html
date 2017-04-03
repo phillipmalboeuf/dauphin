@@ -7,7 +7,7 @@
 
 		<div class="padded">
 		{% for room in rooms %}
-			<h2 class="small_bottom"><a href="/hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h2>
+			<h2 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h2>
 		{% endfor %}
 
 		{% if request.current_session_is_admin %}
@@ -17,6 +17,6 @@
 
 		<hr>
 
-		<h3><a href="/hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>
+		<h3><a href="{{lang_route}}hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>
 	</div>
 </section>

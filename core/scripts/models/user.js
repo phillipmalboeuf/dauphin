@@ -7,7 +7,7 @@ export class User extends Model {
 
 	constructor() {
 		super()
-		this.endpoint = '/users'
+		this.endpoint = 'users'
 
 		this.id = Cookies.get('User-Id')
 	}

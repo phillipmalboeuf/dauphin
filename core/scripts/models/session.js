@@ -7,7 +7,7 @@ export class Session extends Model {
 
 	constructor() {
 		super()
-		this.endpoint = '/sessions'
+		this.endpoint = 'sessions'
 
 		this.id = Cookies.get("Session-Id")
 	}

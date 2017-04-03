@@ -7,7 +7,7 @@ export class Hotel extends Model {
 
 	constructor() {
 		super()
-		this.endpoint = '/hotels'
+		this.endpoint = 'hotels'
 	}
 }
 

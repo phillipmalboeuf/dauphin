@@ -8,7 +8,7 @@ export class Room extends Model {
 	constructor() {
 		super()
 		this.endpoint = '/rooms'
-		this.parent_endpoint = '/hotels'
+		this.parent_endpoint = 'hotels'
 	}
 }
 

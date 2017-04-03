@@ -32,7 +32,7 @@
 			<div class="hero__box__content">
 				<h2 class="h2--big big_bottom">{{hotel.tagline|editable('tagline', {'hotel': hotel._id})}}</h2>
 				<p class="p--small big_bottom">{{hotel.intro|editable('intro', {'hotel': hotel._id})}}</p>
-				<a href="/hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
+				<a href="{{lang_route}}hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
 			</div>
 		</div>
 
@@ -67,7 +67,7 @@
 
 			<div class="hero__box hero__box--transparent">
 				<div class="hero__box__content">
-					<a href="/hotels/{{hotel.route}}/photos" class="button button--secondary">{{pieces.hotels.hotel_photos}}</a>
+					<a href="{{lang_route}}hotels/{{hotel.route}}/photos" class="button button--secondary">{{pieces.hotels.hotel_photos}}</a>
 				</div>
 			</div>
 		</div>
@@ -85,7 +85,7 @@
 			<div class="hero hero--small hide_on_phone">
 				<div class="hero__box hero__box--light hero__box--full">
 					<div class="hero__box__content">
-						<a href="/hotels/{{hotel.route}}/story"><h2>{{pieces.hotels.story}}</h2></a>
+						<a href="{{lang_route}}hotels/{{hotel.route}}/story"><h2>{{pieces.hotels.story}}</h2></a>
 					</div>
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 			<div class="hero hero--small" style="background-image: url({{hotel.proximity_photo}})">
 				<div class="hero__box hero__box--full">
 					<div class="hero__box__content">
-						<a href="/hotels/{{hotel.route}}/proximity">
+						<a href="{{lang_route}}hotels/{{hotel.route}}/proximity">
 							<h2 class="flat_bottom">{{pieces.hotels.proximity}}</h2>
 							<p class="p--small">{{hotel.proximity_intro|editable('proximity_intro', {'hotel': hotel._id})}}</p>
 						</a>

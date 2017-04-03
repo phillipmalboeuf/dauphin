@@ -29,7 +29,6 @@ def page(lang=None):
 		if lang is None:
 			response['lang_route'] = '/'
 			response['current_path'] = request.path
-
 		else:
 			response['lang'] = lang
 			response['lang_route'] = '/' + lang + '/'

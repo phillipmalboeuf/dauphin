@@ -7,7 +7,7 @@ export class Page extends Model {
 
 	constructor() {
 		super()
-		this.endpoint = '/pages'
+		this.endpoint = 'pages'
 	}
 }
 

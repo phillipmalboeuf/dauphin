@@ -17,7 +17,7 @@ export class Model {
 	}
 
 	fetch() {
-		return fetch(this.endpoint + '/' + this.id,
+		return fetch(lang_route + this.endpoint + '/' + this.id,
 			{
 				headers: this.headers(),
 				credentials: 'include',
@@ -43,7 +43,7 @@ export class Model {
 	}
 
 	save(data) {
-		let url = this.endpoint
+		let url = lang_route + this.endpoint
 		let method = 'POST'
 
 		if (this.id) {
@@ -76,7 +76,7 @@ export class Model {
 
 	destroy() {
 
-		return fetch(this.endpoint + '/' + this.id,
+		return fetch(lang_route + this.endpoint + '/' + this.id,
 			{
 				headers: this.headers(),
 				credentials: 'include',

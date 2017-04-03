@@ -14,9 +14,9 @@
 	<div class="hero" style="background-image: url(https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{room.featured_photo}})">
 		<div class="hero__box hero__box--full">
 			<div class="hero__box__content">
-				<h3 class="small_bottom"><a href="/hotels/{{hotel.route}}/rooms">&lt; {{pieces.hotels.rooms}}</a></h3>
+				<h3 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms">&lt; {{pieces.hotels.rooms}}</a></h3>
 				<h1 class="big_bottom">{{room.name|editable('name', {'hotel': hotel._id, 'room': room._id})}}</h1>
-				<a href="/hotels/{{hotel.route}}/rooms/{{room.route}}/photos" class="button button--secondary button--small">{{pieces.hotels.room_photos}}</a>
+				<a href="{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route}}/photos" class="button button--secondary button--small">{{pieces.hotels.room_photos}}</a>
 			</div>
 		</div>
 
@@ -29,7 +29,7 @@
 		{% if request.current_session_is_admin %}
 		<div class="grid grid--spaced medium_bottom">
 			<div class="col">
-				Room url: <code>/hotels/{{hotel.route}}/rooms/{{room.route|editable('route', {'hotel': hotel._id, 'room': room._id})}}</code>
+				Room url: <code>{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route|editable('route', {'hotel': hotel._id, 'room': room._id})}}</code>
 			</div>
 			<div class="col">
 				<div data-hotel="{{hotel._id}}" data-remove-room="{{room._id}}"></div>

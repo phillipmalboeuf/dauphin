@@ -53,6 +53,12 @@ with app.app_context():
 				app.view_functions[cls.parent.endpoint + cls.endpoint + '/' + route['view_function']] = getattr(cls, route['view_function'])
 				app.url_map.add(rule)
 
+				for lang in app.config['LANGS']:
+					rule = Rule('/' + lang + cls.parent.endpoint + '/<string:parent_id>' + cls.endpoint + route['route'], endpoint=cls.parent.endpoint + cls.endpoint + '/' + route['view_function'], methods=route['methods'], strict_slashes=False)
+					rule.route = route
+					rule.lang = lang
+					app.url_map.add(rule)
+
 			return cls.routes
 
 

@@ -73,6 +73,7 @@ with app.app_context():
 				for lang in app.config['LANGS']:
 					rule = Rule('/' + lang + cls.endpoint + route['route'], endpoint=cls.endpoint + '/' + route['view_function'], methods=route['methods'], strict_slashes=False)
 					rule.route = route
+					rule.lang = lang
 					app.url_map.add(rule)
 
 			return cls.routes
@@ -185,28 +186,6 @@ with app.app_context():
 		@classmethod
 		def _format_response(cls, data):
 			return to_json(data)
-
-
-		# @classmethod
-		# def _merge_filters(cls, document_filter):
-
-		# 	merged_filters = super()._merge_filters(document_filter)
-
-		# 	try:
-		# 		if not request.current_session_is_admin:
-		# 			if request.requires_user:
-		# 				merged_filters.update({'user_id': request.current_session['user_id']})				
-
-		# 			elif request.requires_session:
-		# 				merged_filters.update({'session_id': request.current_session['_id']})
-
-		# 	except AttributeError:
-		# 		pass
-
-
-		# 	print(merged_filters)
-
-		# 	return merged_filters
 
 
 

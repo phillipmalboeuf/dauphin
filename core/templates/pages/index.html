@@ -16,7 +16,7 @@
 
 	<div class="padded">
 	{% for hotel in hotels if not hotel.extended_family %}
-		<a href="/{{hotel.route}}" data-background-image="https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.featured_photo}}"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
+		<a href="{{lang_route}}hotels/{{hotel.route}}" data-background-image="https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.featured_photo}}"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
 	{% endfor %}
 	</div>
 

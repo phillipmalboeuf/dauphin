@@ -7,7 +7,7 @@ export class Piece extends Model {
 
 	constructor() {
 		super()
-		this.endpoint = '/pieces'
+		this.endpoint = 'pieces'
 	}
 }
 
