@@ -17,21 +17,21 @@ with app.app_context():
 
 
 		@classmethod
-		def postprocess(cls, document, parent):
+		def postprocess(cls, document, parent, lang=None):
 			if parent is not None:
 				document['parent'] = parent.copy()
 				del document['parent'][cls.list_name]
 				
-			return document
+			return super().postprocess(document, lang)
 
 
 
 		@classmethod
-		def list(cls, parent_id, limit=0, skip=0, sort=None):
+		def list(cls, parent_id, limit=0, skip=0, sort=None, lang=None):
 
 			try:
-				parent = cls.parent.get(parent_id)
-				return [cls.postprocess(document, parent) for document in parent[cls.list_name]]
+				parent = cls.parent.get(parent_id, lang=lang)
+				return [cls.postprocess(document, parent, lang) for document in parent[cls.list_name]]
 
 			except KeyError:
 				return []
@@ -53,13 +53,13 @@ with app.app_context():
 
 
 		@classmethod
-		def get(cls, parent_id, _id, projection={}):
+		def get(cls, parent_id, _id, projection={}, lang=None):
 
 			try:
-				parent = cls.parent.get(parent_id, projection=projection)
+				parent = cls.parent.get(parent_id, projection=projection, lang=lang)
 				for child in parent[cls.list_name]:
 					if (ObjectId.is_valid(_id) and child['_id'] == ObjectId(_id)) or (child[cls.alternate_index] == _id):
-						return cls.postprocess(child, parent)
+						return cls.postprocess(child, parent, lang)
 				
 				abort(404)
 
@@ -85,9 +85,9 @@ with app.app_context():
 
 
 		@classmethod
-		def update(cls, parent_id, _id, document, projection={}):
+		def update(cls, parent_id, _id, document, projection={}, lang=None):
 
-			document = cls.preprocess(document)
+			document = cls.preprocess(document, lang)
 			document['updated_at'] = datetime.now(timezone(app.config['TIMEZONE']))
 
 			for key in document.copy().keys():
@@ -99,7 +99,7 @@ with app.app_context():
 					if child['_id'] == ObjectId(_id):
 						# search_index.apply_async((cls.parent.collection_name+'_'+cls.list_name, child['_id'], child))
 
-						return cls.postprocess(child, parent)
+						return cls.postprocess(child, parent, lang)
 
 				abort(404)
 

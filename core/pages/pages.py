@@ -21,8 +21,8 @@ def page(lang=None):
 	if cached_template is None or request.current_session_is_admin or app.config['DEBUG']:
 		response = {
 			'pieces': Piece._values(lang),
-			'pages': Page.list(),
-			'hotels': Hotel.list(),
+			'pages': Page.list(lang=lang),
+			'hotels': Hotel.list(lang=lang),
 			'debugging': app.config['DEBUG'],
 			'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
 		}

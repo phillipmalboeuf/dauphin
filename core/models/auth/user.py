@@ -135,10 +135,10 @@ with app.app_context():
 
 
 		@classmethod
-		def update(cls, _id, document, other_operators={}, projection={}):
+		def update(cls, _id, document, other_operators={}, projection={}, lang=None):
 
 
-			document = super().update(_id, document, other_operators, projection)
+			document = super().update(_id, document, other_operators, projection, lang)
 
 
 			# trigger_tasks.apply_async(('user_updated', {
@@ -152,7 +152,7 @@ with app.app_context():
 
 
 		@classmethod
-		def preprocess(cls, document):
+		def preprocess(cls, document, lang=None):
 
 			if not request.current_session_is_admin:
 				try:
@@ -168,12 +168,12 @@ with app.app_context():
 				
 				pass
 
-			return super().preprocess(document)
+			return super().preprocess(document, lang)
 
 
 
 		@classmethod
-		def postprocess(cls, document):
+		def postprocess(cls, document, lang=None):
 
 			try:
 				del document['password']
@@ -182,16 +182,7 @@ with app.app_context():
 				pass
 
 
-			return document
-
-
-
-		# VIEWS
-
-
-
-
-
+			return super().postprocess(document, lang)
 
 
 

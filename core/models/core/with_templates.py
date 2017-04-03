@@ -34,10 +34,10 @@ with app.app_context():
 		
 
 		@classmethod
-		def preprocess(cls, document):
+		def preprocess(cls, document, lang=None):
 			app.caches[cls.endpoint].clear()
 
-			return super().preprocess(document)
+			return super().preprocess(document, lang)
 
 
 		@classmethod
@@ -65,8 +65,8 @@ with app.app_context():
 								response = {
 									template['response_key']: response.copy(),
 									'pieces': Piece._values(request.url_rule.lang),
-									'pages': Page.list(),
-									'hotels': Hotel.list(),
+									'pages': Page.list(lang=request.url_rule.lang),
+									'hotels': Hotel.list(lang=request.url_rule.lang),
 									'debugging': app.config['DEBUG'],
 									'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
 								}

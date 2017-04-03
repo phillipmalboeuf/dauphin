@@ -66,7 +66,7 @@ with app.app_context():
 
 		@classmethod
 		def list_view(cls, parent_id):
-			return cls._format_response(cls.list(parent_id, {}))
+			return cls._format_response(cls.list(parent_id, {}, lang=request.url_rule.lang))
 
 
 
@@ -78,13 +78,13 @@ with app.app_context():
 
 		@classmethod
 		def get_view(cls, parent_id, _id):
-			return cls._format_response(cls.get(parent_id, _id))
+			return cls._format_response(cls.get(parent_id, _id, lang=request.url_rule.lang))
 
 
 
 		@classmethod
 		def update_view(cls, parent_id, _id):
-			return cls._format_response(cls.update(parent_id, _id, cls.validate(cls._get_json_from_request())))
+			return cls._format_response(cls.update(parent_id, _id, cls.validate(cls._get_json_from_request()), lang=request.url_rule.lang))
 
 
 

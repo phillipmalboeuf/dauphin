@@ -55,15 +55,15 @@ with app.app_context():
 
 
 		@classmethod
-		def preprocess(cls, document):
+		def preprocess(cls, document, lang=None):
 			for cache in app.caches:
 				app.caches[cache].clear()
 
-			return super().preprocess(document)
+			return super().preprocess(document, lang)
 
 
 		@classmethod
-		def update(cls, _id, document, other_operators={}, projection={}):
+		def update(cls, _id, document, other_operators={}, projection={}, lang=None):
 
 			try:
 				for key in document['content'].copy().keys():
@@ -75,7 +75,7 @@ with app.app_context():
 			except KeyError:
 				pass
 
-			return super().update(_id, document, other_operators, projection)
+			return super().update(_id, document, other_operators, projection, lang)
 
 
 

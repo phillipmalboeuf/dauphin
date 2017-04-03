@@ -21,22 +21,36 @@ with app.app_context():
 
 
 		@classmethod
-		def preprocess(cls, document):
+		def preprocess(cls, document, lang=None):
+
+			if lang is not None:
+				for (key, value) in list(document.items()):
+					document['translations.'+lang+'.'+key] = value
+					del document[key]
+					
 			return document
 
 
 		@classmethod
-		def postprocess(cls, document):
+		def postprocess(cls, document, lang=None):
+
+			if lang is not None:
+				try:
+					for (key, value) in document['translations'][lang].items():
+						document[key] = value
+				except KeyError:
+					pass
+
 			return document
 
 
 
 		@classmethod
-		def list(cls, document_filter={}, projection={}, limit=0, skip=0, sort=None):
+		def list(cls, document_filter={}, projection={}, limit=0, skip=0, sort=None, lang=None):
 			if sort is None:
 				sort = cls.collection_sort
 
-			return [cls.postprocess(document) for document in app.mongo.db[cls.collection_name].find(cls._merge_filters(document_filter), cls._merge_projections(projection), limit=limit, skip=skip, sort=sort)]
+			return [cls.postprocess(document, lang) for document in app.mongo.db[cls.collection_name].find(cls._merge_filters(document_filter), cls._merge_projections(projection), limit=limit, skip=skip, sort=sort)]
 
 
 
@@ -49,19 +63,19 @@ with app.app_context():
 
 
 		@classmethod
-		def get(cls, _id, projection={}):
+		def get(cls, _id, projection={}, lang=None):
 			if ObjectId.is_valid(_id):
-				return cls.get_where({'_id': ObjectId(_id)}, projection)
+				return cls.get_where({'_id': ObjectId(_id)}, projection, lang)
 
 			else:
-				return cls.get_where({cls.alternate_index: _id}, projection)
+				return cls.get_where({cls.alternate_index: _id}, projection, lang)
 
 
 
 		@classmethod
-		def get_where(cls, document_filter, projection={}):
+		def get_where(cls, document_filter, projection={}, lang=None):
 
-			return cls.postprocess(app.mongo.db[cls.collection_name].find_one_or_404(cls._merge_filters(document_filter), cls._merge_projections(projection)))
+			return cls.postprocess(app.mongo.db[cls.collection_name].find_one_or_404(cls._merge_filters(document_filter), cls._merge_projections(projection)), lang)
 
 
 
@@ -82,17 +96,17 @@ with app.app_context():
 
 
 		@classmethod
-		def update(cls, _id, document, other_operators={}, projection={}):
+		def update(cls, _id, document, other_operators={}, projection={}, lang=None):
 
-			return cls.update_where({'_id': ObjectId(_id)}, document, projection=projection, other_operators=other_operators)
+			return cls.update_where({'_id': ObjectId(_id)}, document, projection=projection, other_operators=other_operators, lang=lang)
 			
 
 
 
 		@classmethod
-		def update_where(cls, document_filter, document, projection={}, multiple=False, other_operators={}):
+		def update_where(cls, document_filter, document, projection={}, multiple=False, other_operators={}, lang=None):
 
-			document = cls.preprocess(document)
+			document = cls.preprocess(document, lang)
 			document['updated_at'] = datetime.now(timezone(app.config['TIMEZONE']))
 
 			document_set = other_operators
@@ -105,10 +119,10 @@ with app.app_context():
 				# else:
 				# 	search_index.apply_async((cls.collection_name, document['_id'], document))
 
-				return cls.postprocess(document)
+				return cls.postprocess(document, lang)
 
 			else:
-				return [cls.postprocess(document) for document in app.mongo.db[cls.collection_name].update(cls._merge_filters(document_filter), document_set, projection=cls._merge_projections(projection), multi=True)]
+				return [cls.postprocess(document, lang) for document in app.mongo.db[cls.collection_name].update(cls._merge_filters(document_filter), document_set, projection=cls._merge_projections(projection), multi=True)]
 
 
 

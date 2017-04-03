@@ -88,16 +88,6 @@ with app.app_context():
 		]
 
 
-		# @classmethod
-		# def preprocess(cls, document):
-
-		# 	return super().preprocess(document)
-
-
-		# @classmethod
-		# def create(cls, parent_id, document):
-
-		# 	return super().create(parent_id, document)
 
 
 

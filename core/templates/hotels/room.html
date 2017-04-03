@@ -29,7 +29,7 @@
 		{% if request.current_session_is_admin %}
 		<div class="grid grid--spaced medium_bottom">
 			<div class="col">
-				Room url: <code>{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route|editable('route', {'hotel': hotel._id, 'room': room._id})}}</code>
+				Room url: <code>/hotels/{{hotel.route}}/rooms/{{room.route|editable('route', {'hotel': hotel._id, 'room': room._id})}}</code>
 			</div>
 			<div class="col">
 				<div data-hotel="{{hotel._id}}" data-remove-room="{{room._id}}"></div>

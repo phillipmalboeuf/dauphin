@@ -81,7 +81,7 @@ with app.app_context():
 
 
 		@classmethod
-		def preprocess(cls, document):
+		def preprocess(cls, document, lang=None):
 			for cache in app.caches:
 				app.caches[cache].clear()
 
@@ -90,22 +90,8 @@ with app.app_context():
 			except KeyError:
 				pass
 
-			return super().preprocess(document)
+			return super().preprocess(document, lang)
 
 
-
-		@classmethod
-		def list(cls, document_filter={}, projection={}, limit=0, skip=0, sort=None):
-
-			# document_filter['is_online'] = True
-			documents = super().list({}, projection, limit, skip, sort)
-
-			return documents
-
-
-		@classmethod
-		def postprocess(cls, document):
-
-			return super().postprocess(document)
 
 
