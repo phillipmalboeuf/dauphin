@@ -15,14 +15,18 @@
 	<hr class="color_transition">
 
 	<div class="padded">
-	{% for hotel in hotels if not hotel.extended_family %}
+	{% for hotel in hotels %}
+		{% if hotel.extended_family %}
+		<a href="{{hotel.url}}" target="_blank" data-background-image="https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.featured_photo}}"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
+		{% else %}
 		<a href="{{lang_route}}hotels/{{hotel.route}}" data-background-image="https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.featured_photo}}"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
+		{% endif %}
 	{% endfor %}
 	</div>
 
 	<hr class="color_transition">
 
-	<h3 class="padded color_transition">{{pieces.index.extended_family|editable('extended_family', {'piece': pieces.index._id})}}</h3>
+	{# <h3 class="padded color_transition">{{pieces.index.extended_family|editable('extended_family', {'piece': pieces.index._id})}}</h3>
 
 	<div class="grid grid--middle grid--center">
 	{% for hotel in hotels if hotel.extended_family %}
@@ -30,7 +34,7 @@
 	
 		{% if not loop.last %}<div class="col"><hr class="hr--vertical color_transition"></div>{% endif %}
 	{% endfor %}
-	</div>
+	</div> #}
 
 </section>
 {% endblock %}

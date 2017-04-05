@@ -100,6 +100,11 @@ with app.app_context():
 				'route': '/<string:_id>/proximity',
 				'view_function': 'proximity_view',
 				'methods': ['GET']
+			},
+			{
+				'route': '/<string:_id>/promotions',
+				'view_function': 'promotions_view',
+				'methods': ['GET']
 			}
 			# {
 			# 	'route': '/<ObjectId:_id>',
@@ -128,6 +133,11 @@ with app.app_context():
 			{
 				'view_function': 'proximity_view',
 				'template': 'hotels/proximity.html',
+				'response_key': 'hotel'
+			},
+			{
+				'view_function': 'promotions_view',
+				'template': 'hotels/promotions.html',
 				'response_key': 'hotel'
 			}
 		]
@@ -194,6 +204,12 @@ with app.app_context():
 
 		@classmethod
 		def proximity_view(cls, _id):
+			document = cls.get(_id)
+			
+			return cls._format_response(document)
+
+		@classmethod
+		def promotions_view(cls, _id):
 			document = cls.get(_id)
 			
 			return cls._format_response(document)
