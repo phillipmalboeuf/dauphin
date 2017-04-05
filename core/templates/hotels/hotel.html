@@ -82,7 +82,7 @@
 	<div class="grid grid--stretch">
 		<div class="col col--4of12 col--phone--12of12">
 			{% block footer_first %}
-			<div class="hero hero--small hide_on_phone">
+			<div class="hero hero--small hide_on_phone" style="background-image: url(https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1000/https://d3hy1swj29dtr7.cloudfront.net/uploads/58e52a178b0e1269f99d24aa/histoire.jpg)">
 				<div class="hero__box hero__box--light hero__box--full">
 					<div class="hero__box__content">
 						<a href="{{lang_route}}hotels/{{hotel.route}}/story"><h2>{{pieces.hotels.story}}</h2></a>
@@ -95,7 +95,7 @@
 		
 		<div class="col col--8of12 col--phone--12of12">
 			{% block footer_second %}
-			<div class="hero hero--small" style="background-image: url({{hotel.proximity_photo}})">
+			<div class="hero hero--small" style="background-image: url(https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1000/{{hotel.proximity_photo}})">
 				<div class="hero__box hero__box--full">
 					<div class="hero__box__content">
 						<a href="{{lang_route}}hotels/{{hotel.route}}/proximity">
