@@ -8,8 +8,17 @@ export class Slider extends React.Component {
 		super(props)
 		this.state = {
 			slides: props.slides,
-			current: 0
+			current: 0,
+			height: "100%"
 		}
+	}
+
+	componentDidMount() {
+		document.querySelectorAll(".slide")[0].querySelectorAll("img")[0].addEventListener("load", (event)=> {
+			this.setState({
+				height: `${event.currentTarget.scrollHeight}px`
+			})
+		})
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -23,7 +32,8 @@ export class Slider extends React.Component {
 		}
 
 		this.setState({
-			current: index
+			current: index,
+			height: `${document.querySelectorAll(".slide")[index].querySelectorAll("img")[0].scrollHeight}px`
 		})
 	}
 
@@ -71,8 +81,8 @@ export class Slider extends React.Component {
 
 	render() {
 
-		return <div className="grid grid--spaced grid--middle">
-			<div className="col col--1of12">
+		return <div className="grid grid--spaced">
+			<div className="col col--1of12" style={{paddingTop: "30%"}}>
 				<button onClick={this.previousSlide.bind(this)} className="button--transparent">&lt; Précédent</button>
 			</div>
 			<div className="col col--10of12 slider">
@@ -82,6 +92,7 @@ export class Slider extends React.Component {
 					{this.state.slides.map((slide, index)=> (
 					<div className="slide" key={index} style={{
 							width: (100 / this.state.slides.length)+"%",
+							height: this.state.height,
 							transform: `translateX(-${this.state.current}00%)`
 						}}>
 						{Cookies.get('Session-Secret') &&
@@ -97,7 +108,7 @@ export class Slider extends React.Component {
 					))}
 				</div>
 			</div>
-			<div className="col col--1of12 text_right">
+			<div className="col col--1of12 text_right" style={{paddingTop: "30%"}}>
 				<button onClick={this.nextSlide.bind(this)} className="button--transparent">Prochain &gt;</button>
 				{Cookies.get('Session-Secret') && 
 				<button onClick={this.addSlide.bind(this)} className="button--transparent">+ Add new {this.props.dataKey}</button>
