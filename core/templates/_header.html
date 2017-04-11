@@ -17,6 +17,7 @@
 			<div class="col col--12of12"></div>
 			<div class="col col--12of12">
 				{% if hotel %}
+				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}">{{pieces.hotels.home}}</a></h2>
 				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}}</a></h2>
 
 				{% for other_hotel in hotels %}
