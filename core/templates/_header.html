@@ -23,7 +23,11 @@
 				{% for other_hotel in hotels %}
 				{% if other_hotel._id == hotel._id %}
 				{% for room in other_hotel.rooms %}
+				{% if lang != 'en' %}
 				<h4 class="flat_bottom header__menu__indented"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h4>
+				{% else %}
+				<h4 class="flat_bottom header__menu__indented"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route}}">{% if room.translations[lang].name %}{{room.translations[lang].name}}{% else %}{{room.name}}{% endif %}</a></h4>
+				{% endif %}
 				{% endfor %}
 				{% endif %}
 				{% endfor %}
