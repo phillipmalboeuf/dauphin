@@ -27,7 +27,10 @@
 	<div class="padded padded--thick max_width">
 		<h2 class="huge_bottom">{{hotel.promotions_intro|editable('promotions_intro', {'hotel': hotel._id})}}</h2>
 
-		<div class="big_bottom">
+
+		{{hotel.promotions_body|safe|editable('promotions_body', {'hotel': hotel._id})}}
+
+		{# <div class="big_bottom">
 			<div class="grid grid--guttered">
 				<div class="col col--8of12">
 					{% filter editable_list('promotions', {'hotel': hotel._id}) %}
@@ -45,7 +48,7 @@
 					{% endfilter %}
 				</div>
 			</div>
-		</div>
+		</div> #}
 	</div>
 </article>
 {% endblock %}
