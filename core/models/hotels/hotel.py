@@ -61,6 +61,7 @@ with app.app_context():
 			'proximity_others': validation_rules['links_list'],
 			'promotions_intro': validation_rules['text'],
 			'promotions_body': validation_rules['text'],
+			'promotions_photo': validation_rules['text'],
 			'metadata': validation_rules['metadata']
 		}
 

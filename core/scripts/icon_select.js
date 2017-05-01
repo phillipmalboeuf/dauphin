@@ -3,7 +3,7 @@
 export class IconSelect extends React.Component {
 
 	icons() {
-		return ["none", "alarm", "appletv", "babycrib", "breakfast", "businesscenter", "coffeemachine", "computer", "fax", "floor", "fridge", "gym", "hairdryer", "hanger", "iron", "microwave", "newspaper", "parking", "phone", "pillow", "rockingchair", "safe", "shower", "skincare", "smarttv", "wifi", "workdesk"]
+		return ["none", "alarm", "appletv", "babycrib", "breakfast", "businesscenter", "coffeemachine", "computer", "electriccarcharging", "fax", "floor", "fridge", "gym", "hairdryer", "hanger", "iron", "microwave", "newspaper", "parking", "phone", "pillow", "rockingchair", "safe", "shower", "skincare", "smarttv", "wifi", "workdesk"]
 	}
 
 	constructor(props) {
