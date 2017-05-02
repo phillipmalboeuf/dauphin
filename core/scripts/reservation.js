@@ -62,9 +62,12 @@ export class Reservation extends React.Component {
 			<div className="reservation__content" id="reservation_content" ref={(content)=>{ this.content = content }}>
 				<div className="padded padded--tight light_back">
 					{Cookies.get('Session-Secret') &&
-					<p className="p--small p--highlight_strong text_center"><span contentEditable data-piece={pieces.hotels._id} data-key="reservation_info" dangerouslySetInnerHTML={{'__html': pieces.hotels.reservation_info}} /></p>
+					<p className="p--small p--highlight_strong text_center">
+						<span contentEditable data-hotel={this.props.hotel._id} data-key="reservation_info" dangerouslySetInnerHTML={{'__html': this.props.hotel.reservation_info ? this.props.hotel.reservation_info : pieces.hotels.reservation_info}} /><br />
+						Reservit Id: <span contentEditable data-hotel={this.props.hotel._id} data-key="reservation_id" dangerouslySetInnerHTML={{'__html': this.props.hotel.reservation_id}} />
+					</p>
 					||
-					<p className="p--small p--highlight_strong text_center" dangerouslySetInnerHTML={{'__html': pieces.hotels.reservation_info}} />
+					<p className="p--small p--highlight_strong text_center" dangerouslySetInnerHTML={{'__html': this.props.hotel.reservation_info ? this.props.hotel.reservation_info : pieces.hotels.reservation_info}} />
 					}
 
 					<div className="grid grid--tight_guttered grid--middle">
@@ -74,7 +77,7 @@ export class Reservation extends React.Component {
 						<div className="col col--10of12"><input onInput={this.inputDate.bind(this)} type="date" defaultValue={this.tomorrow.toJSON().slice(0,10)} name="check_out" id="check_out" /></div>
 					</div>
 
-					<a href={`http://softbooker.reservit.com/reservit/reserhotel.php?lang=${lang}&hotelid=${this.props.hotelId}&fday=${this.state.checkIn.getDate()}&fmonth=${this.state.checkIn.getMonth()+1}&fyear=${this.state.checkIn.getFullYear()}&tday=${this.state.checkOut.getDate()}&tmonth=${this.state.checkOut.getMonth()+1}&tyear=${this.state.checkOut.getFullYear()}&discountcode=${this.props.coupon}`}
+					<a href={`http://softbooker.reservit.com/reservit/reserhotel.php?lang=${lang}&hotelid=${this.props.hotel.reservation_id}&fday=${this.state.checkIn.getDate()}&fmonth=${this.state.checkIn.getMonth()+1}&fyear=${this.state.checkIn.getFullYear()}&tday=${this.state.checkOut.getDate()}&tmonth=${this.state.checkOut.getMonth()+1}&tyear=${this.state.checkOut.getFullYear()}`}
 						target="_blank" className="button button--full medium_top">{pieces.hotels.price_availabilities}</a>
 				</div>
 			</div>

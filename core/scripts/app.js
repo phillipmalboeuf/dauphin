@@ -48,8 +48,7 @@ window.Core = {
 			if (reservation) {
 				ReactDOM.render(
 					<Reservation 
-						hotelId={reservation.getAttribute("data-hotel-id")}
-						coupon={reservation.getAttribute("data-reservation-coupon")}
+						hotel={JSON.parse(unescape(reservation.getAttribute("data-hotel")))}
 						icon={reservation.getAttribute("data-icon-svg")} />, reservation
 				)
 			}
