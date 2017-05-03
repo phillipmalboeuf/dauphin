@@ -1,5 +1,5 @@
 redirects = {
-	'/longueuil/':'/hotels/longueuil/',
+	'/longueuil/':'/hotels/montreal-longueuil/',
 	'/longueuil/fr/Tourisme_et_loisirs/':'/hotels/montreal-longueuil/proximity',
 	'/longueuil/fr/Album_photo/':'/hotels/montreal-longueuil/photos',
 	'/longueuil/fr/Attraits_et_congres/':'/hotels/montreal-longueuil/proximity',
