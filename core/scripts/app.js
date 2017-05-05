@@ -189,6 +189,10 @@ window.Core = {
 window.Core.destroy()
 window.Core.init()
 document.addEventListener("turbolinks:load", ()=> {
+	if (ga) {
+		ga('send', 'pageview')
+	}
+	
 	window.Core.render()
 })
 document.addEventListener("turbolinks:before-render", ()=> {

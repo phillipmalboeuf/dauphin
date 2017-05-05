@@ -27,7 +27,11 @@ def not_found(error):
 
 	else:
 		try:
-			return redirect(redirects[request.path])
+			path = request.path 
+			if path.endswith('/'):
+				return redirect(redirects[path[:-1]])
+			else:
+				return redirect(redirects[request.path])
 
 		except KeyError:
 			cached_template = app.caches['/errors'].get(request.path)
