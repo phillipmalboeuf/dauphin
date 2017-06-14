@@ -20,8 +20,7 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.ProvidePlugin({
             "React": "react",
-            "ReactDOM": "react-dom",
-            "Datetime": "react-datetime"
+            "ReactDOM": "react-dom"
         })
 	],
 	devServer: {
