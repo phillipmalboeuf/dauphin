@@ -21,6 +21,7 @@ module.exports = {
 		new webpack.ProvidePlugin({
             "React": "react",
             "ReactDOM": "react-dom",
+            "Datetime": "react-datetime"
         })
 	],
 	devServer: {

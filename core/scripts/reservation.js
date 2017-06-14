@@ -1,7 +1,6 @@
 
 import { Cookies } from './utilities/cookies.js';
 
-
 export class Reservation extends React.Component {
 
 	constructor(props) {
@@ -23,20 +22,15 @@ export class Reservation extends React.Component {
 		this.content.style.maxHeight = this.content.scrollHeight+"px"
 	}
 
-	inputDate(event) {
-		let date = new Date(this.today)
-		let split = event.currentTarget.value.split("-")
-		date.setDate(split[2])
-		date.setMonth(split[1]-1)
-		date.setFullYear(split[0])
+	inputDate(moment, name) {
 
-		if (event.currentTarget.name == "check_in") {
+		if (name == "check_in") {
 			this.setState({
-				checkIn: date
+				checkIn: moment.toDate()
 			})
-		} else if (event.currentTarget.name == "check_out") {
+		} else if (name == "check_out") {
 			this.setState({
-				checkOut: date
+				checkOut: moment.toDate()
 			})
 		}
 	}
@@ -51,7 +45,7 @@ export class Reservation extends React.Component {
 
 	render() {
 
-		
+		console.log(this.state)
 
 		return <div>
 			<input type="checkbox" id="reservation_checkbox" onChange={this.toggle.bind(this)} checked={this.state.hidden ? true : false} className="reservation__checkbox" />
@@ -72,9 +66,23 @@ export class Reservation extends React.Component {
 
 					<div className="grid grid--tight_guttered grid--middle">
 						<div className="col col--2of12"><label className="flat_bottom" htmlFor="check_in">{pieces.hotels.check_in}</label></div>
-						<div className="col col--10of12"><input onInput={this.inputDate.bind(this)} type="date" defaultValue={this.today.toJSON().slice(0,10)} name="check_in" id="check_in" /></div>
+						<div className="col col--10of12 relative">
+							<Datetime open={false}
+							onChange={(moment)=> { this.inputDate(moment, "check_in") }}
+							timeFormat={false}
+							dateFormat={"YYYY-MM-DD"}
+							defaultValue={this.today.toJSON().slice(0,10)}
+							inputProps={{"name": "check_in", "id": "check_in"}} />
+						</div>
 						<div className="col col--2of12"><label className="flat_bottom" htmlFor="check_out">{pieces.hotels.check_out}</label></div>
-						<div className="col col--10of12"><input onInput={this.inputDate.bind(this)} type="date" defaultValue={this.tomorrow.toJSON().slice(0,10)} name="check_out" id="check_out" /></div>
+						<div className="col col--10of12 relative">
+							<Datetime open={false}
+							onChange={(moment)=> { this.inputDate(moment, "check_out") }}
+							timeFormat={false}
+							dateFormat={"YYYY-MM-DD"}
+							defaultValue={this.tomorrow.toJSON().slice(0,10)}
+							inputProps={{"name": "check_out", "id": "check_out"}} />
+						</div>
 					</div>
 
 					<a href={`http://softbooker.reservit.com/reservit/reserhotel.php?lang=${lang}&hotelid=${this.props.hotel.reservation_id}&fday=${this.state.checkIn.getDate()}&fmonth=${this.state.checkIn.getMonth()+1}&fyear=${this.state.checkIn.getFullYear()}&tday=${this.state.checkOut.getDate()}&tmonth=${this.state.checkOut.getMonth()+1}&tyear=${this.state.checkOut.getFullYear()}`}
