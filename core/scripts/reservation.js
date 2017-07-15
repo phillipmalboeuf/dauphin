@@ -25,9 +25,24 @@ export class Reservation extends React.Component {
 	inputDate(moment, name) {
 
 		if (name == "check_in") {
-			this.setState({
-				checkIn: moment.toDate()
-			})
+			let checkIn = moment.toDate()
+			let checkOut = new Date(checkIn)
+			checkOut.setDate(checkOut.getDate() + 1)
+
+			console.log(this.state.checkOut < checkOut)
+
+			if (this.state.checkOut < checkOut) {
+				this.setState({
+					checkIn: checkIn,
+					checkOut: checkOut
+				})
+			} else {
+				this.setState({
+					checkIn: checkIn
+				})
+			}
+
+			
 		} else if (name == "check_out") {
 			this.setState({
 				checkOut: moment.toDate()
@@ -69,7 +84,7 @@ export class Reservation extends React.Component {
 							onChange={(moment)=> { this.inputDate(moment, "check_in") }}
 							timeFormat={false}
 							dateFormat={"YYYY-MM-DD"}
-							defaultValue={this.today.toJSON().slice(0,10)}
+							value={this.state.checkIn.toJSON().slice(0,10)}
 							inputProps={{"name": "check_in", "id": "check_in"}} />
 						</div>
 						<div className="col col--2of12"><label className="flat_bottom" htmlFor="check_out">{pieces.hotels.check_out}</label></div>
@@ -78,7 +93,7 @@ export class Reservation extends React.Component {
 							onChange={(moment)=> { this.inputDate(moment, "check_out") }}
 							timeFormat={false}
 							dateFormat={"YYYY-MM-DD"}
-							defaultValue={this.tomorrow.toJSON().slice(0,10)}
+							value={this.state.checkOut.toJSON().slice(0,10)}
 							inputProps={{"name": "check_out", "id": "check_out"}} />
 						</div>
 					</div>
