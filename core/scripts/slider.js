@@ -97,12 +97,12 @@ export class Slider extends React.Component {
 						}}>
 						{Cookies.get('Session-Secret') &&
 						<div>
-							<img src={`https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/${slide}`} />
+							<img src={`${slide}`} />
 							<button onClick={(event)=> { this.removeSlide(event, index) }} className="hide button--transparent">- Remove {this.props.dataKey}</button>
 							<div data-hotel={this.props.hotel} data-room={this.props.room} data-list={this.props.list} data-index={index} data-key={this.props.dataKey} data-editable-background-image={slide}></div>
 						</div>
 						||
-						<a href={slide} target="_blank"><img src={`https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/${slide}`} /></a>
+						<a href={slide} target="_blank"><img src={`${slide}`} /></a>
 						}
 					</div>
 					))}

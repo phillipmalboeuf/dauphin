@@ -17,9 +17,9 @@
 	<div class="padded">
 	{% for hotel in hotels %}
 		{% if hotel.extended_family %}
-		<a href="{{hotel.url}}" target="_blank" data-background-image="https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.featured_photo}}"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
+		<a href="{{hotel.url}}" target="_blank" data-background-image="{{hotel.featured_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1400"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
 		{% else %}
-		<a href="{{lang_route}}hotels/{{hotel.route}}" data-background-image="https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.featured_photo}}"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
+		<a href="{{lang_route}}hotels/{{hotel.route}}" data-background-image="{{hotel.featured_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1400"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
 		{% endif %}
 	{% endfor %}
 	</div>
@@ -30,7 +30,7 @@
 
 	<div class="grid grid--middle grid--center">
 	{% for hotel in hotels if hotel.extended_family %}
-		<div class="col"><h2 class="h2--small"><a href="{{hotel.url}}" target="_blank" data-background-image="https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.featured_photo}}">{{hotel.name}}</a></h2></div>
+		<div class="col"><h2 class="h2--small"><a href="{{hotel.url}}" target="_blank" data-background-image="{{hotel.featured_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1400">{{hotel.name}}</a></h2></div>
 	
 		{% if not loop.last %}<div class="col"><hr class="hr--vertical color_transition"></div>{% endif %}
 	{% endfor %}

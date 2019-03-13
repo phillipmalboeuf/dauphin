@@ -11,7 +11,7 @@
 
 {% block main %}
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
-	<div class="hero" style="background-image: url(https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1400/{{hotel.proximity_photo}})">
+	<div class="hero" style="background-image: url({{hotel.proximity_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1400)">
 		<div class="hero__box hero__box--full">
 			<div class="hero__box__content">
 				<h3 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>
@@ -147,7 +147,7 @@
 
 
 {% block footer_second %}
-<div class="hero hero--small" {% if hotel.rooms[0] %}style="background-image: url(https://res.cloudinary.com/deming/image/fetch/f_auto,q_auto,w_1000/{{hotel.rooms[0].featured_photo}})"{% endif %}>
+<div class="hero hero--small" {% if hotel.rooms[0] %}style="background-image: url({{hotel.rooms[0].featured_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1000)"{% endif %}>
 	<div class="hero__box hero__box--full">
 		<div class="hero__box__content">
 			<a href="{{lang_route}}hotels/{{hotel.route}}/rooms" class="button button--secondary">{{pieces.hotels.see_rooms}}</a>
