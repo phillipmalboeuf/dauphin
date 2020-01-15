@@ -28,6 +28,7 @@ with app.app_context():
 			'in_the_room_on_demand': validation_rules['items_list'],
 			'services': validation_rules['items_list'],
 			'paid_services': validation_rules['items_list'],
+			'hidden': validation_rules['bool'],
 			'metadata': validation_rules['metadata']
 		}
 

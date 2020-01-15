@@ -7,7 +7,9 @@
 
 		<div class="padded">
 		{% for room in rooms %}
+			{% if not room.hidden %}
 			<h2 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h2>
+			{% endif %}
 		{% endfor %}
 
 		{% if request.current_session_is_admin %}
