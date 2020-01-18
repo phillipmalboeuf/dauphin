@@ -29,6 +29,8 @@ with app.app_context():
 			'full_name': validation_rules['text'],
 			'tagline': validation_rules['text'],
 			'intro': validation_rules['text'],
+			'seo_title': validation_rules['text'],
+			'seo_description': validation_rules['text'],
 			'description': validation_rules['text'],
 			'description_1': validation_rules['text'],
 			'description_1_icon': validation_rules['text'],
