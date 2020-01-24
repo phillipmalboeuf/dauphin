@@ -1,5 +1,5 @@
 import os
-from celery.schedules import crontab
+# from celery.schedules import crontab
 
 
 ADMIN_EMAIL = 'phil@boeuf.coffee'
@@ -50,19 +50,19 @@ S3_BUCKET = os.getenv('S3_BUCKET', '')
 
 
 # CELERY
-CELERY_TIMEZONE = TIMEZONE
-CELERY_BROKER_URL =	os.getenv('CELERY_BROKER_URL', 'redis://127.0.0.1:6379')
-CELERY_RESULT_BACKEND =	os.getenv('CELERY_RESULT_BACKEND', 'redis://127.0.0.1:6379')
-CELERYBEAT_SCHEDULE = {
-    'subscriptions': {
-        'task': 'subscriptions.charge',
-        'schedule': crontab(minute=0, hour=0)
-    },
-    'scheduled': {
-        'task': 'scheduled_tasks',
-        'schedule': crontab(minute='*/1')
-    }
-}
+# CELERY_TIMEZONE = TIMEZONE
+# CELERY_BROKER_URL =	os.getenv('CELERY_BROKER_URL', 'redis://127.0.0.1:6379')
+# CELERY_RESULT_BACKEND =	os.getenv('CELERY_RESULT_BACKEND', 'redis://127.0.0.1:6379')
+# CELERYBEAT_SCHEDULE = {
+#     'subscriptions': {
+#         'task': 'subscriptions.charge',
+#         'schedule': crontab(minute=0, hour=0)
+#     },
+#     'scheduled': {
+#         'task': 'scheduled_tasks',
+#         'schedule': crontab(minute='*/1')
+#     }
+# }
 
 
 # ELASTICSEARCH

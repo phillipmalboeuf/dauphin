@@ -16,7 +16,7 @@ from werkzeug.contrib.cache import SimpleCache
 import os
 
 
-app.caches['/errors'] = SimpleCache()
+app.caches['/errors'] = SimpleCache(default_timeout=600)
 
 @app.errorhandler(404)
 def not_found(error):

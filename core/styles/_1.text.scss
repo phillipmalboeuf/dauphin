@@ -114,6 +114,10 @@ p {
 	&.p--small {
 		font-size: (16/$base) * 1rem;
 		line-height: (22/$base) * 1rem;
+
+		@media #{$phone} {
+			font-size: (18/$base) * 1rem;
+		}
 	}
 
 	&.p--thick_lines {
@@ -333,13 +337,13 @@ sub {
 // #MISC
 
 .icon {
-    width: $icon_size;
+  width: $icon_size;
 	height: $icon_size;
-    display: inline-block;
-    fill: currentColor;
-    vertical-align: middle;
+	display: inline-block;
+	fill: currentColor;
+	vertical-align: middle;
 
-    @include transition(fill $fast);
+	@include transition(fill $fast);
 
 	&.icon--white {
 		fill: $white;

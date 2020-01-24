@@ -25,6 +25,8 @@
 
 		& + label {
 			display: block;
+			position: relative;
+			z-index: 2;
 			margin-bottom: 0;
 
 			.icon {
@@ -44,11 +46,60 @@
 	.reservation__content {
 		// overflow: hidden;
 		max-height: none;
+		position: relative;
+		z-index: 2;
 
 		@include transition(max-height $slow);
 
 		.reservation__checkbox:checked + label + & {
 			max-height: 0 !important;
+		}
+	}
+
+	.reservation__popup {
+		position: absolute;
+		top: 0;
+		right: 100%;
+		height: 100%;
+		width: $max_width/1.2;
+		color: white;
+		background-color: $black;
+
+		@include translate(0, 0);
+		@include transition(transform $slow $fast);
+
+		.reservation__checkbox:checked + label ~ & {
+			@include translate(100%, 0);
+			@include transition(transform $slow);
+		}
+
+		@media #{$phone} {
+			top: auto;
+			right: 0;
+			bottom: 100%;
+			width: 100%;
+			@include translate(0, 0%);
+			@include transition(transform $slow);
+
+			.reservation__checkbox:checked + label ~ & {
+				@include translate(0, 100%);
+
+				&[style] {
+					@include translate(0, 0);
+				}
+			}
+		}
+
+		button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: $vertical_rythm;
+
+			.icon {
+				width: $icon_size/1.5;
+				height: $icon_size/1.5;
+			}
 		}
 	}
 

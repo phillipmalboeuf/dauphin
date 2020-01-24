@@ -41,17 +41,14 @@ window.Core = {
 				menu.checked = false
 			})
 		}
-		
 
-		if (window.innerWidth > 600) {
-			const reservation = document.getElementById("reservation")
-			if (reservation) {
-				ReactDOM.render(
-					<Reservation 
-						hotel={JSON.parse(unescape(reservation.getAttribute("data-hotel")))}
-						icon={reservation.getAttribute("data-icon-svg")} />, reservation
-				)
-			}
+		const reservation = document.getElementById("reservation")
+		if (reservation) {
+			ReactDOM.render(
+				<Reservation 
+					hotel={JSON.parse(unescape(reservation.getAttribute("data-hotel")))}
+					icon={reservation.getAttribute("data-icon-svg")} />, reservation
+			)
 		}
 
 		if (window.innerWidth > 900) {

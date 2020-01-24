@@ -13,7 +13,7 @@ from core.helpers.validation_rules import validation_rules
 
 from bson.objectid import ObjectId
 
-import stripe
+# import stripe
 
 import string
 import random
@@ -103,11 +103,11 @@ with app.app_context():
 			document['user_id'] = document['_id']
 
 
-			stripe.api_key = app.config['STRIPE_API_KEY']
-			document['provider_id'] = stripe.Customer.create(
-				email=document['email'],
-				metadata={'_id': document['_id']}
-			)['id']
+			# stripe.api_key = app.config['STRIPE_API_KEY']
+			# document['provider_id'] = stripe.Customer.create(
+			# 	email=document['email'],
+			# 	metadata={'_id': document['_id']}
+			# )['id']
 
 
 

@@ -14,12 +14,22 @@ export class Reservation extends React.Component {
 		this.state = {
 			checkIn: this.today,
 			checkOut: this.tomorrow,
-			hidden: Cookies.get("reservation_hidden") == "true"
+			hidden: true,
+			popupHidden: false
 		}
 	}
 
 	componentDidMount(prevProps, prevState) {
 		this.content.style.maxHeight = this.content.scrollHeight+"px"
+		if (this.popup) { this.popup.style.height = (this.content.scrollHeight+54)+"px" }
+
+		if (Cookies.get("reservation_hidden") !== "true" && window.innerWidth > 600) {
+			this.setState({ hidden: false })
+		}
+
+		if (Cookies.get("reservation_popup_hidden") == "true") {
+			this.setState({ popupHidden: true })
+		}
 	}
 
 	inputDate(moment, name) {
@@ -29,7 +39,7 @@ export class Reservation extends React.Component {
 			let checkOut = new Date(checkIn)
 			checkOut.setDate(checkOut.getDate() + 1)
 
-			console.log(this.state.checkOut < checkOut)
+			// console.log(this.state.checkOut < checkOut)
 
 			if (this.state.checkOut < checkOut) {
 				this.setState({
@@ -56,6 +66,14 @@ export class Reservation extends React.Component {
 		})
 
 		Cookies.set("reservation_hidden", event.currentTarget.checked)
+	}
+
+	hidePopup(event) {
+		this.setState({
+			popupHidden: true
+		})
+
+		Cookies.set("reservation_popup_hidden", "true", 2)
 	}
 
 	render() {
@@ -103,6 +121,13 @@ export class Reservation extends React.Component {
 				</div>
 			</div>
 
+			{!this.state.popupHidden && <div className='reservation__popup padded grid grid--vertically_centered' ref={(element)=>{ this.popup = element }}>
+				<div>
+					<button className="button--transparent" onClick={this.hidePopup.bind(this)}><svg xmlns="http://www.w3.org/2000/svg" className="icon" viewBox="0 0 13.44 13.44"><line x1="0.71" y1="12.73" x2="12.73" y2="0.71" stroke="currentColor"/><line x1="0.71" y1="0.71" x2="12.73" y2="12.73" stroke="currentColor"/></svg></button>
+					<h3 className='text_center'>{pieces.hotels.reservation_popup_title}</h3>
+					<p className="p--small p--highlight_strong text_center" dangerouslySetInnerHTML={{'__html': pieces.hotels.reservation_popup}} />
+				</div>
+			</div>}
 		</div>
 	}
 }

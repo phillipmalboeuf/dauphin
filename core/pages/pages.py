@@ -24,7 +24,7 @@ def page(lang=None):
 			'pages': Page.list(lang=lang),
 			'hotels': Hotel.list(lang=lang),
 			'debugging': app.config['DEBUG'],
-			'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
+			# 'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
 		}
 		response['pieces_json'] = json.dumps(response['pieces'], sort_keys=False, default=json_formater)
 
@@ -45,7 +45,7 @@ def page(lang=None):
 		return cached_template
 
 
-app.caches['/pages'] = SimpleCache()
+app.caches['/pages'] = SimpleCache(default_timeout=600)
 for file in os.listdir(os.getcwd()+'/core/templates/pages'):
 	
 

@@ -1,10 +1,10 @@
 
 from flask import Flask
-from flask.ext.pymongo import PyMongo
+from flask_pymongo import PyMongo
 
-from celery import Celery
-from elasticsearch import Elasticsearch, Urllib3HttpConnection
-import certifi
+# from celery import Celery
+# from elasticsearch import Elasticsearch, Urllib3HttpConnection
+# import certifi
 
 
 app = Flask(__name__, static_folder='../build')

@@ -28,7 +28,7 @@ with app.app_context():
 
 		@classmethod
 		def define_routes(cls):
-			app.caches[cls.endpoint] = SimpleCache()
+			app.caches[cls.endpoint] = SimpleCache(default_timeout=600)
 
 			return super().define_routes()
 		
@@ -68,7 +68,7 @@ with app.app_context():
 									'pages': Page.list(lang=request.url_rule.lang),
 									'hotels': Hotel.list(lang=request.url_rule.lang),
 									'debugging': app.config['DEBUG'],
-									'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
+									# 'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
 								}
 								response['pieces_json'] = json.dumps(response['pieces'], sort_keys=False, default=json_formater)
 

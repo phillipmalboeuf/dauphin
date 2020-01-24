@@ -12,7 +12,7 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				use: ['react-hot-loader', 'babel-loader?presets[]=es2015&presets[]=react&plugins[]=transform-object-rest-spread']
+				use: 'babel-loader'
 			}
 		]
 	},
@@ -24,7 +24,7 @@ module.exports = {
         })
 	],
 	devServer: {
-		hot: true,
+		hot: false,
 		inline: true,
 		https: false,
 		port: 8090,
