@@ -121,7 +121,7 @@ export class Reservation extends React.Component {
 				</div>
 			</div>
 
-			{!this.state.popupHidden && <div className='reservation__popup padded grid grid--vertically_centered' ref={(element)=>{ this.popup = element }}>
+			{!this.state.popupHidden && <div className='reservation__popup padded grid grid--vertically_centered grid--center' ref={(element)=>{ this.popup = element }}>
 				<div>
 					<button className="button--transparent" onClick={this.hidePopup.bind(this)}><svg xmlns="http://www.w3.org/2000/svg" className="icon" viewBox="0 0 13.44 13.44"><line x1="0.71" y1="12.73" x2="12.73" y2="0.71" stroke="currentColor"/><line x1="0.71" y1="0.71" x2="12.73" y2="12.73" stroke="currentColor"/></svg></button>
 					<h3 className='text_center'>{pieces.hotels.reservation_popup_title}</h3>
