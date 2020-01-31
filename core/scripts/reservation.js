@@ -21,7 +21,7 @@ export class Reservation extends React.Component {
 
 	componentDidMount(prevProps, prevState) {
 		this.content.style.maxHeight = this.content.scrollHeight+"px"
-		if (this.popup) { this.popup.style.height = (this.content.scrollHeight+54)+"px" }
+		if (this.popup) { this.popup.style.height = "auto" }
 
 		if (Cookies.get("reservation_hidden") !== "true" && window.innerWidth > 600) {
 			this.setState({ hidden: false })
