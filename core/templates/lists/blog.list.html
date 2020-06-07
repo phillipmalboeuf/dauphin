@@ -19,7 +19,7 @@
 	<article class="blog__post" data-post-id="{{post._id}}">
 		<div class="grid grid--guttered">
 			<div class="col col--3of12 col--tablet_portrait--12of12">
-				<h3><a href="/lists/blog/posts/{{post.route}}">{{post.title}}</a></h3>
+				<h3><a href="/lists/blog/posts/{{post.identifier}}">{{post.title}}</a></h3>
 				{% for author in post.authors %}
 				<p class="p--alternate hide_on_phone">
 					{{pieces.blog.by}} <a href="/lists/blog/authors/{{author.handle}}">{{author.name}}</a><br>
@@ -42,8 +42,8 @@
 
 				{% if not post.source %}
 				<p class="p--medium medium_top">
-					<a href="/lists/blog/posts/{{post.route}}" class="js-maximize">{{pieces.blog.read_more}} <svg class="icon"><use xlink:href="#icon-down"></use></svg></a>
-					<a href="/lists/blog/posts/{{post.route}}" class="hide js-minimize">{{pieces.blog.read_less}} <svg class="icon"><use xlink:href="#icon-up"></use></svg></a>
+					<a href="/lists/blog/posts/{{post.identifier}}" class="js-maximize">{{pieces.blog.read_more}} <svg class="icon"><use xlink:href="#icon-down"></use></svg></a>
+					<a href="/lists/blog/posts/{{post.identifier}}" class="hide js-minimize">{{pieces.blog.read_less}} <svg class="icon"><use xlink:href="#icon-up"></use></svg></a>
 				</p>
 				{% endif %}
 			</div>
@@ -84,6 +84,6 @@
 
 	<script>
 		window.list_id = "{{list._id}}";
-		window.list_route = "{{list.route}}";
+		window.list_route = "{{list.identifier}}";
 	</script>
 {% endblock %}

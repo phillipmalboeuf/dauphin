@@ -7,6 +7,11 @@ from markdown import markdown
 
 import urllib
 
+from rich_text_renderer import RichTextRenderer
+
+renderer = RichTextRenderer()
+
+
 @app.template_filter('date')
 def date_filter(date, format='%b %d, %Y'):
 	if isinstance(date, str):
@@ -29,6 +34,15 @@ def url_filter(url):
 @app.template_filter('markdown')
 def markdown_filter(content):
 	return markdown(content)
+
+
+@app.template_filter('rich')
+def rich(content):
+	return Markup(renderer.render(content))
+
+@app.template_filter('asset')
+def asset(file):
+	return file.url().replace('//images.ctfassets.net/nfw8sun8l2hw', 'https://dauphincontent.imgix.net')
 
 
 @app.template_filter('editable')

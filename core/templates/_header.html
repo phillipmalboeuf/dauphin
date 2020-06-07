@@ -17,33 +17,33 @@
 			<div class="col col--12of12"></div>
 			<div class="col col--12of12">
 				{% if hotel %}
-				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}">{{pieces.hotels.home}}</a></h2>
-				<h2 class="flat_bottom"><a href="{{lang_route}}">{{pieces.hotels.all_hotels}}</a></h2>
-				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms">{{pieces.hotels.rooms}}</a></h2>
+				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}">{{interface.home}}</a></h2>
+				<h2 class="flat_bottom"><a href="{{lang_route}}">{{interface.all_hotels}}</a></h2>
+				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms">{{interface.rooms}}</a></h2>
 
 				{% for other_hotel in hotels %}
 				{% if other_hotel._id == hotel._id %}
 				{% for room in other_hotel.rooms %}
 				{% if not room.hidden %}
 				{% if lang != 'en' %}
-				<h4 class="flat_bottom header__menu__indented"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h4>
+				<h4 class="flat_bottom header__menu__indented"><a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms/{{room.identifier}}">{{room.name}}</a></h4>
 				{% else %}
-				<h4 class="flat_bottom header__menu__indented"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route}}">{% if room.translations and room.translations[lang].name %}{{room.translations[lang].name}}{% else %}{{room.name}}{% endif %}</a></h4>
+				<h4 class="flat_bottom header__menu__indented"><a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms/{{room.identifier}}">{% if room.translations and room.translations[lang].name %}{{room.translations[lang].name}}{% else %}{{room.name}}{% endif %}</a></h4>
 				{% endif %}
 				{% endif %}
 				{% endfor %}
 				{% endif %}
 				{% endfor %}
 
-				<h2 class="flat_bottom medium_top"><a href="{{lang_route}}hotels/{{hotel.route}}/promotions">{{pieces.hotels.promotions}}</a></h2>
-				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/story">{{pieces.hotels.story}}</a></h2>
-				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/proximity">{{pieces.hotels.proximity}}</a></h2>
-				<h2 class="medium_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/photos">{{pieces.hotels.hotel_photos}}</a></h2>
+				<h2 class="flat_bottom medium_top"><a href="{{lang_route}}hotels/{{hotel.identifier}}/promotions">{{interface.promotions}}</a></h2>
+				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/story">{{interface.story}}</a></h2>
+				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/proximity">{{interface.proximity}}</a></h2>
+				<h2 class="medium_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/photos">{{interface.hotel_photos}}</a></h2>
 
 				{% else %}
 
 				{% for hotel in hotels if not hotel.extended_family %}
-				<h2 class="{% if loop.last %}medium_bottom{% else %}flat_bottom{% endif %}"><a href="{{lang_route}}hotels/{{hotel.route}}">{{hotel.name}}</a></h2>
+				<h2 class="{% if loop.last %}medium_bottom{% else %}flat_bottom{% endif %}"><a href="{{lang_route}}hotels/{{hotel.identifier}}">{{hotel.name}}</a></h2>
 				{% endfor %}
 
 				{% for hotel in hotels if hotel.extended_family %}
@@ -54,7 +54,7 @@
 
 				<p class="p--thick_lines">
 					{% for page in pages if not page.hide_from_navigation %}
-					<a href="{{lang_route}}pages/{{page.route}}">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
+					<a href="{{lang_route}}pages/{{page.identifier}}">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
 					{% endfor %}
 				</p>
 			</div>
@@ -69,7 +69,7 @@
 		
 	</div>
 	<div class="header__logo text_center">
-		<a href="{{lang_route}}{% if hotel %}{% if current_path != '/hotels/'+hotel.route %}hotels/{{hotel.route}}{% endif %}{% endif %}">
+		<a href="{{lang_route}}{% if hotel %}{% if current_path != '/hotels/'+hotel.identifier %}hotels/{{hotel.identifier}}{% endif %}{% endif %}">
 			{% include 'icons/logo.svg' %}
 		</a>
 	</div>
@@ -77,9 +77,9 @@
 
 		{% if hotel %}
 		<div class="header__show_sub hide_on_tablet_portrait">
-			<strong>{{hotel.name|editable('name', {'hotel': hotel._id})}}</strong><br>
-			<a href="{{hotel.address_link}}" target="_blank" class="a--highlight">{{hotel.address|editable('address', {'hotel': hotel._id})}}</a>
-			<a href="tel:{{hotel.toll_free}}" target="_blank" class="a--highlight">{{hotel.toll_free|editable('toll_free', {'hotel': hotel._id})}}</a>
+			<strong>{{hotel.name}}</strong><br>
+			<a href="{{hotel.address_link}}" target="_blank" class="a--highlight">{{hotel.address}}</a>
+			<a href="tel:{{hotel.toll_free}}" target="_blank" class="a--highlight">{{hotel.toll_free}}</a>
 		</div>
 
 		<div class="header__sub hide_on_tablet_portrait">
@@ -87,7 +87,7 @@
 			{% if other_hotel.extended_family %}
 			<a href="{{other_hotel.url}}" target="_blank" class="header__sub__link">{{other_hotel.name}}</a>
 			{% else %}
-			<a href="{{lang_route}}hotels/{{other_hotel.route}}" class="header__sub__link">{{other_hotel.name}}</a>
+			<a href="{{lang_route}}hotels/{{other_hotel.identifier}}" class="header__sub__link">{{other_hotel.name}}</a>
 			{% endif %}
 			{% endfor %}
 		</div>

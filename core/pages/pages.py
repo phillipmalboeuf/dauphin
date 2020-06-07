@@ -1,7 +1,7 @@
 
 from core import app
 from core.helpers.json import to_json, json_formater
-from core.models.cms.piece import Piece
+from core.models.cms.interface import Interface
 from core.models.cms.page import Page
 from core.models.hotels.hotel import Hotel
 
@@ -20,13 +20,13 @@ def page(lang=None):
 	cached_template = app.caches['/pages'].get(request.path)
 	if cached_template is None or request.current_session_is_admin or app.config['DEBUG']:
 		response = {
-			'pieces': Piece._values(lang),
+			'interface': Interface.get(lang=lang),
 			'pages': Page.list(lang=lang),
 			'hotels': Hotel.list(lang=lang),
 			'debugging': app.config['DEBUG'],
 			# 'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
 		}
-		response['pieces_json'] = json.dumps(response['pieces'], sort_keys=False, default=json_formater)
+		response['interface_json'] = json.dumps(response['interface'], sort_keys=False, default=json_formater)
 
 		if lang is None:
 			response['lang_route'] = '/'

@@ -1,14 +1,14 @@
 
 <section class="dark_back grid grid--full_height middle center">
 	<div class="text_center">
-		<h3>{{pieces.hotels.rooms|editable('rooms', {'piece': pieces.hotels._id})}}</h3>
+		<h3>{{interface.rooms}}</h3>
 
 		<hr>
 
 		<div class="padded">
 		{% for room in rooms %}
 			{% if not room.hidden %}
-			<h2 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}/rooms/{{room.route}}">{{room.name}}</a></h2>
+			<h2 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms/{{room.identifier}}">{{room.name}}</a></h2>
 			{% endif %}
 		{% endfor %}
 
@@ -19,6 +19,6 @@
 
 		<hr>
 
-		<h3><a href="{{lang_route}}hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>
+		<h3><a href="{{lang_route}}hotels/{{hotel.identifier}}">&lt; {{interface.back_to_hotel}}</a></h3>
 	</div>
 </section>

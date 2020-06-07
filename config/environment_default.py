@@ -2,7 +2,7 @@ import os
 # from celery.schedules import crontab
 
 
-ADMIN_EMAIL = 'phil@boeuf.coffee'
+ADMIN_EMAIL = 'phil@phils.computer'
 ADMINS = [ADMIN_EMAIL]
 TIMEZONE = 'US/Eastern'
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024
@@ -25,6 +25,9 @@ LANGS = LANGS.split(',')
 # MONGODB				 
 MONGO_URI = os.getenv('MONGO_URI', 'mongodb://127.0.0.1:27017/database')
 
+# CONTENTFUL
+CONTENTFUL_SPACE = 'nfw8sun8l2hw'
+CONTENTFUL_ACCESS = '8WnFJo_TND4qfPZEQ5-wiIKgvKWqTKe-pzRtl4yDmm8'
 
 # STRIPE
 STRIPE_API_KEY = os.getenv('STRIPE_API_KEY', 'sk_test_RaELUxUxG1GEL6UzKzoT8Xty')

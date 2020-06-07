@@ -2,53 +2,28 @@
 {% extends "hotels/hotel.html" %}
 
 
-{% block title %}{{pieces.hotels.promotions}} – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
-{% block description %}{{pieces.hotels.promotions}} – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
-{% block og_title %}{{pieces.hotels.promotions}} – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
-{% block og_description %}{{pieces.hotels.promotions}} – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
+{% block title %}{{interface.promotions}} – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
+{% block description %}{{interface.promotions}} – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
+{% block og_title %}{{interface.promotions}} – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
+{% block og_description %}{{interface.promotions}} – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
 
 
 
 {% block main %}
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
-	<div class="hero" style="background-image: url({{hotel.promotions_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1400)">
+	<div class="hero" style="background-image: url({{hotel.promotions_photo|asset}}?auto=format,compress&w=1400)">
 		<div class="hero__box hero__box--full">
 			<div class="hero__box__content">
-				<h3 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.route}}">&lt; {{pieces.hotels.back_to_hotel}}</a></h3>
-				<h1>{{pieces.hotels.promotions}}</h1>
+				<h3 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}">&lt; {{interface.back_to_hotel}}</a></h3>
+				<h1>{{interface.promotions}}</h1>
 			</div>
 		</div>
-
-		{% if request.current_session_is_admin %}
-		<div data-hotel="{{hotel._id}}" data-key="promotions_photo" data-editable-background-image="{{hotel.promotions_photo}}"></div>
-		{% endif %}
 	</div>
 
 	<div class="padded padded--thick max_width">
-		<h2 class="huge_bottom">{{hotel.promotions_intro|editable('promotions_intro', {'hotel': hotel._id})}}</h2>
+		<h2 class="huge_bottom">{{hotel.promotions_intro}}</h2>
 
-
-		{{hotel.promotions_body|safe|editable('promotions_body', {'hotel': hotel._id})}}
-
-		{# <div class="big_bottom">
-			<div class="grid grid--guttered">
-				<div class="col col--8of12">
-					{% filter editable_list('promotions', {'hotel': hotel._id}) %}
-					{% for item in hotel.promotions %}
-					<div class="normal_bottom" data-list-item>
-						{% if request.current_session_is_admin %}
-						Link url: <code>{{item.link|editable('link', {'list': 'promotions', 'index': loop.index0, 'hotel': hotel._id})}}</code><br>
-						{% endif %}
-						<a href="{{item.link}}" target="_blank">
-							<strong>{{item.name|editable('name', {'list': 'promotions', 'index': loop.index0, 'hotel': hotel._id})}}</strong>
-							<p>{{item.description|editable('description', {'list': 'promotions', 'index': loop.index0, 'hotel': hotel._id})}}</p>
-						</a>
-					</div>
-					{% endfor %}
-					{% endfilter %}
-				</div>
-			</div>
-		</div> #}
+		{{hotel.promotions_body|markdown}}
 	</div>
 </article>
 {% endblock %}

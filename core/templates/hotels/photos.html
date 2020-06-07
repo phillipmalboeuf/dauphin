@@ -21,7 +21,7 @@
 <nav class="nav grid grid--spaced grid--middle">
 	<div class="col col--3of12"></div>
 	<div><h3>{{hotel.name}}{% if gallery.room %}: {{gallery.room.name}}{% endif %}</h3></div>
-	<div class="col col--3of12 text_right"><a href="{{lang_route}}hotels/{{hotel.route}}{% if gallery.room %}/rooms/{{gallery.room.route}}{% endif %}">Fermer &nbsp; {% include 'icons/close.svg' %}</a></div>
+	<div class="col col--3of12 text_right"><a href="{{lang_route}}hotels/{{hotel.identifier}}{% if gallery.room %}/rooms/{{gallery.room.identifier}}{% endif %}">Fermer &nbsp; {% include 'icons/close.svg' %}</a></div>
 </nav>
 {% endblock %}
 
@@ -31,7 +31,7 @@
 	<div class="grid grid--center grid--middle">
 		<div class="col col--10of12 col--tablet_portrait--12of12">
 			{% for photo in gallery.photos %}
-			<img src="{{photo.image|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=800" class="img--full">
+			<img src="{{photo|asset}}?auto=format,compress&w=1400" class="img--full">
 			{% endfor %}
 		</div>
 	</div>

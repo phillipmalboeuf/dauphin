@@ -9,7 +9,7 @@
 	{{post.title|striptags}} - Blog - {{super()}}
 {% endblock %}
 
-{% block body_classes %}blog {{post.route}}{% endblock %}
+{% block body_classes %}blog {{post.identifier}}{% endblock %}
 
 {% block title_link %}/lists/blog{% endblock %}
 
@@ -77,6 +77,6 @@
 
 	<script>
 		window.list_id = "{{post.parent._id}}";
-		window.list_route = "{{post.parent.route}}";
+		window.list_route = "{{post.parent.identifier}}";
 	</script>
 {% endblock %}

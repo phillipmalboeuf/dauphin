@@ -21,17 +21,17 @@ if (module.hot)
 window.Core = {
 	init() {
 		this.render()
-		this.renderLogin()
+		// this.renderLogin()
 	},
 
-	renderLogin() {
-		const login = document.getElementById("login")
-		if (login) {
-			ReactDOM.render(
-				<Login />, login
-			)
-		}
-	},
+	// renderLogin() {
+	// 	const login = document.getElementById("login")
+	// 	if (login) {
+	// 		ReactDOM.render(
+	// 			<Login />, login
+	// 		)
+	// 	}
+	// },
 
 	render() {
 		
@@ -73,102 +73,102 @@ window.Core = {
 			)
 		}
 
-		const new_pages = document.querySelectorAll("[data-add-new-page]")
-		if (new_pages.length > 0) {
-			for (var i = new_pages.length - 1; i >= 0; i--) {
-				ReactDOM.render(
-					<AddNewPage />, new_pages[i]
-				)
-			}
-		}
+		// const new_pages = document.querySelectorAll("[data-add-new-page]")
+		// if (new_pages.length > 0) {
+		// 	for (var i = new_pages.length - 1; i >= 0; i--) {
+		// 		ReactDOM.render(
+		// 			<AddNewPage />, new_pages[i]
+		// 		)
+		// 	}
+		// }
 
-		const new_rooms = document.querySelectorAll("[data-add-new-room]")
-		if (new_rooms.length > 0) {
-			for (var i = new_rooms.length - 1; i >= 0; i--) {
-				ReactDOM.render(
-					<AddNewRoom hotel={new_rooms[i].getAttribute("data-hotel")} />, new_rooms[i]
-				)
-			}
-		}
+		// const new_rooms = document.querySelectorAll("[data-add-new-room]")
+		// if (new_rooms.length > 0) {
+		// 	for (var i = new_rooms.length - 1; i >= 0; i--) {
+		// 		ReactDOM.render(
+		// 			<AddNewRoom hotel={new_rooms[i].getAttribute("data-hotel")} />, new_rooms[i]
+		// 		)
+		// 	}
+		// }
 
-		const remove_pages = document.querySelectorAll("[data-remove-page]")
-		if (remove_pages.length > 0) {
-			for (var i = remove_pages.length - 1; i >= 0; i--) {
-				ReactDOM.render(
-					<RemovePage page={remove_pages[i].getAttribute("data-remove-page")} />, remove_pages[i]
-				)
-			}
-		}
+		// const remove_pages = document.querySelectorAll("[data-remove-page]")
+		// if (remove_pages.length > 0) {
+		// 	for (var i = remove_pages.length - 1; i >= 0; i--) {
+		// 		ReactDOM.render(
+		// 			<RemovePage page={remove_pages[i].getAttribute("data-remove-page")} />, remove_pages[i]
+		// 		)
+		// 	}
+		// }
 
-		const remove_rooms = document.querySelectorAll("[data-remove-room]")
-		if (remove_rooms.length > 0) {
-			for (var i = remove_rooms.length - 1; i >= 0; i--) {
-				ReactDOM.render(
-					<RemoveRoom room={remove_rooms[i].getAttribute("data-remove-room")} hotel={remove_rooms[i].getAttribute("data-hotel")} />, remove_rooms[i]
-				)
-			}
-		}
+		// const remove_rooms = document.querySelectorAll("[data-remove-room]")
+		// if (remove_rooms.length > 0) {
+		// 	for (var i = remove_rooms.length - 1; i >= 0; i--) {
+		// 		ReactDOM.render(
+		// 			<RemoveRoom room={remove_rooms[i].getAttribute("data-remove-room")} hotel={remove_rooms[i].getAttribute("data-hotel")} />, remove_rooms[i]
+		// 		)
+		// 	}
+		// }
 
-		const save = document.getElementById("save")
-		if (save) {
-			ReactDOM.render(
-				<Save ref={(save)=> { this.save = save}} />, save
-			)
-		}
+		// const save = document.getElementById("save")
+		// if (save) {
+		// 	ReactDOM.render(
+		// 		<Save ref={(save)=> { this.save = save}} />, save
+		// 	)
+		// }
 
-		const lists = document.querySelectorAll("[data-editable-list]")
-		if (lists.length > 0) {
-			for (var i = lists.length - 1; i >= 0; i--) {
-				let items = []
-				const itemsSelector = lists[i].querySelectorAll("[data-list-item]")
-				for (var j = 0; j < itemsSelector.length; j++) {
-					items.push(itemsSelector[j])
-				}
-				ReactDOM.render(
-					<EditableList save={this.save} items={items} />, lists[i]
-				)
-			}
-		}
+		// const lists = document.querySelectorAll("[data-editable-list]")
+		// if (lists.length > 0) {
+		// 	for (var i = lists.length - 1; i >= 0; i--) {
+		// 		let items = []
+		// 		const itemsSelector = lists[i].querySelectorAll("[data-list-item]")
+		// 		for (var j = 0; j < itemsSelector.length; j++) {
+		// 			items.push(itemsSelector[j])
+		// 		}
+		// 		ReactDOM.render(
+		// 			<EditableList save={this.save} items={items} />, lists[i]
+		// 		)
+		// 	}
+		// }
 
-		this.renderBackgroundImages()
-		this.renderIcons()
+		// this.renderBackgroundImages()
+		// this.renderIcons()
 	},
 
-	renderBackgroundImages() {
-		const images = document.querySelectorAll("[data-editable-background-image]")
-		if (images.length > 0) {
-			for (var i = images.length - 1; i >= 0; i--) {
-				ReactDOM.render(
-					<EditableBackgroundImage
-						image={images[i].getAttribute("data-editable-background-image")}
-						dataKey={images[i].getAttribute("data-key")}
-						hotel={images[i].getAttribute("data-hotel")}
-						room={images[i].getAttribute("data-room")}
-						list={images[i].getAttribute("data-list")}
-						index={images[i].getAttribute("data-index")}
-						save={this.save} />, images[i]
-				)
-			}
-		}
-	},
+	// renderBackgroundImages() {
+	// 	const images = document.querySelectorAll("[data-editable-background-image]")
+	// 	if (images.length > 0) {
+	// 		for (var i = images.length - 1; i >= 0; i--) {
+	// 			ReactDOM.render(
+	// 				<EditableBackgroundImage
+	// 					image={images[i].getAttribute("data-editable-background-image")}
+	// 					dataKey={images[i].getAttribute("data-key")}
+	// 					hotel={images[i].getAttribute("data-hotel")}
+	// 					room={images[i].getAttribute("data-room")}
+	// 					list={images[i].getAttribute("data-list")}
+	// 					index={images[i].getAttribute("data-index")}
+	// 					save={this.save} />, images[i]
+	// 			)
+	// 		}
+	// 	}
+	// },
 
 
-	renderIcons() {
-		const icons = document.querySelectorAll("[data-icon]")
-		if (icons.length > 0) {
-			for (var i = icons.length - 1; i >= 0; i--) {
-				ReactDOM.render(
-					<IconSelect icon={icons[i].getAttribute("data-icon")}
-						dataKey={icons[i].getAttribute("data-key")}
-						list={icons[i].getAttribute("data-list")}
-						index={icons[i].getAttribute("data-index")}
-						hotel={icons[i].getAttribute("data-hotel")}
-						room={icons[i].getAttribute("data-room")}
-						save={this.save} />, icons[i]
-				)
-			}
-		}
-	},
+	// renderIcons() {
+	// 	const icons = document.querySelectorAll("[data-icon]")
+	// 	if (icons.length > 0) {
+	// 		for (var i = icons.length - 1; i >= 0; i--) {
+	// 			ReactDOM.render(
+	// 				<IconSelect icon={icons[i].getAttribute("data-icon")}
+	// 					dataKey={icons[i].getAttribute("data-key")}
+	// 					list={icons[i].getAttribute("data-list")}
+	// 					index={icons[i].getAttribute("data-index")}
+	// 					hotel={icons[i].getAttribute("data-hotel")}
+	// 					room={icons[i].getAttribute("data-room")}
+	// 					save={this.save} />, icons[i]
+	// 			)
+	// 		}
+	// 	}
+	// },
 
 	destroy() {
 

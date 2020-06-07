@@ -18,33 +18,33 @@ from pytz import timezone
 with app.app_context():
 	class HasRoutes(HasValidation):
 
-		# endpoint = '/endpoint'
-		# routes = [
-		# 	{
-		# 		'route': '',
-		# 		'view_function': 'list_view',
-		# 		'methods': ['GET']
-		# 	},
-		# 	{
-		# 		'route': '',
-		# 		'view_function': 'create_view',
-		# 		'methods': ['POST']
-		# 	},
-		# 	{
-		# 		'route': '/<ObjectId:_id>',
-		# 		'view_function': 'get_view',
-		# 		'methods': ['GET']
-		# 	},
-		# 	{
-		# 		'route': '/<ObjectId:_id>',
-		# 		'view_function': 'update_view',
-		# 		'methods': ['PATCH', 'PUT']
-		# 	},
-		# 	{
-		# 		'route': '/<ObjectId:_id>',
-		# 		'view_function': 'delete_view',
-		# 		'methods': ['DELETE'],
-		# 		'requires_admin': True
+		endpoint = '/endpoint'
+		routes = [
+			{
+				'route': '',
+				'view_function': 'list_view',
+				'methods': ['GET']
+			},
+			# {
+			# 	'route': '',
+			# 	'view_function': 'create_view',
+			# 	'methods': ['POST']
+			# },
+			{
+				'route': '/<ObjectId:_id>',
+				'view_function': 'get_view',
+				'methods': ['GET']
+			},
+			# {
+			# 	'route': '/<ObjectId:_id>',
+			# 	'view_function': 'update_view',
+			# 	'methods': ['PATCH', 'PUT']
+			# },
+			# {
+			# 	'route': '/<ObjectId:_id>',
+			# 	'view_function': 'delete_view',
+			# 	'methods': ['DELETE'],
+			# 	'requires_admin': True
 			# },
 			# {
 			# 	'route': '/stats',
@@ -57,7 +57,7 @@ with app.app_context():
 			# 	'view_function': 'search_view',
 			# 	'methods': ['GET']
 			# }
-		# ]
+		]
 
 
 
@@ -92,9 +92,9 @@ with app.app_context():
 
 
 
-		@classmethod
-		def create_view(cls):
-			return cls._format_response(cls.create(cls.validate(cls._get_json_from_request())))
+		# @classmethod
+		# def create_view(cls):
+		# 	return cls._format_response(cls.create(cls.validate(cls._get_json_from_request())))
 
 
 
@@ -104,69 +104,69 @@ with app.app_context():
 
 
 
-		@classmethod
-		def update_view(cls, _id):
-			return cls._format_response(cls.update(_id, cls.validate(cls._get_json_from_request()), lang=request.url_rule.lang))
+		# @classmethod
+		# def update_view(cls, _id):
+		# 	return cls._format_response(cls.update(_id, cls.validate(cls._get_json_from_request()), lang=request.url_rule.lang))
 
 
 
-		@classmethod
-		def delete_view(cls, _id):
-			return cls._format_response(cls.delete(_id))
+		# @classmethod
+		# def delete_view(cls, _id):
+		# 	return cls._format_response(cls.delete(_id))
 
 
-		@classmethod
-		def search_view(cls):
-			limit = int(request.args.get('limit', 15))
-			query = request.args.get('query', '')
+		# @classmethod
+		# def search_view(cls):
+		# 	limit = int(request.args.get('limit', 15))
+		# 	query = request.args.get('query', '')
 
-			if query:
-				_results = app.search.search(index='saturdays', doc_type=cls.collection_name, q=cls._process_query(query)+'*', size=limit, analyze_wildcard=True)
-				results = []
-				for hit in _results['hits']['hits']:
-					result = cls.postprocess(hit['_source'])
-					result['_score'] = hit['_score']
-					results.append(result)
+		# 	if query:
+		# 		_results = app.search.search(index='saturdays', doc_type=cls.collection_name, q=cls._process_query(query)+'*', size=limit, analyze_wildcard=True)
+		# 		results = []
+		# 		for hit in _results['hits']['hits']:
+		# 			result = cls.postprocess(hit['_source'])
+		# 			result['_score'] = hit['_score']
+		# 			results.append(result)
 
-				return cls._format_response({
-						'query': query,
-						'results': results,
-						'results_length': len(results),
-						'max_score': _results['hits']['max_score']
-					})
+		# 		return cls._format_response({
+		# 				'query': query,
+		# 				'results': results,
+		# 				'results_length': len(results),
+		# 				'max_score': _results['hits']['max_score']
+		# 			})
 
-			else:
-				results = cls.list({}, limit=limit)
-				return cls._format_response({
-						'query': query,
-						'results': results,
-						'results_length': len(results)
-					})
+		# 	else:
+		# 		results = cls.list({}, limit=limit)
+		# 		return cls._format_response({
+		# 				'query': query,
+		# 				'results': results,
+		# 				'results_length': len(results)
+		# 			})
 
 
-		@classmethod
-		def stats_view(cls):
+		# @classmethod
+		# def stats_view(cls):
 
-			_from = request.args.get('from', datetime.now(timezone(app.config['TIMEZONE'])) + relativedelta(months=-1))
-			_to = request.args.get('to', datetime.now(timezone(app.config['TIMEZONE'])))
+		# 	_from = request.args.get('from', datetime.now(timezone(app.config['TIMEZONE'])) + relativedelta(months=-1))
+		# 	_to = request.args.get('to', datetime.now(timezone(app.config['TIMEZONE'])))
 
-			if not isinstance(_from, datetime):
-				_from = parser.parse(_from)
+		# 	if not isinstance(_from, datetime):
+		# 		_from = parser.parse(_from)
 
-			if not isinstance(_to, datetime):
-				_to = parser.parse(_to)
+		# 	if not isinstance(_to, datetime):
+		# 		_to = parser.parse(_to)
 				
 
-			documents = cls.list({'created_at': {
-				'$gte': _from,
-				'$lte': _to
-			}})
+		# 	documents = cls.list({'created_at': {
+		# 		'$gte': _from,
+		# 		'$lte': _to
+		# 	}})
 
-			return cls._format_response(cls._process_stats({
-					'from': _from,
-					'to': _to,
-					'length': len(documents)
-				}, documents))
+		# 	return cls._format_response(cls._process_stats({
+		# 			'from': _from,
+		# 			'to': _to,
+		# 			'length': len(documents)
+		# 		}, documents))
 
 
 

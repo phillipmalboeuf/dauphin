@@ -28,29 +28,29 @@ with app.app_context():
 				'view_function': 'list_view',
 				'methods': ['GET']
 			},
-			{
-				'route': '',
-				'view_function': 'create_view',
-				'methods': ['POST'],
-				'requires_admin': True
-			},
+			# {
+			# 	'route': '',
+			# 	'view_function': 'create_view',
+			# 	'methods': ['POST'],
+			# 	'requires_admin': True
+			# },
 			{
 				'route': '/<ObjectId:_id>',
 				'view_function': 'get_view',
 				'methods': ['GET']
 			},
-			{
-				'route': '/<ObjectId:_id>',
-				'view_function': 'update_view',
-				'methods': ['PATCH', 'PUT'],
-				'requires_admin': True
-			},
-			{
-				'route': '/<ObjectId:_id>',
-				'view_function': 'delete_view',
-				'methods': ['DELETE'],
-				'requires_admin': True
-			}
+			# {
+			# 	'route': '/<ObjectId:_id>',
+			# 	'view_function': 'update_view',
+			# 	'methods': ['PATCH', 'PUT'],
+			# 	'requires_admin': True
+			# },
+			# {
+			# 	'route': '/<ObjectId:_id>',
+			# 	'view_function': 'delete_view',
+			# 	'methods': ['DELETE'],
+			# 	'requires_admin': True
+			# }
 		]
 
 

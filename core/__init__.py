@@ -2,6 +2,8 @@
 from flask import Flask
 from flask_pymongo import PyMongo
 
+import contentful
+
 # from celery import Celery
 # from elasticsearch import Elasticsearch, Urllib3HttpConnection
 # import certifi
@@ -18,6 +20,8 @@ except ImportError:
 
 app.mongo = PyMongo(app)
 app.caches = {}
+
+app.contentful = contentful.Client(app.config['CONTENTFUL_SPACE'], app.config['CONTENTFUL_ACCESS'])
 
 # app.search = Elasticsearch(
 # 	app.config['ELASTICSEARCH_HOST'].split(','),

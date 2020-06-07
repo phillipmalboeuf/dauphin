@@ -37,13 +37,13 @@ def not_found(error):
 			cached_template = app.caches['/errors'].get(request.path)
 			if cached_template is None or app.config['DEBUG']:
 				response = {
-					'pieces': Piece._values(),
+					# 'pieces': Interface._values(),
 					'pages': Page.list(),
 					'hotels': Hotel.list(),
 					'current_path': request.path,
 					'debugging': app.config['DEBUG']
 				}
-				response['pieces_json'] = json.dumps(response['pieces'], sort_keys=False, default=json_formater)
+				# response['interface_json'] = json.dumps(response['pieces'], sort_keys=False, default=json_formater)
 				response['lang_route'] = '/'
 
 				render = render_template('errors/' + str(error.code) + '.html', **response)

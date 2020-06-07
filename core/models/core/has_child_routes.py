@@ -20,26 +20,26 @@ with app.app_context():
 				'view_function': 'list_view',
 				'methods': ['GET']
 			},
-			{
-				'route': '',
-				'view_function': 'create_view',
-				'methods': ['POST']
-			},
+			# {
+			# 	'route': '',
+			# 	'view_function': 'create_view',
+			# 	'methods': ['POST']
+			# },
 			{
 				'route': '/<ObjectId:_id>',
 				'view_function': 'get_view',
 				'methods': ['GET']
 			},
-			{
-				'route': '/<ObjectId:_id>',
-				'view_function': 'update_view',
-				'methods': ['PATCH', 'PUT']
-			},
-			{
-				'route': '/<ObjectId:_id>',
-				'view_function': 'delete_view',
-				'methods': ['DELETE']
-			}
+			# {
+			# 	'route': '/<ObjectId:_id>',
+			# 	'view_function': 'update_view',
+			# 	'methods': ['PATCH', 'PUT']
+			# },
+			# {
+			# 	'route': '/<ObjectId:_id>',
+			# 	'view_function': 'delete_view',
+			# 	'methods': ['DELETE']
+			# }
 		]
 
 
@@ -66,13 +66,13 @@ with app.app_context():
 
 		@classmethod
 		def list_view(cls, parent_id):
-			return cls._format_response(cls.list(parent_id, {}, lang=request.url_rule.lang))
+			return cls._format_response(cls.list(parent_id, lang=request.url_rule.lang))
 
 
 
-		@classmethod
-		def create_view(cls, parent_id):
-			return cls._format_response(cls.create(parent_id, cls.validate(cls._get_json_from_request())))
+		# @classmethod
+		# def create_view(cls, parent_id):
+		# 	return cls._format_response(cls.create(parent_id, cls.validate(cls._get_json_from_request())))
 
 
 
@@ -82,15 +82,15 @@ with app.app_context():
 
 
 
-		@classmethod
-		def update_view(cls, parent_id, _id):
-			return cls._format_response(cls.update(parent_id, _id, cls.validate(cls._get_json_from_request()), lang=request.url_rule.lang))
+		# @classmethod
+		# def update_view(cls, parent_id, _id):
+		# 	return cls._format_response(cls.update(parent_id, _id, cls.validate(cls._get_json_from_request()), lang=request.url_rule.lang))
 
 
 
-		@classmethod
-		def delete_view(cls, parent_id, _id):
-			return cls._format_response(cls.delete(parent_id, _id))
+		# @classmethod
+		# def delete_view(cls, parent_id, _id):
+		# 	return cls._format_response(cls.delete(parent_id, _id))
 
 
 

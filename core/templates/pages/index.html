@@ -10,38 +10,21 @@
 
 <section class="text_center" style="position: relative; z-index: 1">
 
-	<h3 class="color_transition">{{pieces.index.hotels|editable('hotels', {'piece': pieces.index._id})}}</h3>
+	<h3 class="color_transition">{{interface.hotels}}</h3>
 
 	<hr class="color_transition">
 
 	<div class="padded">
 	{% for hotel in hotels %}
 		{% if hotel.extended_family %}
-		<a href="{{hotel.url}}" target="_blank" data-background-image="{{hotel.featured_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1400"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
+		<a href="{{hotel.url}}" target="_blank" data-background-image="{{hotel.featured_photo|asset}}?auto=format,compress&w=1400"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
 		{% else %}
-		<a href="{{lang_route}}hotels/{{hotel.route}}" data-background-image="{{hotel.featured_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1400"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
+		<a href="{{lang_route}}hotels/{{hotel.identifier}}" data-background-image="{{hotel.featured_photo|asset}}?auto=format,compress&w=1400"><h2 class="padded_bottom">{{hotel.name}}</h2></a>
 		{% endif %}
 	{% endfor %}
-
-		{% if request.current_session_is_admin %}
-		<div class="padded">
-			Titre: {{pieces.metadata.title|editable('title', {'piece': pieces.metadata._id})}}<br>
-			Description: {{pieces.metadata.description|editable('description', {'piece': pieces.metadata._id})}}<br>
-		</div>
-		{% endif %}
 	</div>
 
 	<hr class="color_transition">
-
-	{# <h3 class="padded color_transition">{{pieces.index.extended_family|editable('extended_family', {'piece': pieces.index._id})}}</h3>
-
-	<div class="grid grid--middle grid--center">
-	{% for hotel in hotels if hotel.extended_family %}
-		<div class="col"><h2 class="h2--small"><a href="{{hotel.url}}" target="_blank" data-background-image="{{hotel.featured_photo|replace('https://d3hy1swj29dtr7.cloudfront.net/uploads', 'https://saturdays.imgix.net')|replace('https://d3hy1swj29dtr7.cloudfront.net/dauphin', 'https://dauphin.imgix.net')}}?auto=format,compress&w=1400">{{hotel.name}}</a></h2></div>
-	
-		{% if not loop.last %}<div class="col"><hr class="hr--vertical color_transition"></div>{% endif %}
-	{% endfor %}
-	</div> #}
 
 </section>
 {% endblock %}

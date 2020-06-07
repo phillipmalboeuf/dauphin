@@ -3,7 +3,7 @@ from core import app
 from flask import request, abort
 from werkzeug.routing import Rule
 
-from core.models.core.model import Model
+from core.models.core.content import Content
 from core.models.core.has_routes import HasRoutes
 from core.models.core.with_templates import WithTemplates
 
@@ -18,55 +18,55 @@ import urllib
 
 
 with app.app_context():
-	class Hotel(WithTemplates, HasRoutes, Model):
+	class Hotel(WithTemplates, HasRoutes, Content):
 
-		collection_name = 'hotels'
-		collection_sort = [('order', 1)]
+		collection_name = 'hotel'
+		# collection_sort = [('order', 1)]
 
-		schema = {
-			'route': validation_rules['text'],
-			'name': validation_rules['text'],
-			'full_name': validation_rules['text'],
-			'tagline': validation_rules['text'],
-			'intro': validation_rules['text'],
-			'seo_title': validation_rules['text'],
-			'seo_description': validation_rules['text'],
-			'description': validation_rules['text'],
-			'description_1': validation_rules['text'],
-			'description_1_icon': validation_rules['text'],
-			'description_2': validation_rules['text'],
-			'description_2_icon': validation_rules['text'],
-			'description_3': validation_rules['text'],
-			'description_3_icon': validation_rules['text'],
-			'reservation_id': validation_rules['text'],
-			'reservation_info': validation_rules['text'],
-			'reservation_coupon': validation_rules['text'],
-			'featured_photo': validation_rules['text'],
-			'photos': validation_rules['image_list'],
-			'address': validation_rules['text'],
-			'full_address': validation_rules['text'],
-			'address_link': validation_rules['text'],
-			'phone': validation_rules['text'],
-			'fax': validation_rules['text'],
-			'toll_free': validation_rules['text'],
-			'email': validation_rules['text'],
-			'check_in': validation_rules['text'],
-			'check_out': validation_rules['text'],
-			'policies': validation_rules['items_list'],
-			'story': validation_rules['text'],
-			'story_photo': validation_rules['text'],
-			'proximity_intro': validation_rules['text'],
-			'proximity_photo': validation_rules['text'],
-			'proximity_restaurants': validation_rules['links_list'],
-			'proximity_cafes': validation_rules['links_list'],
-			'proximity_bars': validation_rules['links_list'],
-			'proximity_quick_bites': validation_rules['links_list'],
-			'proximity_others': validation_rules['links_list'],
-			'promotions_intro': validation_rules['text'],
-			'promotions_body': validation_rules['text'],
-			'promotions_photo': validation_rules['text'],
-			'metadata': validation_rules['metadata']
-		}
+		# schema = {
+		# 	'route': validation_rules['text'],
+		# 	'name': validation_rules['text'],
+		# 	'full_name': validation_rules['text'],
+		# 	'tagline': validation_rules['text'],
+		# 	'intro': validation_rules['text'],
+		# 	'seo_title': validation_rules['text'],
+		# 	'seo_description': validation_rules['text'],
+		# 	'description': validation_rules['text'],
+		# 	'description_1': validation_rules['text'],
+		# 	'description_1_icon': validation_rules['text'],
+		# 	'description_2': validation_rules['text'],
+		# 	'description_2_icon': validation_rules['text'],
+		# 	'description_3': validation_rules['text'],
+		# 	'description_3_icon': validation_rules['text'],
+		# 	'reservation_id': validation_rules['text'],
+		# 	'reservation_info': validation_rules['text'],
+		# 	'reservation_coupon': validation_rules['text'],
+		# 	'featured_photo': validation_rules['text'],
+		# 	'photos': validation_rules['image_list'],
+		# 	'address': validation_rules['text'],
+		# 	'full_address': validation_rules['text'],
+		# 	'address_link': validation_rules['text'],
+		# 	'phone': validation_rules['text'],
+		# 	'fax': validation_rules['text'],
+		# 	'toll_free': validation_rules['text'],
+		# 	'email': validation_rules['text'],
+		# 	'check_in': validation_rules['text'],
+		# 	'check_out': validation_rules['text'],
+		# 	'policies': validation_rules['items_list'],
+		# 	'story': validation_rules['text'],
+		# 	'story_photo': validation_rules['text'],
+		# 	'proximity_intro': validation_rules['text'],
+		# 	'proximity_photo': validation_rules['text'],
+		# 	'proximity_restaurants': validation_rules['links_list'],
+		# 	'proximity_cafes': validation_rules['links_list'],
+		# 	'proximity_bars': validation_rules['links_list'],
+		# 	'proximity_quick_bites': validation_rules['links_list'],
+		# 	'proximity_others': validation_rules['links_list'],
+		# 	'promotions_intro': validation_rules['text'],
+		# 	'promotions_body': validation_rules['text'],
+		# 	'promotions_photo': validation_rules['text'],
+		# 	'metadata': validation_rules['metadata']
+		# }
 
 
 		endpoint = '/hotels'
@@ -86,12 +86,12 @@ with app.app_context():
 				'view_function': 'get_view',
 				'methods': ['GET']
 			},
-			{
-				'route': '/<ObjectId:_id>',
-				'view_function': 'update_view',
-				'methods': ['PATCH', 'PUT'],
-				'requires_admin': True
-			},
+			# {
+			# 	'route': '/<ObjectId:_id>',
+			# 	'view_function': 'update_view',
+			# 	'methods': ['PATCH', 'PUT'],
+			# 	'requires_admin': True
+			# },
 			{
 				'route': '/<string:_id>/photos',
 				'view_function': 'photos_view',

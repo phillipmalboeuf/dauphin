@@ -12,20 +12,20 @@ from flask import request, abort, redirect
 import os
 
 
-from core.models.utilities.upload import Upload
+# from core.models.utilities.upload import Upload
 # from core.models.utilities.search import Search
 
-Upload.define_routes()
+# Upload.define_routes()
 # Search.define_routes()
 
 
-from core.models.auth.token import Token
-from core.models.auth.session import Session
-from core.models.auth.user import User
+# from core.models.auth.token import Token
+# from core.models.auth.session import Session
+# from core.models.auth.user import User
 
-Token.define_routes()
-Session.define_routes()
-User.define_routes()
+# Token.define_routes()
+# Session.define_routes()
+# User.define_routes()
 
 
 from core.models.cms.page import Page

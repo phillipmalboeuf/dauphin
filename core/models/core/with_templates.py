@@ -33,11 +33,11 @@ with app.app_context():
 			return super().define_routes()
 		
 
-		@classmethod
-		def preprocess(cls, document, lang=None):
-			app.caches[cls.endpoint].clear()
+		# @classmethod
+		# def preprocess(cls, document, lang=None):
+		# 	app.caches[cls.endpoint].clear()
 
-			return super().preprocess(document, lang)
+		# 	return super().preprocess(document, lang)
 
 
 		@classmethod
@@ -58,19 +58,19 @@ with app.app_context():
 									pass
 
 
-								from core.models.cms.piece import Piece
+								from core.models.cms.interface import Interface
 								from core.models.cms.page import Page
 								from core.models.hotels.hotel import Hotel
 
 								response = {
 									template['response_key']: response.copy(),
-									'pieces': Piece._values(request.url_rule.lang),
+									'interface': Interface.get(lang=request.url_rule.lang),
 									'pages': Page.list(lang=request.url_rule.lang),
 									'hotels': Hotel.list(lang=request.url_rule.lang),
 									'debugging': app.config['DEBUG'],
 									# 'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
 								}
-								response['pieces_json'] = json.dumps(response['pieces'], sort_keys=False, default=json_formater)
+								response['interface_json'] = json.dumps(response['interface'], sort_keys=False, default=json_formater)
 
 								if request.url_rule.lang is None:
 									response['lang_route'] = '/'
