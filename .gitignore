@@ -7,6 +7,7 @@ config/environment_dev.py
 /node_modules
 /.sass-cache
 /Design
+/_ignore
 *.map
 npm-debug.log
 *.db
