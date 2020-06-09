@@ -111,6 +111,11 @@ with app.app_context():
 				'route': '/<string:_id>/promotions',
 				'view_function': 'promotions_view',
 				'methods': ['GET']
+			},
+			{
+				'route': '/<string:_id>/arts',
+				'view_function': 'arts_view',
+				'methods': ['GET']
 			}
 			# {
 			# 	'route': '/<ObjectId:_id>',
@@ -144,6 +149,11 @@ with app.app_context():
 			{
 				'view_function': 'promotions_view',
 				'template': 'hotels/promotions.html',
+				'response_key': 'hotel'
+			},
+			{
+				'view_function': 'arts_view',
+				'template': 'hotels/arts.html',
 				'response_key': 'hotel'
 			}
 		]
@@ -220,6 +230,11 @@ with app.app_context():
 			
 			return cls._format_response(document)
 
+		@classmethod
+		def arts_view(cls, _id):
+			document = cls.get(_id)
+			
+			return cls._format_response(document)
 
 
 		# HELPERS

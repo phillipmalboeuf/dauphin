@@ -1,0 +1,45 @@
+
+{% extends "hotels/hotel.html" %}
+
+
+{% block title %}{{interface.arts}} – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
+{% block description %}{{interface.arts}} – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
+{% block og_title %}{{interface.arts}} – {% if room %}{{room.name}} – {% endif %}{{ super() }}{% endblock %}
+{% block og_description %}{{interface.arts}} – {% if room %}{{room.description}} – {% endif %}{{ super() }}{% endblock %}
+
+
+
+{% block main %}
+<article class="padded--under_header" data-hotel-id="{{hotel._id}}">
+	<div class="hero" style="background-image: url({{hotel.arts_photo|asset}}?auto=format,compress&w=1400)">
+		<div class="hero__box hero__box--full">
+			<div class="hero__box__content">
+				<h3 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}">&lt; {{interface.back_to_hotel}}</a></h3>
+				<h1>{{interface.arts}}</h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="padded padded--thick max_width">
+		<h2 class="huge_bottom">{{hotel.arts_intro}}</h2>
+
+		{{hotel.arts_body|markdown}}
+	</div>
+</article>
+{% endblock %}
+
+{% block footer_third %}
+<div class="hero hero--small" {% if hotel.rooms[0] %}style="background-image: url({{hotel.rooms[0].featured_photo|asset}}?auto=format,compress&w=1000)"{% endif %}>
+	<div class="hero__box hero__box--full">
+		<div class="hero__box__content">
+			<a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms" class="button button--secondary">{{interface.see_rooms}}</a>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+
+
+

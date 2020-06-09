@@ -33,7 +33,7 @@ def url_filter(url):
 
 @app.template_filter('markdown')
 def markdown_filter(content):
-	return markdown(content)
+	return Markup(markdown(content))
 
 
 @app.template_filter('rich')
