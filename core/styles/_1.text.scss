@@ -106,7 +106,8 @@ p {
 		font-family: $alternate_font;
 	}
 
-	&.p--big {
+	&.p--big,
+	.big_p & {
 		font-size: (20/$base) * 1rem;
 		line-height: (30/$base) * 1rem;
 	}
@@ -414,6 +415,12 @@ em,
 .comma_seperated {
 	&:after {
 		content: ", ";
+	}
+}
+
+.alernate {
+	h1, h2, h3, p {
+		font-family: $alternate_font;
 	}
 }
 

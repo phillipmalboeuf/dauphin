@@ -26,7 +26,13 @@
 
 {% block main %}
 
-<article class="padded--under_header" data-hotel-id="{{hotel._id}}">
+{% if interface.banner %}
+<aside class="padded--under_header text_center dark_back alernate big_p">
+	<div class="padded max_width max_width--center">{{ interface.banner|markdown }}</div>
+</aside>
+{% endif %}
+
+<article class="{% if not interface.banner %}padded--under_header{% endif %}" data-hotel-id="{{hotel._id}}">
 
 	<div class="hero" style="background-image: url({{hotel.featured_photo|asset}}?auto=format,compress&w=1400)">
 		<div class="hero__box">
