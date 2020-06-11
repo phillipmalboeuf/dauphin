@@ -84,6 +84,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('install', ['bgShell:install']);
   grunt.registerTask('start', ['bgShell:server']);
+  grunt.registerTask('build', ['bgShell:build']);
   grunt.registerTask('compilers', ['bgShell:development', 'open', 'watch']);
   grunt.registerTask('default', ['compilers']);
 
