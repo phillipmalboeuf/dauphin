@@ -22,7 +22,7 @@ export class Slider extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		window.Core.renderBackgroundImages()
+		// window.Core.renderBackgroundImages()
 	}
 
 	slideTo(event, index) {
@@ -80,7 +80,7 @@ export class Slider extends React.Component {
 
 
 	render() {
-
+		console.log(this.state.slides)
 		return <div className="grid grid--spaced">
 			<div className="col col--1of12" style={{paddingTop: "30%"}}>
 				<button onClick={this.previousSlide.bind(this)} className="button--transparent">&lt; Précédent</button>
@@ -95,15 +95,7 @@ export class Slider extends React.Component {
 							height: this.state.height,
 							transform: `translateX(-${this.state.current}00%)`
 						}}>
-						{Cookies.get('Session-Secret') &&
-						<div>
-							<img src={`${slide}`} />
-							<button onClick={(event)=> { this.removeSlide(event, index) }} className="hide button--transparent">- Remove {this.props.dataKey}</button>
-							<div data-hotel={this.props.hotel} data-room={this.props.room} data-list={this.props.list} data-index={index} data-key={this.props.dataKey} data-editable-background-image={slide}></div>
-						</div>
-						||
 						<a href={slide} target="_blank"><img src={`${slide}`} /></a>
-						}
 					</div>
 					))}
 				</div>
