@@ -23,7 +23,7 @@ with app.app_context():
 			return [cls.postprocess(document) for document in app.contentful.entries({ 
 				'content_type': cls.collection_name,
 				'include': 2,
-				'locale': lang
+				'locale': 'en-CA' if lang == 'en' else lang
 			})]
 
 
@@ -33,7 +33,7 @@ with app.app_context():
 				'content_type': cls.collection_name,
 				'fields.identifier': identifier,
 				'include': 2,
-				'locale': lang
+				'locale': 'en-CA' if lang == 'en' else lang
 			})][0]
 
 
