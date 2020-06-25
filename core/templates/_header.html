@@ -21,18 +21,8 @@
 				<h2 class="flat_bottom"><a href="{{lang_route}}">{{interface.all_hotels}}</a></h2>
 				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms">{{interface.rooms}}</a></h2>
 
-				{% for other_hotel in hotels %}
-				{% if other_hotel._id == hotel._id %}
-				{% for room in other_hotel.rooms %}
-				{% if not room.hidden %}
-				{% if lang != 'en' %}
+				{% for room in hotel.rooms %}
 				<h4 class="flat_bottom header__menu__indented"><a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms/{{room.identifier}}">{{room.name}}</a></h4>
-				{% else %}
-				<h4 class="flat_bottom header__menu__indented"><a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms/{{room.identifier}}">{% if room.translations and room.translations[lang].name %}{{room.translations[lang].name}}{% else %}{{room.name}}{% endif %}</a></h4>
-				{% endif %}
-				{% endif %}
-				{% endfor %}
-				{% endif %}
 				{% endfor %}
 
 				<h2 class="flat_bottom medium_top"><a href="{{lang_route}}hotels/{{hotel.identifier}}/promotions">{{interface.promotions}}</a></h2>
