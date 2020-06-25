@@ -1,7 +1,7 @@
 from flask import json
 from flask import Response
 
-
+from contentful import Entry
 from bson.objectid import ObjectId
 from bson import json_util
 
@@ -19,8 +19,11 @@ def to_json(document=None, code=200):
 
 
 def json_formater(obj):
-	if isinstance(obj, ObjectId):
-		return str(obj)
+	# if isinstance(obj, Entry):
+	# 	return obj.fields()
+
+	# if isinstance(obj, ObjectId):
+	# 	return str(obj)
 
 	if isinstance(obj, datetime):
 		return obj.isoformat()
