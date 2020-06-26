@@ -46,6 +46,7 @@
 		z-index: -1;
 
 		background: fade-out($black, 0.1);
+		border-radius: 0;
 	}
 
 
@@ -53,11 +54,11 @@
 		position: relative;
 
 		width: 100%;
-		max-width: (866/$base) * 1rem;
+		max-width: (888/$base) * 1rem;
 		max-height: 100vh;
 		overflow-y: auto;
 
-		padding: $gutter;
+		// padding: $gutter;
 		border: 1px solid $grey--light;
 		border-radius: $border_radius;
 		background-color: fade-out($white, 0.05);
@@ -80,7 +81,7 @@
 			top: 0;
 			right: 0;
 
-			padding: $gutter;
+			padding: $gutter/2;
 		}
 
 		.overlay__alert {

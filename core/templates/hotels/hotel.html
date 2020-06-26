@@ -26,6 +26,10 @@
 
 {% block main %}
 
+{% if hotel.popup_media %}
+<aside id="popup" data-popup-media="{{ hotel.popup_media|asset }}" data-popup-title="{{ hotel.popup_media.title }}"></aside>
+{% endif %}
+
 {% if interface.banner %}
 <aside class="padded--under_header text_center dark_back alernate">
 	<div class="padded max_width max_width--center">{{ interface.banner|markdown }}</div>
@@ -75,7 +79,6 @@
 	</div>
 </article>
 {% endblock %}
-
 
 {% block footer %}
 	<div class="grid grid--stretch">

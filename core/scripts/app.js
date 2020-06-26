@@ -12,6 +12,7 @@ import { RemoveRoom } from './add_new_room.js'
 import { Reservation } from './reservation.js'
 import { Slider } from './slider.js'
 import { Background } from './background.js'
+import { Popup } from './popup.js'
 
 
 if (module.hot)
@@ -70,6 +71,15 @@ window.Core = {
 		if (background) {
 			ReactDOM.render(
 				<Background />, background
+			)
+		}
+
+		const popup = document.getElementById("popup")
+		if (popup) {
+			ReactDOM.render(
+				<Popup 
+					title={popup.getAttribute("data-popup-title")}
+					media={popup.getAttribute("data-popup-media")} />, popup
 			)
 		}
 
