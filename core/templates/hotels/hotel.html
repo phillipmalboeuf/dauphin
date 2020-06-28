@@ -95,7 +95,7 @@
 		</div>
 
 		
-		<div class="col {% if hotel.arts_intro %}col--4of12{% else %}col--8of12{% endif %} col--phone--12of12">
+		<div class="col {% if hotel.arts_intro and hotel.arts_photo %}col--4of12{% else %}col--8of12{% endif %} col--phone--12of12">
 			{% block footer_second %}
 			<div class="hero hero--small" style="background-image: url({{hotel.proximity_photo|asset}}?auto=format,compress&w=1000)">
 				<div class="hero__box hero__box--full">
@@ -110,7 +110,7 @@
 			{% endblock %}
 		</div>
 
-		{% if hotel.arts_intro %}
+		{% if hotel.arts_intro and hotel.arts_photo %}
 		<div class="col col--4of12 col--phone--12of12">
 			{% block footer_third %}
 			<div class="hero hero--small" style="background-image: url({{hotel.arts_photo|asset}}?auto=format,compress&w=1000)">
