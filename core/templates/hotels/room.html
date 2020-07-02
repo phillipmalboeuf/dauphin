@@ -39,7 +39,12 @@
 				{% endfor %}
 				</div>
 
+				{% for service in room.services %}
+				{% if service.type == 'In the room on demand' %}
 				<h5 class="medium_top">{{interface.on_demand}}</h5>
+				{% break %}
+				{% endif %}
+				{% endfor %}
 
 				<div class="grid grid--tight_guttered">
 				{% for service in room.services %}
