@@ -30,29 +30,22 @@
 			</div>
 			<div class="col col--8of12 col--tablet_portrait--10of12 col--phone--12of12">
 				<div class="grid grid--tight_guttered">
-				{% for service in room.services %}
-				{% if service.type == 'In the room' %}
+				{% for service in room.services if service.type == 'In the room' %}
 				<div class="col col--6of12 col--phone--12of12">
 					<svg class="icon"><use xlink:href="#icon-{{service.icon}}" /></svg>&nbsp;&nbsp; <small>{{service.name}}</small>
 				</div>
-				{% endif %}
 				{% endfor %}
 				</div>
 
-				{% for service in room.services %}
-				{% if service.type == 'In the room on demand' %}
-				<h5 class="medium_top">{{interface.on_demand}}</h5>
-				{% break %}
-				{% endif %}
+				{% for service in room.services if service.type == 'In the room on demand' %}
+				{% if loop.first %}<h5 class="medium_top">{{interface.on_demand}}</h5>{% endif %}
 				{% endfor %}
 
 				<div class="grid grid--tight_guttered">
-				{% for service in room.services %}
-				{% if service.type == 'In the room on demand' %}
+				{% for service in room.services if service.type == 'In the room on demand' %}
 				<div class="col col--6of12 col--phone--12of12">
 					<svg class="icon"><use xlink:href="#icon-{{service.icon}}" /></svg>&nbsp;&nbsp; <small>{{service.name}}</small>
 				</div>
-				{% endif %}
 				{% endfor %}
 				</div>
 			</div>
