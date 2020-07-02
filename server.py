@@ -65,12 +65,12 @@ Room.define_routes()
 # TriggeredTask.define_routes()
 
 
-@app.route('/clear', methods=['POST'])
-def clear():
-	for cache in app.caches:
-		app.caches[cache].clear()
+# @app.route('/clear', methods=['POST'])
+# def clear():
+# 	for cache in app.caches:
+# 		app.caches[cache].clear()
 
-	return 'CLEARED'
+# 	return 'CLEARED'
 
 
 if __name__ == '__main__':

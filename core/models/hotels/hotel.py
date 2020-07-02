@@ -186,17 +186,17 @@ with app.app_context():
 
 
 
-		@classmethod
-		def preprocess(cls, document, lang=None):
-			for cache in app.caches:
-				app.caches[cache].clear()
+		# @classmethod
+		# def preprocess(cls, document, lang=None):
+		# 	for cache in app.caches:
+		# 		app.caches[cache].clear()
 
-			try:
-				document['route'] = urllib.parse.quote_plus(document['route'].lower())
-			except KeyError:
-				pass
+		# 	try:
+		# 		document['route'] = urllib.parse.quote_plus(document['route'].lower())
+		# 	except KeyError:
+		# 		pass
 
-			return super().preprocess(document, lang)
+		# 	return super().preprocess(document, lang)
 
 
 
