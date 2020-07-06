@@ -17,9 +17,9 @@
 	<div class="padded">
 		{% for hotel in interface.hotels_list %}
 		{% if 'http' in hotel[1] %}
-		<a href="{{hotel[1]}}" target="_blank"><h2 class="padded_bottom">{{hotel[0]}}</h2></a>
+		<a href="{{hotel[1]}}" target="_blank"{% if hotel[2] %} data-background-image="{{hotel[2]}}"{% endif %}><h2 class="padded_bottom">{{hotel[0]}}</h2></a>
 		{% else %}
-		<a href="{{lang_route}}hotels/{{hotel[1]}}"><h2 class="padded_bottom">{{hotel[0]}}</h2></a>
+		<a href="{{lang_route}}hotels/{{hotel[1]}}"{% if hotel[2] %} data-background-image="{{hotel[2]}}"{% endif %}><h2 class="padded_bottom">{{hotel[0]}}</h2></a>
 		{% endif %}
 		{% endfor %}
 	</div>
