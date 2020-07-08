@@ -205,7 +205,7 @@ with app.app_context():
 
 		@classmethod
 		def photos_view(cls, _id):
-			document = cls.get(_id)
+			document = cls.get(_id, lang=request.url_rule.lang)
 			
 			return cls._format_response({
 				'hotel': document,
@@ -214,25 +214,25 @@ with app.app_context():
 
 		@classmethod
 		def story_view(cls, _id):
-			document = cls.get(_id)
+			document = cls.get(_id, lang=request.url_rule.lang)
 			
 			return cls._format_response(document)
 
 		@classmethod
 		def proximity_view(cls, _id):
-			document = cls.get(_id)
+			document = cls.get(_id, lang=request.url_rule.lang)
 			
 			return cls._format_response(document)
 
 		@classmethod
 		def promotions_view(cls, _id):
-			document = cls.get(_id)
+			document = cls.get(_id, lang=request.url_rule.lang)
 			
 			return cls._format_response(document)
 
 		@classmethod
 		def arts_view(cls, _id):
-			document = cls.get(_id)
+			document = cls.get(_id, lang=request.url_rule.lang)
 			
 			return cls._format_response(document)
 
