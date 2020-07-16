@@ -1,7 +1,4 @@
 
-import { Cookies } from './utilities/cookies.js';
-
-
 export class Slider extends React.Component {
 
 	constructor(props) {
@@ -80,10 +77,9 @@ export class Slider extends React.Component {
 
 
 	render() {
-		console.log(this.state.slides)
 		return <div className="grid grid--spaced">
 			<div className="col col--1of12" style={{paddingTop: "30%"}}>
-				<button onClick={this.previousSlide.bind(this)} className="button--transparent">&lt; Précédent</button>
+				<button onClick={this.previousSlide.bind(this)} className="button--transparent">&lt; {lang === 'en' ? 'Previous' : 'Précédent'}</button>
 			</div>
 			<div className="col col--10of12 slider">
 				<div className="slider__container" ref={(div)=>{this.container = div}} style={{
@@ -101,10 +97,7 @@ export class Slider extends React.Component {
 				</div>
 			</div>
 			<div className="col col--1of12 text_right" style={{paddingTop: "30%"}}>
-				<button onClick={this.nextSlide.bind(this)} className="button--transparent">Prochain &gt;</button>
-				{Cookies.get('Session-Secret') && 
-				<button onClick={this.addSlide.bind(this)} className="button--transparent">+ Add new {this.props.dataKey}</button>
-				}
+				<button onClick={this.nextSlide.bind(this)} className="button--transparent">{lang === 'en' ? 'Next' : 'Prochain'} &gt;</button>
 			</div>
 		</div>
 	}

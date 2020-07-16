@@ -21,7 +21,7 @@
 <nav class="nav grid grid--spaced grid--middle">
 	<div class="col col--3of12"></div>
 	<div><h3>{{hotel.name}}{% if gallery.room %}: {{gallery.room.name}}{% endif %}</h3></div>
-	<div class="col col--3of12 text_right"><a href="{{lang_route}}hotels/{{hotel.identifier}}{% if gallery.room %}/rooms/{{gallery.room.identifier}}{% endif %}">Fermer &nbsp; {% include 'icons/close.svg' %}</a></div>
+	<div class="col col--3of12 text_right"><a href="{{lang_route}}hotels/{{hotel.identifier}}{% if gallery.room %}/rooms/{{gallery.room.identifier}}{% endif %}">{% if lang != 'en' %}Fermer{% else %}Close{% endif %} &nbsp; {% include 'icons/close.svg' %}</a></div>
 </nav>
 {% endblock %}
 

@@ -96,7 +96,7 @@ with app.app_context():
 
 		@classmethod
 		def photos_view(cls, parent_id, _id):
-			document = cls.get(parent_id, _id)
+			document = cls.get(parent_id, _id, lang=request.url_rule.lang)
 			
 			return cls._format_response({
 				'room': document,
