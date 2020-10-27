@@ -31,7 +31,11 @@
 	<div class="grid grid--center grid--middle">
 		<div class="col col--10of12 col--tablet_portrait--12of12">
 			{% for photo in gallery.photos %}
+			{% if 'video' in photo.file.contentType %}
+			<video src="{{photo|asset}}" autoplay muted loop playsinline>
+			{% else %}
 			<img src="{{photo|asset}}?auto=format,compress&w=1400" class="img--full">
+			{% endif %}
 			{% endfor %}
 		</div>
 	</div>

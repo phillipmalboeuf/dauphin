@@ -30,7 +30,7 @@ export class Slider extends React.Component {
 
 		this.setState({
 			current: index,
-			height: `${document.querySelectorAll(".slide")[index].querySelectorAll("img")[0].scrollHeight}px`
+			height: `${document.querySelectorAll(".slide")[index].querySelectorAll("a > *")[0].scrollHeight}px`
 		})
 	}
 
@@ -91,7 +91,11 @@ export class Slider extends React.Component {
 							height: this.state.height,
 							transform: `translateX(-${this.state.current}00%)`
 						}}>
-						<a href={slide} target="_blank"><img src={`${slide}`} /></a>
+						<a href={slide} target="_blank">
+							{slide.includes('videos.ctfassets') 
+							? <video src={slide} autoPlay muted loop playsInline />
+							: <img src={slide} />}
+						</a>
 					</div>
 					))}
 				</div>
