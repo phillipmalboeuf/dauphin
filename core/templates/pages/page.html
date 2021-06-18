@@ -3,8 +3,24 @@
 
 
 {% block main %}
+{% if page.photo %}
+<div class="padded--under_header">
+	<div class="hero hero--small" style="background-image: url({{page.photo|asset}}?auto=format,compress&w=1400)">
+		<div class="hero__box">
+			<div class="hero__box__content">
+				<h1>{{page.title}}</h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="padded padded--thick max_width">
+		<div class="underline_links">{{page.body|rich}}</div>
+	</div>
+</div>
+{% else %}
 <div class="padded padded--vertically_thick max_width">
 	<h1>{{page.title}}</h1>
-	<div>{{page.body|rich}}</div>
+	<div class="underline_links">{{page.body|rich}}</div>
 </div>
+{% endif %}
 {% endblock %}
