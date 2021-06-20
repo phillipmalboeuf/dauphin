@@ -78,6 +78,14 @@ with app.app_context():
 			return super().define_routes()
 
 
+		@classmethod
+		def get_view(cls, _id):
+			hotel_id = request.args.get('hotel', None)
+			document = cls.get(_id, lang=request.url_rule.lang)
+			document['hotel_id'] = hotel_id
+			
+			return cls._format_response(document)
+
 
 
 		@classmethod

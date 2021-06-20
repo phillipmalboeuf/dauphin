@@ -1,6 +1,10 @@
 
 {% extends "layout.html" %}
 
+{% if page.hotel_id %}
+{% set hotel = hotels|selectattr("identifier", "eq", page.hotel_id)|first %}
+{% endif %}
+
 
 {% block main %}
 {% if page.photo %}
@@ -8,6 +12,7 @@
 	<div class="hero hero--small" style="background-image: url({{page.photo|asset}}?auto=format,compress&w=1400)">
 		<div class="hero__box">
 			<div class="hero__box__content">
+				{% if page.hotel_id %}<h3 class="small_bottom"><a href="{{lang_route}}hotels/{{page.hotel_id}}">&lt; {{interface.back_to_hotel}}</a></h3>{% endif %}
 				<h1>{{page.title}}</h1>
 			</div>
 		</div>

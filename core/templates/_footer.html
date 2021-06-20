@@ -37,8 +37,8 @@
 
 		<div class="col col--2of12 col--tablet_landscape--4of12 col--phone--6of12">
 			<p class="p--small p--thick_lines">
-				{% for page in pages %}
-				<a href="{{lang_route}}pages/{{page.identifier}}">{{page.title}}</a>{% if not loop.last %}<br>{% endif %}
+				{% for page in pages if not page.hide_from_navigation %}
+				<a href="{{lang_route}}pages/{{page.identifier}}?hotel={{hotel.identifier}}">{{page.title}}</a>{% if not loop.last %}<br>{% endif %}
 				{% endfor %}
 			</p>
 		</div>
