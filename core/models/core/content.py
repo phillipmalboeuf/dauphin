@@ -23,7 +23,8 @@ with app.app_context():
 			return [cls.postprocess(document) for document in app.contentful.entries({ 
 				'content_type': cls.collection_name,
 				'include': 2,
-				'locale': 'en-CA' if lang == 'en' else lang
+				'locale': 'en-CA' if lang == 'en' else lang,
+				'order': 'sys.createdAt'
 			})]
 
 

@@ -42,9 +42,9 @@
 
 				{% endif %}
 
-				<p class="p--thick_lines">
+				<p class="p--thick_lines p--small">
 					{% for page in pages if not page.hide_from_navigation %}
-					<a href="{{lang_route}}pages/{{page.identifier}}">{{page.name}}</a>{% if not loop.last %}<br>{% endif %}
+					<a href="{{lang_route}}pages/{{page.identifier}}">{{page.title}}</a>{% if not loop.last %}<br>{% endif %}
 					{% endfor %}
 				</p>
 			</div>
