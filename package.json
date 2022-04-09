@@ -12,7 +12,7 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-open": "^0.2.4",
     "grunt-sass": "^3.1.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-sass": "^4.13.1",
     "react": "^15.4.2",
     "react-datetime": "^2.16.3",
