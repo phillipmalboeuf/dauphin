@@ -26,7 +26,7 @@
 				{% endfor %}
 
 				<h2 class="flat_bottom medium_top"><a href="{{lang_route}}hotels/{{hotel.identifier}}/promotions">{{interface.promotions}}</a></h2>
-				{% if hotel.identifier == 'montreal' && interface.boutiqueLink %}<h2 class="flat_bottom"><a href="{{interface.boutiqueLink}}" target="_blank">{{interface.boutique}}</a></h2>{% endif %}
+				{% if hotel.identifier == 'montreal' and interface.boutique_link %}<h2 class="flat_bottom"><a href="{{interface.boutique_link}}" target="_blank">{{interface.shop}}</a></h2>{% endif %}
 				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/story">{{interface.story}}</a></h2>
 				<h2 class="flat_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/proximity">{{interface.proximity}}</a></h2>
 				<h2 class="medium_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}/photos">{{interface.hotel_photos}}</a></h2>

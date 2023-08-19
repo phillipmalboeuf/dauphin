@@ -4,7 +4,7 @@ from core.helpers.json import to_json, json_formater
 from flask import request, abort
 from flask import render_template, json
 from werkzeug.routing import Rule
-from werkzeug.contrib.cache import SimpleCache
+from cachelib.simple import SimpleCache
 
 from bson.objectid import ObjectId
 import hashlib

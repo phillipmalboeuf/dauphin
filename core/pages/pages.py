@@ -8,7 +8,7 @@ from core.models.hotels.hotel import Hotel
 from flask import request, abort
 from flask import render_template, json
 
-from werkzeug.contrib.cache import SimpleCache
+from cachelib.simple import SimpleCache
 
 import os
 

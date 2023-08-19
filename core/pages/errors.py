@@ -11,7 +11,7 @@ from config.redirects import redirects
 from flask import request, abort, redirect
 from flask import render_template, json
 
-from werkzeug.contrib.cache import SimpleCache
+from cachelib.simple import SimpleCache
 
 import os
 
