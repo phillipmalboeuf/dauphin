@@ -36,7 +36,27 @@
 </aside>
 {% endif %}
 
-<article class="{% if not interface.banner %}padded--under_header{% endif %}" data-hotel-id="{{hotel._id}}">
+{% if interface.newsletter_text %}
+<aside class="padded--under_header text_center dark_back alernate">
+	<div class="padded max_width max_width--center grid grid--center">
+		<h2>{{ interface.newsletter_title }}</h2>
+
+		<form method="post" action="https://hoteldauphin.us11.list-manage.com/subscribe/post?u=689d7152c98a0f9461a181103&amp;id=d2b8b72a2c&amp;f_id=00bfa1e0f0">
+      <input type="text" name="b_689d7152c98a0f9461a181103_d2b8b72a2c" tabindex="-1" value="" style="position: absolute; left: -5000px;" aria-hidden="true">
+			<input type="hidden" name="MMERGE6" value="{{hotel.identifier}}">
+
+			{{ interface.newsletter_text|markdown }}
+
+			<div class="relative button_group">
+				<input type="email" name="EMAIL" required placeholder="votre.courriel@gmail.com">
+				<button class="button--secondary button--small" style="position: absolute; top: 0; right: 0; height: 100%;" type="submit">{{ interface.newsletter_cta }}</button>
+			</div>
+		</form>
+	</div>
+</aside>
+{% endif %}
+
+<article class="{% if not interface.banner and not interface.newsletter_text %}padded--under_header{% endif %}" data-hotel-id="{{hotel._id}}">
 
 	<div class="hero" style="background-image: url({{hotel.featured_photo|asset}}?auto=format,compress&w=1400)">
 		<div class="hero__box">
