@@ -14,7 +14,7 @@
         </title>
         <meta name="description" content="{% block description %}{{interface.description|striptags}}{% endblock %}">
 
-
+        <meta itemprop="image primaryImageOfPage" content="{% block primaryImageOfPage %}{% endblock %}" />
         <meta name="twitter:card" value="summary">
         <meta property="og:title" content="{% block og_title %}{{interface.title|striptags}}{% endblock %}">
         <meta property="og:type" content="website"/>

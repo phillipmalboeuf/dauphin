@@ -5,6 +5,7 @@
 {% block description %}{% if hotel.seo_description %}{{hotel.seo_description}}{% else %}{{hotel.intro}}{% endif %} – {{ super() }}{% endblock %}
 {% block og_title %}{% if hotel.seo_title %}{{hotel.seo_title}}{% else %}{{hotel.name}} – {{hotel.tagline}}{% endif %} – {{ super() }}{% endblock %}
 {% block og_description %}{% if hotel.seo_description %}{{hotel.seo_description}}{% else %}{{hotel.intro}}{% endif %} – {{ super() }}{% endblock %}
+{% block primaryImageOfPage %}{{hotel.featured_photo|asset}}?auto=format,compress&w=1400{% endblock %}
 
 
 {% block header_classes %}white_back{% endblock %}
