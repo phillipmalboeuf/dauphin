@@ -1,6 +1,6 @@
 from core import app
 from flask import request
-
+from functools import lru_cache
 from datetime import datetime
 from pytz import timezone
 
@@ -17,8 +17,8 @@ with app.app_context():
 			return document.fields()
 
 
-
 		@classmethod
+		@lru_cache(maxsize=None)
 		def list(cls, lang=None):
 			return [cls.postprocess(document) for document in app.contentful.entries({ 
 				'content_type': cls.collection_name,
@@ -29,6 +29,7 @@ with app.app_context():
 
 
 		@classmethod
+		@lru_cache(maxsize=None)
 		def get(cls, identifier, lang=None):
 			return [cls.postprocess(document) for document in app.contentful.entries({ 
 				'content_type': cls.collection_name,
@@ -36,5 +37,4 @@ with app.app_context():
 				'include': 2,
 				'locale': 'en-CA' if lang == 'en' else lang
 			})][0]
-
 
