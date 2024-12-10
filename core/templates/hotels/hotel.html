@@ -18,8 +18,8 @@
 	{% include 'icons/icons.svg' %}
 
 	{% block reservation %}
-	<div class="reservation">
-		<a href="{{lang_route}}hotels/{{hotel.identifier}}/reservation"  data-turbolinks-permanent class="button button--full button--no_corners">{{interface.reservation}}</a>
+	<div class="reservation" id="reservation" data-turbolinks-permanent data-icon-svg='{% include "icons/down.svg" %}' data-hotel='{ "_id": "{{hotel._id}}", "reservation_id": "{{hotel.reservation_id}}", "reservation_info": {% if hotel.reservation_info %}{{hotel.reservation_info|tojson}}{% else %}{{interface.reservation_info|tojson}}{% endif %}, "reservation_coupon": "{{hotel.reservation_coupon}}" }'>
+		<a href="http://softbooker.reservit.com/reservit/reserhotel.php?lang={{lang}}&hotelid={{hotel.reservation_id}}&discountcode={{hotel.reservation_coupon}}" class="button button--full button--no_corners" target="_blank">{{interface.reservation}}</a>
 	</div>
 	{% endblock %}
 {% endblock %}
