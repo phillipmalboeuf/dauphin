@@ -116,6 +116,11 @@ with app.app_context():
 				'route': '/<string:_id>/arts',
 				'view_function': 'arts_view',
 				'methods': ['GET']
+			},
+			{
+				'route': '/<string:_id>/reservation',
+				'view_function': 'reservation_view',
+				'methods': ['GET']
 			}
 			# {
 			# 	'route': '/<ObjectId:_id>',
@@ -154,6 +159,11 @@ with app.app_context():
 			{
 				'view_function': 'arts_view',
 				'template': 'hotels/arts.html',
+				'response_key': 'hotel'
+			},
+			{
+				'view_function': 'reservation_view',
+				'template': 'hotels/reservation.html',
 				'response_key': 'hotel'
 			}
 		]
@@ -232,6 +242,12 @@ with app.app_context():
 
 		@classmethod
 		def arts_view(cls, _id):
+			document = cls.get(_id, lang=request.url_rule.lang)
+			
+			return cls._format_response(document)
+		
+		@classmethod
+		def reservation_view(cls, _id):
 			document = cls.get(_id, lang=request.url_rule.lang)
 			
 			return cls._format_response(document)
