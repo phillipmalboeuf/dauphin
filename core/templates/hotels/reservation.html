@@ -10,6 +10,13 @@
 
 
 {% block main %}
+{% if lang %}
+<script type="text/javascript" src="https://images.iqwareinc.com/sites/guestdesk/bundle.{{lang}}.js"></script>
+{% else %}
+<script type="text/javascript" src="https://images.iqwareinc.com/sites/guestdesk/bundle.fr.js"></script>
+{% endif %}
+<script type="text/javascript" src="https://images.iqwareinc.com/sites/hoteldauphin_ca/js/gd5-custom.js"></script>
+
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
 	<div class="hero hero--small" style="background-image: url({{hotel.featured_photo|asset}}?auto=format,compress&w=1400)">
 		<div class="hero__box hero__box--full">
