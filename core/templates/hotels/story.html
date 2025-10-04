@@ -11,7 +11,7 @@
 
 {% block main %}
 <article class="padded--under_header" data-hotel-id="{{hotel._id}}">
-	<div class="hero" style="background-image: url({{hotel.story_photo|asset}}?auto=format,compress&w=1400)">
+	<div class="hero" style="background-image: url({{hotel.story_photo|asset}}?w=1400)">
 		<div class="hero__box hero__box--full">
 			<div class="hero__box__content">
 				<h3 class="small_bottom"><a href="{{lang_route}}hotels/{{hotel.identifier}}">&lt; {{interface.back_to_hotel}}</a></h3>
@@ -28,7 +28,7 @@
 
 
 {% block footer_first %}
-<div class="hero hero--small hide_on_phone" {% if hotel.rooms[0] %}style="background-image: url({{hotel.rooms[0].featured_photo|asset}}?auto=format,compress&w=800)"{% endif %}>
+<div class="hero hero--small hide_on_phone" {% if hotel.rooms[0] %}style="background-image: url({{hotel.rooms[0].featured_photo|asset}}?w=800)"{% endif %}>
 	<div class="hero__box hero__box--full">
 		<div class="hero__box__content">
 			<a href="{{lang_route}}hotels/{{hotel.identifier}}/rooms" class="button button--secondary">{{interface.see_rooms}}</a>

@@ -9,7 +9,7 @@
 {% block main %}
 {% if page.photo %}
 <div class="padded--under_header">
-	<div class="hero hero--small" style="background-image: url({{page.photo|asset}}?auto=format,compress&w=1400)">
+	<div class="hero hero--small" style="background-image: url({{page.photo|asset}}?w=1400)">
 		<div class="hero__box">
 			<div class="hero__box__content">
 				{% if page.hotel_id %}<h3 class="small_bottom"><a href="{{lang_route}}hotels/{{page.hotel_id}}">&lt; {{interface.back_to_hotel}}</a></h3>{% endif %}

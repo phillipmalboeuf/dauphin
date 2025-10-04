@@ -27,14 +27,14 @@
 
 
 {% block main %}
-<div class="padded" data-slider data-slides='{% for photo in gallery.photos %}{{photo|asset}}?auto=format&w=1400{% if not loop.last %},{% endif %}{% endfor %}' {% if request.current_session_is_admin %}data-hotel="{{hotel._id}}"{% if gallery.room %} data-room="{{gallery.room._id}}"{% endif %} data-slides-list="photos" data-slides-key="image"{% endif %}>
+<div class="padded" data-slider data-slides='{% for photo in gallery.photos %}{{photo|asset}}?w=1400{% if not loop.last %},{% endif %}{% endfor %}' {% if request.current_session_is_admin %}data-hotel="{{hotel._id}}"{% if gallery.room %} data-room="{{gallery.room._id}}"{% endif %} data-slides-list="photos" data-slides-key="image"{% endif %}>
 	<div class="grid grid--center grid--middle">
 		<div class="col col--10of12 col--tablet_portrait--12of12">
 			{% for photo in gallery.photos %}
 			{% if 'video' in photo.file.contentType %}
 			<video src="{{photo|asset}}" autoplay muted loop playsinline>
 			{% else %}
-			<img src="{{photo|asset}}?auto=format,compress&w=1400" class="img--full">
+			<img src="{{photo|asset}}?w=1400" class="img--full">
 			{% endif %}
 			{% endfor %}
 		</div>

@@ -42,7 +42,7 @@ def rich(content):
 
 @app.template_filter('asset')
 def asset(file):
-	return file.url().replace('//images.ctfassets.net/nfw8sun8l2hw', 'https://dauphincontent.imgix.net')
+	return file.url().replace('//downloads.ctfassets.net', '//images.ctfassets.net').replace('//images.ctfassets.net', 'https://philsassets.b-cdn.net')
 
 
 @app.template_filter('editable')
