@@ -17,32 +17,32 @@ import os
 def page(lang=None):
 	request.url_rule.lang = lang
 
-	cached_template = app.caches['/pages'].get(request.path)
-	if cached_template is None or request.current_session_is_admin or app.config['DEBUG']:
-		response = {
-			'interface': Interface.get(lang=lang),
-			'pages': Page.list(lang=lang),
-			'hotels': Hotel.list(lang=lang),
-			'debugging': app.config['DEBUG'],
-			# 'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
-		}
-		response['interface_json'] = json.dumps(response['interface'], sort_keys=False, default=json_formater)
+	# cached_template = app.caches['/pages'].get(request.path)
+	# if cached_template is None or request.current_session_is_admin or app.config['DEBUG']:
+	response = {
+		'interface': Interface.get(lang=lang),
+		'pages': Page.list(lang=lang),
+		'hotels': Hotel.list(lang=lang),
+		'debugging': app.config['DEBUG'],
+		# 'stripe_key': app.config['STRIPE_PUBLISHABLE_KEY']
+	}
+	response['interface_json'] = json.dumps(response['interface'], sort_keys=False, default=json_formater)
 
-		if lang is None:
-			response['lang_route'] = '/'
-			response['current_path'] = request.path
-		else:
-			response['lang'] = lang
-			response['lang_route'] = '/' + lang + '/'
-			response['current_path'] = request.path.replace(response['lang_route'], '/')
-
-		render = render_template('pages/' + request.endpoint + '.html', **response)
-		if not request.current_session_is_admin:
-			app.caches['/pages'].set(request.path, render, timeout=0)
-		return render
-
+	if lang is None:
+		response['lang_route'] = '/'
+		response['current_path'] = request.path
 	else:
-		return cached_template
+		response['lang'] = lang
+		response['lang_route'] = '/' + lang + '/'
+		response['current_path'] = request.path.replace(response['lang_route'], '/')
+
+	render = render_template('pages/' + request.endpoint + '.html', **response)
+	if not request.current_session_is_admin:
+		app.caches['/pages'].set(request.path, render, timeout=0)
+	return render
+
+	# else:
+	# 	return cached_template
 
 
 app.caches['/pages'] = SimpleCache(default_timeout=600)
